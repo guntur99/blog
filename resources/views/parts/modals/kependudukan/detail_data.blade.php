@@ -51,11 +51,11 @@
                                     <div class="col-md-3 pl-3">
                                         <span class="list_modal">Kelurahan Desa</span> :<br><span class="value_modal" id="kelurahan_desa" style="font-size:16px;font-weight:bold;"></span><br>
                                     </div>
-                                    <div class="col-md-6 mb-2 pl-3">
+                                    <div class="col-md-3 mb-2 pl-3">
                                         <span class="list_modal">Kecamatan</span> :<br><span class="value_modal" id="kecamatan" style="font-size:16px;font-weight:bold;"></span><br>
                                     </div>
-                                    <div class="col-md-6 mb-2 pl-3">
-
+                                    <div class="col-md-3 mb-2 pl-3">
+                                        <span class="list_modal">Kewarganegaraan</span> :<br><span class="value_modal" id="kewarganegaraan" style="font-size:16px;font-weight:bold;"></span><br>
                                     </div>
                                 </div>
 

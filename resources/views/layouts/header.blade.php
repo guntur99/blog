@@ -45,6 +45,7 @@
         .swal-input-custom{
             font-size: 1rem !important;
         }
+        .datepicker{ z-index:99999 !important; }
 
         #logoutLink:hover{
             cursor: pointer;

@@ -143,3 +143,202 @@ $('#asistenModalViewer').on('hidden.bs.modal', function (e) {
     $('#search_id').removeClass('d-none');
 });
 /*---------------- END MODAL SHOW -----------------*/
+
+
+var nik = $('#u_nik');
+var nama = $('#u_nama_warga');
+var agama = $('#u_agama');
+var rt = $('#u_rt');
+var rw = $('#u_rw');
+var kelurahan = $('#u_kelurahan_desa');
+var status_perkawinan = $('#u_status_perkawinan');
+var jenis_kelamin = $('#u_jenis_kelamin');
+var alamat = $('#u_alamat');
+var kecamatan = $('#u_kecamatan');
+var kewarganegaraan = $('#u_kewarganegaraan');
+var tempat_lahir = $('#u_tempat_lahir');
+var tanggal_lahir = $('#u_tanggal_lahir');
+
+nik.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        nik.addClass('is-invalid');
+        nik.removeClass('is-valid');
+    } else {
+        nik.addClass('is-valid');
+        nik.removeClass('is-invalid');
+    }
+
+})
+
+nama.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        nama.addClass('is-invalid');
+        nama.removeClass('is-valid');
+    } else {
+        nama.addClass('is-valid');
+        nama.removeClass('is-invalid');
+    }
+
+})
+
+agama.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        agama.addClass('is-invalid');
+        agama.removeClass('is-valid');
+    } else {
+        agama.addClass('is-valid');
+        agama.removeClass('is-invalid');
+    }
+
+})
+
+rt.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        rt.addClass('is-invalid');
+        rt.removeClass('is-valid');
+    } else {
+        rt.addClass('is-valid');
+        rt.removeClass('is-invalid');
+    }
+
+})
+
+rw.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        rw.addClass('is-invalid');
+        rw.removeClass('is-valid');
+    } else {
+        rw.addClass('is-valid');
+        rw.removeClass('is-invalid');
+    }
+
+})
+
+kelurahan.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        kelurahan.addClass('is-invalid');
+        kelurahan.removeClass('is-valid');
+    } else {
+        kelurahan.addClass('is-valid');
+        kelurahan.removeClass('is-invalid');
+    }
+
+})
+
+status_perkawinan.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        status_perkawinan.addClass('is-invalid');
+        status_perkawinan.removeClass('is-valid');
+    } else {
+        status_perkawinan.addClass('is-valid');
+        status_perkawinan.removeClass('is-invalid');
+    }
+
+})
+
+jenis_kelamin.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        jenis_kelamin.addClass('is-invalid');
+        jenis_kelamin.removeClass('is-valid');
+    } else {
+        jenis_kelamin.addClass('is-valid');
+        jenis_kelamin.removeClass('is-invalid');
+    }
+
+})
+
+alamat.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        alamat.addClass('is-invalid');
+        alamat.removeClass('is-valid');
+    } else {
+        alamat.addClass('is-valid');
+        alamat.removeClass('is-invalid');
+    }
+
+})
+
+kecamatan.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        kecamatan.addClass('is-invalid');
+        kecamatan.removeClass('is-valid');
+    } else {
+        kecamatan.addClass('is-valid');
+        kecamatan.removeClass('is-invalid');
+    }
+
+})
+
+kewarganegaraan.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        kewarganegaraan.addClass('is-invalid');
+        kewarganegaraan.removeClass('is-valid');
+    } else {
+        kewarganegaraan.addClass('is-valid');
+        kewarganegaraan.removeClass('is-invalid');
+    }
+
+})
+
+tempat_lahir.on('input', (e) => {
+    var value = e.target.value
+
+    if (value.length === 0) {
+        tempat_lahir.addClass('is-invalid');
+        tempat_lahir.removeClass('is-valid');
+    } else {
+        tempat_lahir.addClass('is-valid');
+        tempat_lahir.removeClass('is-invalid');
+    }
+
+})
+
+function validInvalid() {
+
+    ((nik.val() == "") ? nik.addClass('is-invalid') : nik.addClass('is-valid'));
+    ((nama.val() == "") ? nama.addClass('is-invalid') : nama.addClass('is-valid'));
+    ((agama.val() == "") ? agama.addClass('is-invalid') : agama.addClass('is-valid'));
+    ((rt.val() == "") ? rt.addClass('is-invalid') : rt.addClass('is-valid'));
+    ((rw.val() == "") ? rw.addClass('is-invalid') : rw.addClass('is-valid'));
+    ((kelurahan.val() == "") ? kelurahan.addClass('is-invalid') : kelurahan.addClass('is-valid'));
+    ((status_perkawinan.val() == "") ? status_perkawinan.addClass('is-invalid') : status_perkawinan.addClass('is-valid'));
+    ((jenis_kelamin.val() == "") ? jenis_kelamin.addClass('is-invalid') : jenis_kelamin.addClass('is-valid'));
+    ((alamat.val() == "") ? alamat.addClass('is-invalid') : alamat.addClass('is-valid'));
+    ((kecamatan.val() == "") ? kecamatan.addClass('is-invalid') : kecamatan.addClass('is-valid'));
+    ((kewarganegaraan.val() == "") ? kewarganegaraan.addClass('is-invalid') : kewarganegaraan.addClass('is-valid'));
+    ((tempat_lahir.val() == "") ? tempat_lahir.addClass('is-invalid') : tempat_lahir.addClass('is-valid'));
+
+    if (tanggal_lahir.val() == "") {
+        tanggal_lahir.addClass('is-invalid');
+        tanggal_lahir.removeClass('is-valid');
+    } else {
+        tanggal_lahir.addClass('is-valid')
+        tanggal_lahir.removeClass('is-invalid');
+    }
+}
+
+$('.tgl').datepicker({
+    format: 'yyyy-mm-dd'
+});

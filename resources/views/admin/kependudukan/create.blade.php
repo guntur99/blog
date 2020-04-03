@@ -406,7 +406,7 @@
 
         $('#btn_submit').click((e) => {
             e.preventDefault();
-                console.log(nik.val());
+            // alert('haha')
 
             ((nik.val() == "") ? nik.addClass('is-invalid') : nik.addClass('is-valid'));
             ((nama.val() == "") ? nama.addClass('is-invalid') : nama.addClass('is-valid'));
@@ -428,8 +428,8 @@
                 tanggal_lahir.addClass('is-valid')
                 tanggal_lahir.removeClass('is-invalid');
             }
-            var formData = new FormData()
 
+            var formData = new FormData()
             formData.append('nik', nik.val());
             formData.append('nama', nama.val());
             formData.append('agama', agama.val());
@@ -445,8 +445,7 @@
             formData.append('tanggal_lahir', tanggal_lahir.val());
 
             axios.post('{{route("penduduk.desa.store")}}', formData).then((res) => {
-                hideLoader();
-                // return false;
+
                 Swal.fire({
                     title: 'Success',
                     text: "Add Data Success",
@@ -462,7 +461,6 @@
                         popup: 'swal-popup-custom'
                     }
                 }).then((result) => {
-                    // return false;
                     window.location.href = "{{route('penduduk.desa.index')}}";
                 });
 

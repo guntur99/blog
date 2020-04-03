@@ -76,10 +76,6 @@
     <script src="{{ asset('atmos/demos/light/assets/vendor/apexchart/apexcharts.min.js') }}"></script>
     <script>
 
-        $('.tgl').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-
         var dataTable = $('#kependudukan-table').DataTable({
             orderCellsTop: true,
             fixedHeader: true,
@@ -114,8 +110,6 @@
             ],
             "order" :[[ 0, 'desc' ]]
         });
-
-        console.log(dataTable.row($('.dataTable')).data());
 
         var nik = $('#u_nik');
         var nama = $('#u_nama_warga');
@@ -310,6 +304,7 @@
             $('#kecamatan').html(data.kecamatan);
             $('#tempat_lahir').html(data.tempat_lahir);
             $('#tanggal_lahir').html(data.tanggal_lahir);
+            $('#kewarganegaraan').html(data.kewarganegaraan);
 
             $('#id_hide').val(data.id)
 
@@ -346,6 +341,7 @@
                 $('#u_kecamatan').val(data.kecamatan);
                 $('#u_tempat_lahir').val(data.tempat_lahir);
                 $('#u_tanggal_lahir').val(data.tanggal_lahir);
+                $('#u_kewarganegaraan').val(data.kewarganegaraan);
 
             });
 
@@ -454,8 +450,6 @@
                     return showModal('error', err.response.data.message);
                 });
             })
-            // window.location.href = "{{config('app.url')}}/clients/show/"+data.client_id;
-            // window.location.href = "{{config('app.url')}}/wishlists-datatable/"+data.client_id;
         })
 
 

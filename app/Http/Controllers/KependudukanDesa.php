@@ -46,46 +46,9 @@ class KependudukanDesa extends Controller
         $data = $data->get();
 
         $total_so               = [];
-        // $total_filled           = [];
-        // $total_empty            = [];
-        // $total_reserved         = [];
-        // $more_than_3_months     = [];
-        // $less_than_3_months     = [];
-        // $less_than_1_months     = [];
 
         foreach ($data as $no => $item) {
             $total_so[] = $item;
-
-            // if ($item->client_id !== null && $item->client_plan_id !== null) {
-            //     if ($item->client_plan_id == 0) {
-            //         $total_reserved[] = $item;
-            //     } else {
-            //         $total_filled[] = $item;
-
-            //         $due_date   = \Carbon\Carbon::parse($item->next_renew_date);
-            //         $dateNow    = \Carbon\Carbon::now('Asia/Jakarta')->format('Y-m-d');
-            //         $dateDiff   = $due_date->diff($dateNow);
-
-            //         // more than 3 months
-            //         if ($dateDiff->invert == 1 && $dateDiff->m >= 3 && $dateDiff->d >= 0) {
-            //             $more_than_3_months[] = $item;
-            //         }
-
-            //         // less than 3 months
-            //         if ($dateDiff->invert == 1 && $dateDiff->m < 3) {
-            //             if ($dateDiff->m >= 1 && $dateDiff->d >= 0) {
-            //                 $less_than_3_months[] = $item;
-            //             }
-            //         }
-
-            //         // less than 1 months
-            //         if ($dateDiff->invert == 1 && $dateDiff->m < 1) {
-            //             $less_than_1_months[] = $item;
-            //         }
-            //     }
-            // } else {
-            //     $total_empty[] = $item;
-            // }
         }
 
         $res = [
@@ -93,31 +56,6 @@ class KependudukanDesa extends Controller
                 'total_data' => count($total_so),
                 'details' => $total_so,
             ]
-            // ,
-            // 'total_filled' => [
-            //     'total_data' => count($total_filled),
-            //     'details' => $total_filled
-            // ],
-            // 'total_empty' => [
-            //     'total_data' => count($total_empty),
-            //     'details' => $total_empty
-            // ],
-            // 'total_reserved' => [
-            //     'total_data' => count($total_reserved),
-            //     'details' => $total_reserved
-            // ],
-            // 'more_than_3_months_before_expired' => [
-            //     'total_data' => count($more_than_3_months),
-            //     'details' => $more_than_3_months
-            // ],
-            // 'less_than_3_months_before_expired' => [
-            //     'total_data' => count($less_than_3_months),
-            //     'details' => $less_than_3_months
-            // ],
-            // 'less_than_1_months_before_expired' => [
-            //     'total_data' => count($less_than_1_months),
-            //     'details' => $less_than_1_months
-            // ],
         ];
 
         return $res;
@@ -125,7 +63,6 @@ class KependudukanDesa extends Controller
     }
 
     public function update(Request $req){
-        // dd($req->all());
 
         $inputs = $req->except('id');
 
@@ -137,7 +74,6 @@ class KependudukanDesa extends Controller
             ], 400);
         }
 
-        // dd($inputs);
         try {
             \DB::table('kependudukans')
                 ->where('id', $req->id)
@@ -185,15 +121,13 @@ class KependudukanDesa extends Controller
 
     public function store(Request $req)
     {
-        // dd($req->all());
 
         $inputs = $req->all();
+        // dd($inputs);
 
         $inputs['created_at'] = Carbon::now()->toDateTimeString();
 
         $validate = $this->verify($inputs);
-        dd($inputs);
-
 
         if ($validate->fails()) {
             return response()->json([

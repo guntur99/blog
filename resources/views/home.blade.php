@@ -441,6 +441,7 @@
     <!--chart data for current dashboard-->
     {{-- <script src="{{ asset('atmos/demos/light/assets/js/dashboard-02.js') }}" type="text/javascript"></script> --}}
     <script>
+
         (function ($) {
     'use strict';
     if ($("#chart-01").length) {
