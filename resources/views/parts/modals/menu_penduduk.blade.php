@@ -1,6 +1,6 @@
 <!---Modal-->
     <div class="modal fade" id="allMenuKependudukanModalViewer" data-keyboard="false" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
             {{-- <form id="manageLeads_filter" class="w-100"> --}}
                 <div class="modal-content">
                     <div class="modal-header">
@@ -10,9 +10,6 @@
                         </button>
                     </div>
                     <div class="modal-body " style="background-color:#f2f2f2">
-                        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button> --}}
                         <div class="row ">
 
                             <!--widget card begin-->
@@ -80,7 +77,7 @@
 
                             <!--widget card begin-->
                             <div class="card m-b-30 col-md-5 ml-3 mr-5">
-                                <div class="card-body">
+                                <div class="card-body" id="hapus_data_penduduk">
                                     <div class="row p-t-20 p-b-20">
                                         <div class="my-auto col-md-8">
 

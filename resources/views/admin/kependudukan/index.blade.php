@@ -290,7 +290,7 @@
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
             var res = "";
-            // console.log(data);
+
             if(data.jenis_kelamin == "L"){
                 res = "LAKI-LAKI"
             }else{
@@ -323,7 +323,6 @@
             `);
 
             $('#perbarui-data').click(()=>{
-                // alert(data.id)
                 $('#kependudukanModalViewer').modal('hide');
                 $('#updateKependudukanModalViewer').modal('show');
 
@@ -342,14 +341,12 @@
                 $('#u_status_perkawinan').val(data.status_perkawinan);
                 $('#u_nik').val(data.nik);
                 $('#u_status_nikah').val(data.status_nikah);
-                // $('#u_jenis_kelamin').prop('selected',true);
-                // document.getElementById("l_gender").setAttribute("selected","");
                 $('#u_jenis_kelamin').val(data.jenis_kelamin);
                 $('#u_alamat').val(data.alamat);
                 $('#u_kecamatan').val(data.kecamatan);
                 $('#u_tempat_lahir').val(data.tempat_lahir);
                 $('#u_tanggal_lahir').val(data.tanggal_lahir);
-            // console.log(data.id);
+
             });
 
             $('#hapus-data').click((e)=>{
@@ -359,7 +356,6 @@
                 formData.append('id', $('#id_hide').val());
 
                 axios.post('{{route("penduduk.desa.delete")}}', formData).then((res) => {
-                    // hideLoader();
 
                     Swal.fire({
                         title: 'Success',
@@ -377,7 +373,8 @@
                         }
                     }).then((result) => {
                         if (result.value) {
-                            dataTable.draw()
+                            dataTable.draw();
+                            // location.reload();
                             $('#kependudukanModalViewer').modal('hide');
                         }
                     });
@@ -410,8 +407,8 @@
                     tanggal_lahir.addClass('is-valid')
                     tanggal_lahir.removeClass('is-invalid');
                 }
-                // showLoader();
-                console.log($('#id_hide').val());
+
+                // console.log($('#id_hide').val());
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
                 formData.append('nama', $('#u_nama_warga').val());
@@ -428,7 +425,6 @@
                 formData.append('tanggal_lahir', $('#u_tanggal_lahir').val());
 
                 axios.post('{{route("penduduk.desa.update")}}', formData).then((res) => {
-                    // hideLoader();
 
                     Swal.fire({
                         title: 'Success',
@@ -447,6 +443,7 @@
                     }).then((result) => {
                         if (result.value) {
                             dataTable.draw();
+                            location.reload();
                             $('#updateKependudukanModalViewer').modal('hide');
                         }
                     });

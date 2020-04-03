@@ -107,3 +107,39 @@ function filePicked(oEvent) {
 };
 /*---------------- END FITUR TAMBAH PENDUDUK VIA IMPORT EXCEL -----------------*/
 
+
+/*---------------- START FITUR UPDATE PENDUDUK -----------------*/
+$('#perbarui_data_penduduk').click(() => {
+    $('#update_data_penduduk').removeClass('d-none');
+    $('#update_form').addClass('d-none');
+    $('#allMenuKependudukanModalViewer').modal('hide');
+    $('#updateKependudukanModalViewer').modal('show');
+});
+/*---------------- END FITUR UPDATE PENDUDUK -----------------*/
+
+
+/*---------------- START FITUR DELETE PENDUDUK -----------------*/
+$('#hapus_data_penduduk').click(() => {
+    $('#delete_data_penduduk').removeClass('d-none');
+    $('#delete_form').addClass('d-none');
+    $('#allMenuKependudukanModalViewer').modal('hide');
+    $('#deleteKependudukanModalViewer').modal('show');
+});
+/*---------------- END FITUR DELETE PENDUDUK -----------------*/
+
+
+/*---------------- START MODAL SHOW -----------------*/
+$('#search_id').click(() => {
+    $('#search_id').addClass('d-none');
+    $('#asistenModalViewer').modal('show');
+});
+
+$('#guide_penduduk_desa').click(() => {
+    $('#asistenModalViewer').modal('hide');
+    $('#allMenuKependudukanModalViewer').modal('show');
+});
+
+$('#asistenModalViewer').on('hidden.bs.modal', function (e) {
+    $('#search_id').removeClass('d-none');
+});
+/*---------------- END MODAL SHOW -----------------*/

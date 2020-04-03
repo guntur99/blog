@@ -171,14 +171,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row w-100">
-                            <div class="col-md-12" id="button-modals" style="padding:20px 20px">
-                                <button type="button" id="simpan-data" class="btn ml-2 mr-2 btn-success float-right">
-                                    <i class="mdi mdi-cube-outline"></i> Simpan Data
-                                </button>
+                                <hr>
+                                <div class="row w-100">
+                                    <div class="col-md-12" id="button-modals" style="padding:20px 20px">
+                                        <button type="button" id="simpan-data" class="btn ml-2 mr-2 btn-success float-right">
+                                            <i class="mdi mdi-cube-outline"></i> Simpan Data
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
