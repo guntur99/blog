@@ -6,7 +6,7 @@ $('#import_excel_card').click(() => {
 });
 
 $('#importExcelModalViewer').on('hidden.bs.modal', function (e) {
-    $('#allMenuKependudukanModalViewer').modal('show');
+    // $('#allMenuKependudukanModalViewer').modal('show');
 });
 
 function readURL(input) {

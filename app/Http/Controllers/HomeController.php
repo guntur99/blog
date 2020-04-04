@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = Auth::id();
+
+        $data = \DB::table('users')
+        ->select('*')
+        ->where('id', $id)
+        ->first();
+
+        // dd($id);
+        return view('home', [
+            'user_name' => $data->name
+        ]);
     }
 }

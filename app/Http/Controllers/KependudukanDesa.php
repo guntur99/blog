@@ -14,6 +14,12 @@ use File;
 
 class KependudukanDesa extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         // $kependudukans = DB::table('status_kependudukans')->paginate(1000);

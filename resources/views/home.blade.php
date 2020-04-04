@@ -47,391 +47,132 @@
 
 @section('content')
 <section class="admin-content ">
-    <div class="bg-dark m-b-30">
-        <div class="container-fluid">
-            <div class="row p-b-60 p-l-30 p-t-60">
-
-                <div class="col-md-12 text-white p-b-30">
-                    <div class="media">
-                        <div class="media-body m-auto">
-                            <h1>Dashboard</h1>
-                        </div>
-                    </div>
-                </div>
-
+    <div class="container p-t-20">
+        <div class="row">
+            <div class="col-12 m-b-10">
+                <h3><strong>Hi {{ $user_name }}, Selamat Datang!</strong></h3>
             </div>
-        </div>
-    </div>
 
-    <div class="container pull-up">
-        <div class="row p-l-30 p-r-30">
-
-            <div class="col-md-12">
+            <div class="col-md-6 col-lg-4">
+                <!--widget card begin-->
                 <div class="card m-b-30">
-                    {{-- <div class="card-header">
-                        <h5 class="m-b-0">
-                            <i class="mdi mdi-checkbox-intermediate"></i> Tables
-                        </h5>
-
-                    </div> --}}
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="row">
+                            <div class="col my-auto">
+                                <div class="h6 text-muted ">Total Berita yang telah dibuat</div>
+                            </div>
 
-                            {{-- <table class="table table-hover ">
-                                <thead>
-                                <tr>
-                                    <th>Thumbnail</th>
-                                    <th>Surat</th>
-                                    <th>Total Tercetak</th>
-                                    <th>Progres Surat Tercetak</th>
-                                    <th>Progres(%)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">S</span>
-                                            </div>
-                                    </td>
-                                    <td>SKCK</td>
-                                    <td>{{ $skck }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_s }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="3000"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_s,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">IK</span>
-                                            </div>
-                                    </td>
-                                    <td>Ijin Kerja</td>
-                                    <td>{{ $ijin_kerja }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_ik }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="3000"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_ik,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">BPN</span>
-                                            </div>
-                                    </td>
-                                    <td>Belum Pernah Nikah</td>
-                                    <td>{{ $belum_pernah_nikah }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_bpn }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_bpn,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">TM</span>
-                                            </div>
-                                    </td>
-                                    <td>Tidak Mampu</td>
-                                    <td>{{ $tidak_mampu }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_tm }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_tm,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">K</span>
-                                            </div>
-                                    </td>
-                                    <td>Kematian</td>
-                                    <td>{{ $kematian }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_k }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_k,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">PN</span>
-                                            </div>
-                                    </td>
-                                    <td>Perbedaan Nama</td>
-                                    <td>{{ $perbedaan_nama }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_pn }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_pn,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">DN</span>
-                                            </div>
-                                    </td>
-                                    <td>Diluar Negeri</td>
-                                    <td>{{ $diluar_negeri }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_dn }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_dn,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">D</span>
-                                            </div>
-                                    </td>
-                                    <td>Domisili</td>
-                                    <td>{{ $domisili }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_d }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_d,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">IOT</span>
-                                            </div>
-                                    </td>
-                                    <td>Izin Orang Tua</td>
-                                    <td>{{ $izin_orang_tua }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_iot }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_iot,2) }}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="avatar avatar-md">
-                                                <span class="avatar-title bg-danger rounded-circle">U</span>
-                                            </div>
-                                    </td>
-                                    <td>Usaha</td>
-                                    <td>{{ $usaha }} Surat</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $p_u }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>{{ round($p_u,2) }}%</td>
-                                </tr>
+                            <div class="col-auto my-auto">
+                                <div class="avatar">
+                                    <div class="avatar-title rounded-circle bg-primary"><i
+                                                class="mdi mdi-buffer  "></i></div>
 
-
-                                </tbody>
-                            </table> --}}
+                                </div>
+                            </div>
                         </div>
+                        <h1 class="display-4 fw-600">1200</h1>
+                        <div class="h6">
+                            <span class="text-primary"> <i class="mdi mdi-buffer"></i> Total dalam semua kategori berita </span>
+                            {{-- Less activity than usual. --}}
+                        </div>
+                    </div>
+                </div>
+                <!--widget card ends-->
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+
+                <!--widget card begin-->
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col my-auto">
+                                <div class="h6 text-muted ">Total Penduduk terinput di sistem</div>
+                            </div>
+
+                            <div class="col-auto my-auto">
+                                <div class="avatar">
+                                    <div class="avatar-title rounded-circle badge-soft-dark"><i
+                                                class="mdi mdi-account-group "></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="display-4 fw-600">186k</h1>
+                        <div class="h6">
+                            <span class="text-dark"> <i class="mdi mdi-account-group"></i> Total penduduk yang bisa cek statusnya </span>
+                        </div>
+                    </div>
+                </div>
+                <!--widget card ends-->
+
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+
+                <!--widget card begin-->
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col my-auto">
+                                <div class="h6 text-muted ">Media Reach (Last 30 Days)</div>
+                            </div>
+
+                            <div class="col-auto my-auto">
+                                <div class="avatar">
+                                    <div class="avatar-title rounded-circle badge-soft-success"><i
+                                                class="mdi mdi-heart  "></i></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="display-4 fw-600">186k</h1>
+                        <div class="h6">
+                            <span class="text-success"> <i class="mdi mdi-arrow-top-right"></i> +0.65% </span>
+                            More activity than usual.
+                        </div>
+                    </div>
+                </div>
+                <!--widget card ends-->
+
+            </div>
+
+
+                <div class="col-md-12 m-b-30">
+                    <h5><strong>Berita Desa Terbaru</strong></h5>
+                    <div class="table-responsive">
+                        <table class="table align-td-middle table-card">
+                            <thead>
+                            <tr>
+                                <th>Avatar</th>
+                                <th>Judul Berita</th>
+                                <th>Kategori</th>
+                                <th>Dibuat Oleh</th>
+                                <th>Dibuat Tanggal</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="avatar avatar-sm "><img src="{{ asset('atmos/getting started/light/assets/img/users/user-1.jpg') }}"
+                                                                        class="avatar-img avatar-sm rounded-circle"
+                                                                        alt=""></div>
+                                </td>
+                                <td>Senam Kesegaran Jasmani</td>
+                                <td>Kegiatan Desa</td>
+                                <td>Ken Abdullah</td>
+                                <td>Feb 20, 2019</td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
-
-
-            </div>
         </div>
     </div>
-        {{-- <div class="jumbotron">
-            <div class="row">
-
-                <div class="col-xlg-12  m-b-30 col-lg-12">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card m-b-30">
-                                <div class="card-body bg-dark rounded ">
-                                    <h3 class="text-white"> <i class="mdi mdi-chart-gantt"></i> Overview </h3>
-                                    <div id="chart-01" class="invert-colors"></div>
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-3 m-b-20 ">
-                                                <div class="rounded p-all-15 text-white text-center bg-white-translucent">
-                                                    <div class="h1 fw-300">16K</div>
-                                                    <h6 class="text-white-50"> Weekly Visitors</h6>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-3 m-b-20 ">
-                                                <div class="rounded p-all-15 text-white text-center bg-white-translucent">
-                                                    <div class="h1 fw-300">205</div>
-                                                    <h6 class="text-white-50">Average Conversions</h6>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-3 m-b-20 ">
-                                                <div class="rounded p-all-15 text-white text-center bg-white-translucent">
-                                                    <div class="h1 fw-300">680</div>
-                                                    <h6 class="text-white-50">New Sign Ups</h6>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-3 m-b-20 ">
-                                                <div class="rounded p-all-15 text-white text-center bg-white-translucent">
-                                                    <div class="h1 fw-300">19k</div>
-                                                    <h6 class="text-white-50">IO Request</h6>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-    </section>
-    <div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body p-all-0" id="site-search">
-                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
-                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
-
-                    <div class="container-fluid">
-                        <div class="col-md-10 p-t-10 m-auto">
-                            <input type="search" placeholder="Search Something"
-                                   class=" search form-control form-control-lg">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
-                        results
-                    </div>
-                    <div class="list-group list  ">
-
-
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="assets/img/users/user-3.jpg" alt="user-image"></div>
-                            </div>
-                            <div class="">
-                                <div class="name">Eric Chen</div>
-                                <div class="text-muted">Developer</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
-                                                                    src="assets/img/users/user-4.jpg" alt="user-image"></div>
-                            </div>
-                            <div class="">
-                                <div class="name">Sean Valdez</div>
-                                <div class="text-muted">Marketing</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
-                                                                    src="assets/img/users/user-8.jpg" alt="user-image"></div>
-                            </div>
-                            <div class="">
-                                <div class="name">Marie Arnold</div>
-                                <div class="text-muted">Developer</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm ">
-                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="name">SRS Document</div>
-                                <div class="text-muted">25.5 Mb</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm ">
-                                    <div class="avatar-title bg-dark rounded"><i
-                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="name">Design Guide.pdf</div>
-                                <div class="text-muted">9 Mb</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm ">
-                                    <div class="avatar avatar-sm  ">
-                                        <div class="avatar-title bg-primary rounded"><i
-                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="name">response.json</div>
-                                <div class="text-muted">15 Kb</div>
-                            </div>
-
-
-                        </div>
-                        <div class="list-group-item d-flex  align-items-center">
-                            <div class="m-r-20">
-                                <div class="avatar avatar-sm ">
-                                    <div class="avatar avatar-sm ">
-                                        <div class="avatar-title bg-info rounded"><i
-                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="name">June Accounts.xls</div>
-                                <div class="text-muted">6 Mb</div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
+</section>
 @endsection
 
 @section('custom_script')

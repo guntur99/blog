@@ -206,16 +206,6 @@
                             </span>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Import Excel/CSV</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
-                            </span>
-                        </a>
-                    </li>
                 </ul>
             </li>
             {{-- <li class="menu-item ">

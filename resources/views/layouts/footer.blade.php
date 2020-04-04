@@ -73,6 +73,7 @@
         });
     });
     // END IMPORT DATA VIA EXCEL
+
     $('#hapus-data').click((e)=>{
         e.preventDefault();
 
@@ -454,6 +455,7 @@
 
         })
 
+        $('#allMenuKependudukanModalViewer').modal('hide');
         $('#addKependudukanModalViewer').modal('show');
 
         $('#btn_store_data').click((e) => {
@@ -506,10 +508,7 @@
 
         });
     });
-
-    function validInvalidStore(){
-    }
-    // START ADD DATA KEPENDUDUKAN
+    // END ADD DATA KEPENDUDUKAN
 </script>
 
 @yield('custom_script')
