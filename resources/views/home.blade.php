@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="display-4 fw-600">186k</h1>
+                        <h1 class="display-4 fw-600">{{ $total_penduduk }}</h1>
                         <div class="h6">
                             <span class="text-dark"> <i class="mdi mdi-account-group"></i> Total penduduk yang bisa cek statusnya </span>
                         </div>
@@ -144,7 +144,7 @@
                         <table class="table align-td-middle table-card">
                             <thead>
                             <tr>
-                                <th>Avatar</th>
+                                <th>Image</th>
                                 <th>Judul Berita</th>
                                 <th>Kategori</th>
                                 <th>Dibuat Oleh</th>

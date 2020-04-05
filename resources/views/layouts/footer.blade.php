@@ -1,6 +1,8 @@
 
 @include('parts.modals.asisten')
 @include('parts.modals.menu_penduduk')
+@include('parts.modals.menu_berita')
+@include('parts.modals.menu_pemerintah')
 @include('parts.modals.kependudukan.import_excel')
 @include('parts.modals.kependudukan.update_data')
 @include('parts.modals.kependudukan.delete_data')
@@ -33,6 +35,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.5/xlsx.full.min.js"></script>
 <script src="{{asset('js/penduduk.js')}}"></script>
+<script src="{{asset('js/berita.js')}}"></script>
+<script src="{{asset('js/pemerintah.js')}}"></script>
 <script>
 
     $('.tgl').datepicker({

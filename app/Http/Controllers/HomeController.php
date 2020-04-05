@@ -31,9 +31,13 @@ class HomeController extends Controller
         ->where('id', $id)
         ->first();
 
+        $total_penduduk = \DB::table('kependudukans')
+        ->get();
+
         // dd($id);
         return view('home', [
-            'user_name' => $data->name
+            'user_name' => $data->name,
+            'total_penduduk' => count($total_penduduk)
         ]);
     }
 }

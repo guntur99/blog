@@ -24,7 +24,7 @@
                     <div class="col-md-12 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Warga</strong></h2>
+                                <h2><strong>Daftar Berita Desa</strong></h2>
                             </div>
                         </div>
                     </div>
@@ -40,16 +40,15 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="table-responsive p-t-10">
-                                <table id="kependudukan-table" class="table" style="width:100%">
+                                <table id="berita-table" class="table" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>NIK</th>
-                                        <th>Nama</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>RT</th>
-                                        <th>RW</th>
-                                        <th>ALAMAT</th>
+                                        <th>Judul Berita</th>
+                                        <th>Kategori</th>
+                                        <th>Tag</th>
+                                        <th>Dibuat Oleh</th>
+                                        <th>Dibuat Tanggal</th>
                                     </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -76,38 +75,42 @@
     <script src="{{ asset('atmos/demos/light/assets/vendor/apexchart/apexcharts.min.js') }}"></script>
     <script>
 
-        var dataTable = $('#kependudukan-table').DataTable({
+        var dataTable = $('#berita-table').DataTable({
             orderCellsTop: true,
             fixedHeader: true,
             "searchDelay": 350,
-            "searching": true,
             "scrollX": true,
+            "searching": true,
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: '{{route("penduduk.desa.datatable")}}',
+                url: '{{route("berita.desa.datatable")}}',
                 // dataSrc: '',
                 // draw: 'original.draw'
             },
             "columns": [
                 { "name": "id", "data": "id"},
-                { "name": "nik", "data": "nik" },
-                { "name": "nama", "data": "nama" },
-                { "name": "jenis_kelamin", "data": function(data){
-                    var gender = data.jenis_kelamin;
-                    var res = "";
+                { "name": "judul", "data": "judul" },
+                { "name": "category_name", "data": "category_name" },
+                { "name": "tag_id", "data": "tag_id" },
+                // { "name": "jenis_kelamin", "data": function(data){
+                //     var gender = data.jenis_kelamin;
+                //     var res = "";
 
-                    if(gender == "L"){
-                        res = "LAKI-LAKI"
-                    }else{
-                        res = "PEREMPUAN"
-                    }
+                //     if(gender == "L"){
+                //         res = "LAKI-LAKI"
+                //     }else{
+                //         res = "PEREMPUAN"
+                //     }
 
-                    return res;
+                //     return res;
+                // } },
+                { "name": "user_created_by", "data": "user_created_by" },
+                { "name": "created_at", "data": function(data){
+                    var created_at = data.created_at;
+
+                    return moment(created_at).format('DD MMMM YYYY');
                 } },
-                { "name": "rt", "data": "rt" },
-                { "name": "rw", "data": "rw" },
-                { "name": "alamat", "data": "alamat" },
             ],
             "order" :[[ 0, 'desc' ]]
         });

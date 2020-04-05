@@ -19,7 +19,7 @@
                         <span class="menu-name">Dashboard</span>
                     </span>
                     <span class="menu-icon">
-                        <i class="icon-placeholder fe fe-activity "></i>
+                        <i class="icon-placeholder mdi mdi-view-dashboard "></i>
                     </span>
                 </a>
             </li>
@@ -32,23 +32,23 @@
                         <span class="menu-info" style="font-size:12px">Memiliki Sub-Menu</span>
                     </span>
                     <span class="menu-icon">
-                            <i class="icon-placeholder fe fe-edit "></i>
+                            <i class="icon-placeholder mdi mdi-newspaper "></i>
                     </span>
                 </a>
                 <!--submenu-->
                 <ul class="sub-menu">
 
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('berita.desa.index') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Semua Berita</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-view-list "></i>
                             </span>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Berita Disembunyikan</span>
@@ -57,14 +57,14 @@
                                 <i class="icon-placeholder mdi mdi-checkbook "></i>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Berita Baru</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                                 <span class="menu-name" style="font-size:14px">Semua Kategori Berita</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-format-list-checks "></i>
                             </span>
                         </a>
                     </li>
@@ -85,7 +85,7 @@
                                 <span class="menu-name" style="font-size:14px">Buat Kategori Berita Baru</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
                     </li>
@@ -96,7 +96,7 @@
                                 <span class="menu-name" style="font-size:14px">Semua Tag Berita</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-format-list-bulleted-type "></i>
                             </span>
                         </a>
                     </li>
@@ -106,7 +106,7 @@
                                 <span class="menu-name" style="font-size:14px">Buat Tag Berita Baru</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
                     </li>
@@ -122,7 +122,7 @@
                         <span class="menu-info" style="font-size:12px">Memiliki Sub-Menu</span>
                     </span>
                     <span class="menu-icon">
-                            <i class="icon-placeholder fe fe-edit "></i>
+                            <i class="icon-placeholder mdi mdi-office-building "></i>
                     </span>
                 </a>
                 <!--submenu-->
@@ -134,11 +134,11 @@
                                 <span class="menu-name" style="font-size:14px">Semua Informasi</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-hexagon-multiple "></i>
                             </span>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Informasi Disembunyikan</span>
@@ -147,14 +147,14 @@
                                 <i class="icon-placeholder mdi mdi-checkbook "></i>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Informasi Baru</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-hexagon-slice-5 "></i>
                             </span>
                         </a>
                     </li>
@@ -164,7 +164,7 @@
                                 <span class="menu-name" style="font-size:14px">Kategori Informasi</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-hexagon-slice-1 "></i>
                             </span>
                         </a>
                     </li>
@@ -180,7 +180,7 @@
                         <span class="menu-info" style="font-size:12px">Memiliki Sub-Menu</span>
                     </span>
                     <span class="menu-icon">
-                            <i class="icon-placeholder fe fe-edit "></i>
+                            <i class="icon-placeholder mdi mdi-account-heart "></i>
                     </span>
                 </a>
                 <!--submenu-->
@@ -192,7 +192,7 @@
                                 <span class="menu-name" style="font-size:14px">Semua Penduduk Desa</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-account-group-outline "></i>
                             </span>
                         </a>
                     </li>
@@ -202,7 +202,7 @@
                                 <span class="menu-name" style="font-size:14px">Tambah Penduduk Baru</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
+                                <i class="icon-placeholder mdi mdi-account-multiple-plus-outline "></i>
                             </span>
                         </a>
                     </li>

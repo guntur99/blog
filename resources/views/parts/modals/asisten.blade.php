@@ -19,10 +19,10 @@
                                 <div class="row">
                                     <div class="col-8 m-auto text-white p-t-40 p-b-90">
 
-                                        <h1 class="fw-300 text-center">How can we help you?
+                                        <h1 class="fw-300 text-center">Anda butuh bantuan?
                                         </h1>
-                                        <p class="p-t-30 form-dark">
-                                            {{-- <input type="search" placeholder="Search Something" class=" form-control form-control-lg"> --}}
+                                        <p class="p-t-30 p-b-30 form-dark">
+                                            <input type="search" placeholder="Masukkan kata kunci" class=" form-control form-control-lg">
                                         </p>
 
                                     </div>
@@ -31,12 +31,12 @@
 
                         </div>
                         <div class="container pull-up">
-                            <div class="row m-b-90">
+                            <div class="row m-b-70">
                                 <div class="col-lg-4 col-md-6">
-                                    <a href="#" id="guide_penduduk_desa" class="card shadow-lg guide-item m-b-30  bg-primary">
+                                    <a href="#" id="guide_penduduk_desa" class="card shadow-lg guide-item m-b-10  bg-primary">
                                         <div class="card-body text-white">
 
-                                            <h4 class=" p-t-20 ">Pengelolaan Data Penduduk Desa</h4>
+                                            <h3 class=" p-t-20 "><strong>Seputar Kependudukan</strong></h3>
                                             <p>
                                                 Klik untuk mulai!
                                             </p>
@@ -46,27 +46,14 @@
                                             <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-01.svg') }}" alt="">
                                         </div>
                                     </a>
-                                    <a href="#" class="card shadow-lg guide-item m-b-30  bg-info">
-                                        <div class="card-body text-white">
-
-                                            <h4 class=" p-t-20 ">Reusable Components</h4>
-                                            <p>
-                                                Read More
-                                            </p>
-
-                                        </div>
-                                        <div class="text-center">
-                                            <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-05.svg') }}" alt="">
-                                        </div>
-                                    </a>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
-                                    <a href="#" class="card shadow-lg guide-item m-b-30  bg-success">
+                                    <a href="#" id="guide_berita_desa" class="card shadow-lg guide-item m-b-10  bg-success">
                                         <div class="card-body text-white">
 
-                                            <h4 class=" p-t-20 ">Creating your first page</h4>
+                                            <h3 class=" p-t-20 "><strong>Seputar Berita Desa</strong></h3>
                                             <p>
-                                                Read More
+                                                Klik untuk mulai!
                                             </p>
 
                                         </div>
@@ -74,45 +61,20 @@
                                             <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-02.svg') }}" alt="">
                                         </div>
                                     </a>
-                                    <a href="#" class="card shadow-lg guide-item m-b-30  bg-gray-800">
-                                        <div class="card-body text-white">
-
-                                            <h4 class=" p-t-20 ">Collaborations & Team Ethics </h4>
-                                            <p>
-                                                Read More
-                                            </p>
-
-                                        </div>
-                                        <div class="text-center">
-                                            <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-06.svg') }}" alt="">
-                                        </div>
-                                    </a>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
-                                    <a href="#" class="card shadow-lg guide-item m-b-30  bg-info">
+
+                                    <a href="#" id="guide_pemerintah_desa" class="card shadow-lg guide-item m-b-10  bg-info">
                                         <div class="card-body text-white">
 
-                                            <h4 class=" p-t-20 ">Setting Up Email</h4>
+                                            <h3 class=" p-t-20 "><strong>Seputar Pemerintahan</strong></h3>
                                             <p>
-                                                Read More
+                                                Klik untuk mulai!
                                             </p>
 
                                         </div>
                                         <div class="text-center">
-                                            <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-03.svg') }}" alt="">
-                                        </div>
-                                    </a>
-                                    <a href="#" class="card shadow-lg guide-item m-b-30  bg-warning">
-                                        <div class="card-body text-white">
-
-                                            <h4 class=" p-t-20 ">Sharing Guides</h4>
-                                            <p>
-                                                Read More
-                                            </p>
-
-                                        </div>
-                                        <div class="text-center">
-                                            <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-07.svg') }}" alt="">
+                                            <img class="card-img" src="{{ asset('atmos/getting started/light/assets/img/guides/random-05.svg') }}" alt="">
                                         </div>
                                     </a>
                                 </div>

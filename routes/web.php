@@ -19,19 +19,33 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// BAGIAN ADMIN
-Route::get('/kependudukan', 'KependudukanDesa@index')->name('penduduk.desa.index')->middleware('auth');
+//---------------- BAGIAN KEPENDUDUKAN --------------------------
+Route::get('/kependudukan', 'KependudukanController@index')->name('penduduk.desa.index')->middleware('auth');
 
-Route::get('/kependudukan-datatable', 'KependudukanDesa@datatable')->name('penduduk.desa.datatable')->middleware('auth');
+Route::get('/kependudukan-datatable', 'KependudukanController@datatable')->name('penduduk.desa.datatable')->middleware('auth');
 
-Route::get('/create-kependudukan', 'KependudukanDesa@create')->name('penduduk.desa.create')->middleware('auth');
+Route::get('/create-kependudukan', 'KependudukanController@create')->name('penduduk.desa.create')->middleware('auth');
 
-Route::post('/update-kependudukan', 'KependudukanDesa@update')->name('penduduk.desa.update')->middleware('auth');
+Route::post('/update-kependudukan', 'KependudukanController@update')->name('penduduk.desa.update')->middleware('auth');
 
-Route::post('/store-kependudukan', 'KependudukanDesa@store')->name('penduduk.desa.store')->middleware('auth');
+Route::post('/store-kependudukan', 'KependudukanController@store')->name('penduduk.desa.store')->middleware('auth');
 
-Route::post('/import-excel-kependudukan', 'KependudukanDesa@importExcelFile')->name('import.excel.file')->middleware('auth');
+Route::post('/import-excel-kependudukan', 'KependudukanController@importExcelFile')->name('import.excel.file')->middleware('auth');
 
-Route::post('/delete-kependudukan', 'KependudukanDesa@delete')->name('penduduk.desa.delete')->middleware('auth');
+Route::post('/delete-kependudukan', 'KependudukanController@delete')->name('penduduk.desa.delete')->middleware('auth');
+
+
+//---------------- BAGIAN BERITA --------------------------
+Route::get('/berita-desa', 'BeritaController@index')->name('berita.desa.index')->middleware('auth');
+
+Route::get('/berita-datatable', 'BeritaController@datatable')->name('berita.desa.datatable')->middleware('auth');
+
+Route::get('/create-berita', 'BeritaController@create')->name('berita.desa.create')->middleware('auth');
+
+Route::post('/update-berita', 'BeritaController@update')->name('berita.desa.update')->middleware('auth');
+
+Route::post('/store-berita', 'BeritaController@store')->name('berita.desa.store')->middleware('auth');
+
+Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
 
 Auth::routes();
