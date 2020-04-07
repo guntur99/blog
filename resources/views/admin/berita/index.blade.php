@@ -21,12 +21,17 @@
             <div class="container-fluid">
                 <div class="row p-b-60 p-l-30 p-t-60">
 
-                    <div class="col-md-12 text-white p-b-30">
+                    <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
                                 <h2><strong>Daftar Berita Desa</strong></h2>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6 p-r-40">
+                        <a href="{{ route('berita.desa.create') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                                class="mdi mdi-playlist-plus"></i> Buat Berita
+                        </a>
                     </div>
 
                 </div>
@@ -63,8 +68,8 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
-    @include('parts.modals.kependudukan.detail_data')
-    @include('parts.modals.kependudukan.update_data')
+    @include('parts.modals.berita.detail_data')
+    @include('parts.modals.berita.update_data')
 
 @endsection
 
@@ -93,18 +98,6 @@
                 { "name": "judul", "data": "judul" },
                 { "name": "category_name", "data": "category_name" },
                 { "name": "tag_id", "data": "tag_id" },
-                // { "name": "jenis_kelamin", "data": function(data){
-                //     var gender = data.jenis_kelamin;
-                //     var res = "";
-
-                //     if(gender == "L"){
-                //         res = "LAKI-LAKI"
-                //     }else{
-                //         res = "PEREMPUAN"
-                //     }
-
-                //     return res;
-                // } },
                 { "name": "user_created_by", "data": "user_created_by" },
                 { "name": "created_at", "data": function(data){
                     var created_at = data.created_at;
@@ -115,237 +108,194 @@
             "order" :[[ 0, 'desc' ]]
         });
 
-        var nik = $('#u_nik');
-        var nama = $('#u_nama_warga');
-        var agama = $('#u_agama');
-        var rt = $('#u_rt');
-        var rw = $('#u_rw');
-        var kelurahan = $('#u_kelurahan_desa');
-        var status_perkawinan = $('#u_status_perkawinan');
-        var jenis_kelamin = $('#u_jenis_kelamin');
-        var alamat = $('#u_alamat');
-        var kecamatan = $('#u_kecamatan');
-        var kewarganegaraan = $('#u_kewarganegaraan');
-        var tempat_lahir = $('#u_tempat_lahir');
-        var tanggal_lahir = $('#u_tanggal_lahir');
 
-        nik.on('input', (e)=> {
-            var value = e.target.value
+        $('.desc_berita').trumbowyg();
 
-            if (value.length === 0) {
-                nik.addClass('is-invalid');
-                nik.removeClass('is-valid');
-            }else{
-                nik.addClass('is-valid');
-                nik.removeClass('is-invalid');
-            }
+        $('.select2').select2();
 
-        })
+        let tagsId = $('#tag-berita-picker');
+        let product = [];
 
-        nama.on('input', (e)=> {
-            var value = e.target.value
+        tagsId.select2({
+            placeholder: 'Pilih Tag Berita',
+            width: '100%',
+            ajax: {
+                url: '{{route("tag.berita.desa.datatable")}}',
+                dataType: 'json',
+                data: function(params) {
+                    return {
+                        start: params.page == undefined || params.page != NaN ? 0 : (params.page-1) * 25,
+                        length: 25,
+                        columns: {
+                            0:{
+                                name: 'nama',
+                                orderable: true,
+                                searchable: true
+                            },
+                        },
+                        search: {value: params.term},
+                        order: {0:{dir:'asc'}}
+                    }
+                },
+                processResults: function (data, params) {
 
-            if (value.length === 0) {
-                nama.addClass('is-invalid');
-                nama.removeClass('is-valid');
-            }else{
-                nama.addClass('is-valid');
-                nama.removeClass('is-invalid');
-            }
+                    params.page = params.page || 1;
+                    var newData = []
+                    $.each(data.data, function(key, val){
+                        newData[key] = {'id' : val.id, 'text' : val.nama };
+                    })
 
-        })
+                    data.results = newData;
 
-        agama.on('input', (e)=> {
-            var value = e.target.value
+                    return {
+                        results: data.results,
+                        pagination: {
+                            more: (params.page * 25) < data.recordsFiltered
+                        }
+                    }
 
-            if (value.length === 0) {
-                agama.addClass('is-invalid');
-                agama.removeClass('is-valid');
-            }else{
-                agama.addClass('is-valid');
-                agama.removeClass('is-invalid');
-            }
+                },
+                cache: true
+            },
+        });
 
-        })
-
-        rt.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                rt.addClass('is-invalid');
-                rt.removeClass('is-valid');
-            }else{
-                rt.addClass('is-valid');
-                rt.removeClass('is-invalid');
-            }
-
-        })
-
-        rw.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                rw.addClass('is-invalid');
-                rw.removeClass('is-valid');
-            }else{
-                rw.addClass('is-valid');
-                rw.removeClass('is-invalid');
-            }
-
-        })
-
-        kelurahan.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                kelurahan.addClass('is-invalid');
-                kelurahan.removeClass('is-valid');
-            }else{
-                kelurahan.addClass('is-valid');
-                kelurahan.removeClass('is-invalid');
-            }
-
-        })
-
-        status_perkawinan.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                status_perkawinan.addClass('is-invalid');
-                status_perkawinan.removeClass('is-valid');
-            }else{
-                status_perkawinan.addClass('is-valid');
-                status_perkawinan.removeClass('is-invalid');
-            }
-
-        })
-
-        jenis_kelamin.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                jenis_kelamin.addClass('is-invalid');
-                jenis_kelamin.removeClass('is-valid');
-            }else{
-                jenis_kelamin.addClass('is-valid');
-                jenis_kelamin.removeClass('is-invalid');
-            }
-
-        })
-
-        alamat.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                alamat.addClass('is-invalid');
-                alamat.removeClass('is-valid');
-            }else{
-                alamat.addClass('is-valid');
-                alamat.removeClass('is-invalid');
-            }
-
-        })
-
-        kecamatan.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                kecamatan.addClass('is-invalid');
-                kecamatan.removeClass('is-valid');
-            }else{
-                kecamatan.addClass('is-valid');
-                kecamatan.removeClass('is-invalid');
-            }
-
-        })
-
-        kewarganegaraan.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                kewarganegaraan.addClass('is-invalid');
-                kewarganegaraan.removeClass('is-valid');
-            }else{
-                kewarganegaraan.addClass('is-valid');
-                kewarganegaraan.removeClass('is-invalid');
-            }
-
-        })
-
-        tempat_lahir.on('input', (e)=> {
-            var value = e.target.value
-
-            if (value.length === 0) {
-                tempat_lahir.addClass('is-invalid');
-                tempat_lahir.removeClass('is-valid');
-            }else{
-                tempat_lahir.addClass('is-valid');
-                tempat_lahir.removeClass('is-invalid');
-            }
-
-        })
+        function strip(html){
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.textContent || "";
+        }
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
+            console.log(data);
+
             var res = "";
 
-            if(data.jenis_kelamin == "L"){
-                res = "LAKI-LAKI"
-            }else{
-                res = "PEREMPUAN"
-            }
+            $('#beritaModalViewer').modal('show');
+            $('#judul').html(data.judul);
+            $('#desc_singkat').html(data.desc_singkat);
+            $('#kategori').html(data.category_name);
+            var created_at = moment(data.created_at).format('DD MMMM YYYY');
+            $('#created_at').html(created_at);
+            $('#created_by').html(data.user_created_by);
+            // console.log(data.image);
+            var tag_string = data.tag_id;
+            var tags = tag_string.split(",");
+            console.log(tags);
 
-            $('#kependudukanModalViewer').modal('show');
-            $('#nama_warga').html(data.nama);
-            $('#agama').html(data.agama);
-            $('#rt_rw').html(data.rt+'/'+data.rw);
-            $('#kelurahan_desa').html(data.kelurahan_desa);
-            $('#status_perkawinan').html(data.status_perkawinan);
-            $('#nik').html(data.nik);
-            $('#status_nikah').html(data.status_nikah);
-            $('#jenis_kelamin').html(res);
-            $('#alamat').html(data.alamat);
-            $('#kecamatan').html(data.kecamatan);
-            $('#tempat_lahir').html(data.tempat_lahir);
-            $('#tanggal_lahir').html(data.tanggal_lahir);
-            $('#kewarganegaraan').html(data.kewarganegaraan);
+            var formData = new FormData()
+            formData.append('tag_id', data.tag_id);
+            axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+                console.log(res.data);
+                var tag_array = res.data;
 
-            $('#id_hide').val(data.id)
+                for (let i = 0; i < tag_array.length; i++) {
 
-            $('#button-modal').html(`
-            <button type="button" id="hapus-data" class="btn ml-2 mr-2 btn-danger float-right">
-                <i class="mdi mdi-cube-outline"></i> Hapus Data
-            </button>
-            <button type="button" id="perbarui-data" class="btn ml-2 mr-2 btn-primary float-right">
-                <i class="mdi mdi-comment-outline"></i> Perbarui Data
-            </button>
-            `);
+                    $('#tags_berita').append(`
+                        <a href="#!" class="badge badge-soft-primary"><strong>@`+tag_array[i].nama+`</strong></a>
+                    `);
 
-            $('#perbarui-data').click(()=>{
-                $('#kependudukanModalViewer').modal('hide');
-                $('#updateKependudukanModalViewer').modal('show');
-
-                var res2
-                if(data.jenis_kelamin == "PEREMPUAN"){
-                    res2 = "P"
-                }else{
-                    res2 = "L"
                 }
 
-                $('#u_nama_warga').val(data.nama);
-                $('#u_agama').val(data.agama);
-                $('#u_rt').val(data.rt);
-                $('#u_rw').val(data.rw);
-                $('#u_kelurahan_desa').val(data.kelurahan_desa);
-                $('#u_status_perkawinan').val(data.status_perkawinan);
-                $('#u_nik').val(data.nik);
-                $('#u_status_nikah').val(data.status_nikah);
-                $('#u_jenis_kelamin').val(data.jenis_kelamin);
-                $('#u_alamat').val(data.alamat);
-                $('#u_kecamatan').val(data.kecamatan);
-                $('#u_tempat_lahir').val(data.tempat_lahir);
-                $('#u_tanggal_lahir').val(data.tanggal_lahir);
-                $('#u_kewarganegaraan').val(data.kewarganegaraan);
+            });
+
+            $('#avatar_cover').html(`
+                <img src="`+data.image+`" alt="..." class="avatar-img rounded-circle">
+            `);
+            $('#image_cover').html(`
+                <img class="rounded" id="image" src="`+data.image+`" alt="">
+            `);
+            $('#id_hide').val(data.id)
+            $('#button-modal').html(`
+            <div id="btn_perbarui_berita" class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                <label class="btn  btn-light active">
+                    <i class="mdi mdi-file-check"></i>
+                    <input type="radio" name="radio2" id="option1"   checked>
+                    Perbarui Berita
+                </label>
+                <label class="btn  btn-dark">
+                    <i class="mdi mdi-file-remove"></i>
+                    <input type="radio" name="radio2" id="option2"  > Hapus Berita
+                </label>
+            </div>
+            `);
+            $('#btn_perbarui_berita').click(()=>{
+
+                var judul = $('#u_judul');
+                var kategori_id = $('#u_kategori_id');
+                var desc_singkat = $('#desc_singkat');
+                var desc = $('#desc');
+                var image = $('#file_gambar_lain');
+
+                judul.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        judul.addClass('is-invalid');
+                        judul.removeClass('is-valid');
+                    }else{
+                        judul.addClass('is-valid');
+                        judul.removeClass('is-invalid');
+                    }
+
+                })
+
+                kategori_id.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        kategori_id.addClass('is-invalid');
+                        kategori_id.removeClass('is-valid');
+                    }else{
+                        kategori_id.addClass('is-valid');
+                        kategori_id.removeClass('is-invalid');
+                    }
+
+                })
+
+                desc_singkat.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        desc_singkat.addClass('is-invalid');
+                        desc_singkat.removeClass('is-valid');
+                    }else{
+                        desc_singkat.addClass('is-valid');
+                        desc_singkat.removeClass('is-invalid');
+                    }
+
+                })
+
+                desc.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        desc.addClass('is-invalid');
+                        desc.removeClass('is-valid');
+                    }else{
+                        desc.addClass('is-valid');
+                        desc.removeClass('is-invalid');
+                    }
+
+                })
+
+                $('#beritaModalViewer').modal('hide');
+                // $('#updateBeritaModalViewer').modal('show');
+                axios.get('{{url("edit-berita")}}/'+data.id).then((res) => {
+                    window.location.href = '{{url("edit-berita")}}/'+data.id;
+                });
+
+                // $('#u_judul').val(data.judul);
+                // $('#u_desc_singkat').val(data.desc_singkat);
+                // $('#u_desc').trumbowyg('html', data.desc);
+                // console.log(data.desc);
+
+                // for (let i = 0; i < array.length; i++) {
+                //     const element = array[i];
+
+                // }
+                // $('#u_kategori_id').append(`
+                // <option value="1">Lala</option>`);
+
 
             });
 
@@ -382,7 +332,7 @@
                 }).catch((err) => {
                     return showModal('error', err.response.data.message);
                 });
-            })
+            });
 
             $('#simpan-data-update').click((e)=>{
                 e.preventDefault();
@@ -454,7 +404,7 @@
                     return showModal('error', err.response.data.message);
                 });
             })
-        })
+        });
 
 
     </script>

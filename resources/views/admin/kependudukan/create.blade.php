@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-md-6 p-r-40">
                         <button type="button" id="import_excel_button" class="btn  m-b-30 ml-2 mr-2 btn-success float-right"><i
-                                class="mdi mdi-cake-variant"></i> Import Excel
+                                class="mdi mdi-file-excel"></i> Import Excel
                         </button>
                     </div>
                 </div>
@@ -197,9 +197,10 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <hr>
                             <div class="form-group">
-                                <button type="submit" id="btn_submit" class="btn btn-primary ml-3 text-right float-right">Simpan Data</button>
+                                <button type="submit" id="btn_submit" class="btn btn-primary ml-3 text-right float-right">
+                                    <i class="mdi mdi-folder-account"></i>Simpan Data</button>
                             </div>
                         </div>
                     </div>
@@ -228,7 +229,7 @@
 
         $('#address').trumbowyg();
 
-        $('select').select2();
+        $('.select').select2();
 
         $('#import_excel_button').click(()=>{
             $('#importExcelModalViewer').modal('show');
