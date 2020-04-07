@@ -91,7 +91,7 @@ class BeritaController extends Controller
         )
         ->get();
 
-        return $data;
+        return \DataTables::of($data)->make();
     }
 
     public function create()
@@ -117,14 +117,16 @@ class BeritaController extends Controller
         $inputs['created_by'] = $id;
 
         $image = $req->image;  // your base64 encoded
-        $image = str_replace('data:image/png;base64,', '', $image);
-        $image = str_replace(' ', '+', $image);
-        $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
-        \File::put('img_berita'. '/' . $imageName, base64_decode($image));
+        if($image != null){
+            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
+            \File::put('img_berita'. '/' . $imageName, base64_decode($image));
 
-        $dd = asset('img_berita/'.$imageName);
+            $dd = asset('img_berita/'.$imageName);
 
-        $inputs['image'] = $dd;
+            $inputs['image'] = $dd;
+        }
 
         $validate = $this->verify($inputs);
 
@@ -242,7 +244,7 @@ class BeritaController extends Controller
         if($image != null){
             $image = str_replace('data:image/png;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
+            $imageName = 'berita-'.$req->slug.$id.'.'.'jpg';
             \File::put('img_berita'. '/' . $imageName, base64_decode($image));
 
             $dd = asset('img_berita/'.$imageName);
@@ -258,7 +260,7 @@ class BeritaController extends Controller
                 'message' => $validate->errors()->first()
             ], 400);
         }
-
+        // dd($inputs);
         try {
             \DB::table('beritas')
                 ->where('id', $req->id)
@@ -271,6 +273,23 @@ class BeritaController extends Controller
         }
 
         return response()->json(true, 200);
+
+    }
+
+    public function delete(Request $req)
+    {
+        // dd($req->id);
+
+        try {
+            \DB::table('beritas')
+                        ->where('id', $req->id)
+                        ->delete();
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return sendResponse([
+                        'message' => $e->getMessage()
+                    ], 500);
+        }
 
     }
 

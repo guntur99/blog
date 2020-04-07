@@ -46,7 +46,7 @@ Route::post('/tag-berita', 'BeritaController@tagBerita')->name('tag.berita.desa.
 
 Route::get('/create-berita', 'BeritaController@create')->name('berita.desa.create')->middleware('auth');
 
-Route::get('/edit-berita/{id}', 'BeritaController@edit')->name('berita.desa.edit');
+Route::get('/edit-berita/{id}', 'BeritaController@edit')->name('berita.desa.edit')->middleware('auth');
 
 Route::post('/update-berita', 'BeritaController@update')->name('berita.desa.update')->middleware('auth');
 
@@ -55,5 +55,8 @@ Route::post('/store-berita', 'BeritaController@store')->name('berita.desa.store'
 Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
 
 Route::post('/detail-berita', 'BeritaController@detailBerita')->name('berita.desa.detail')->middleware('auth');
+
+Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
+
 
 Auth::routes();

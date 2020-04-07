@@ -217,7 +217,7 @@
                     }
 
                 },
-                cache: true
+                // cache: true
             },
             // insertTag: function (data, tag) {
             //     data.push(tag);

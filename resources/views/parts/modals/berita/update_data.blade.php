@@ -31,9 +31,6 @@
                                             <label for="u_kategori_id">Kategori Berita</label>
                                             <dv class="col-md-12">
                                                 <select class="form-control" id="u_kategori_id" name="u_kategori_id" required>
-                                                    {{-- @foreach($kategori as $k)
-                                                        <option value="{{ $k->id }}">{{ $k->nama }}</option>
-                                                    @endforeach --}}
                                                 </select>
                                             </dv>
                                             <div class="valid-feedback">

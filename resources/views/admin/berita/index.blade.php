@@ -201,18 +201,20 @@
             $('#avatar_cover').html(`
                 <img src="`+data.image+`" alt="..." class="avatar-img rounded-circle">
             `);
+            console.log(data.image);
+
             $('#image_cover').html(`
                 <img class="rounded" id="image" src="`+data.image+`" alt="">
             `);
             $('#id_hide').val(data.id)
             $('#button-modal').html(`
-            <div id="btn_perbarui_berita" class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                <label class="btn  btn-light active">
+            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                <label id="btn_perbarui_berita" class="btn  btn-light active">
                     <i class="mdi mdi-file-check"></i>
                     <input type="radio" name="radio2" id="option1"   checked>
                     Perbarui Berita
                 </label>
-                <label class="btn  btn-dark">
+                <label id="btn_hapus_berita" class="btn  btn-dark">
                     <i class="mdi mdi-file-remove"></i>
                     <input type="radio" name="radio2" id="option2"  > Hapus Berita
                 </label>
@@ -284,28 +286,15 @@
                     window.location.href = '{{url("edit-berita")}}/'+data.id;
                 });
 
-                // $('#u_judul').val(data.judul);
-                // $('#u_desc_singkat').val(data.desc_singkat);
-                // $('#u_desc').trumbowyg('html', data.desc);
-                // console.log(data.desc);
-
-                // for (let i = 0; i < array.length; i++) {
-                //     const element = array[i];
-
-                // }
-                // $('#u_kategori_id').append(`
-                // <option value="1">Lala</option>`);
-
-
             });
 
-            $('#hapus-data').click((e)=>{
+            $('#btn_hapus_berita').click((e)=>{
                 e.preventDefault();
 
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("penduduk.desa.delete")}}', formData).then((res) => {
+                axios.post('{{route("berita.desa.delete")}}', formData).then((res) => {
 
                     Swal.fire({
                         title: 'Success',
@@ -323,9 +312,9 @@
                         }
                     }).then((result) => {
                         if (result.value) {
+                            $('#beritaModalViewer').modal('hide');
                             dataTable.draw();
                             // location.reload();
-                            $('#kependudukanModalViewer').modal('hide');
                         }
                     });
 

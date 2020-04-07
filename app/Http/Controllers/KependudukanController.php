@@ -95,7 +95,7 @@ class KependudukanController extends Controller
         $inputs['created_at'] = Carbon::now()->toDateTimeString();
         $inputs['created_by'] = $id;
 
-        dd($inputs);
+        // dd($inputs);
 
         $validate = $this->verify($inputs);
 
