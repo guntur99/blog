@@ -109,8 +109,7 @@ class BeritaController extends Controller
             $image = str_replace('data:image/png;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
-            \File::put('img_berita'. '/' . $imageName, base64_decode($image));
-            // Storage::put('img_berita'. '/' . $imageName, base64_decode($image));
+            File::put('img_berita'. '/' . $imageName, base64_decode($image));
 
             $dd = asset('img_berita/'.$imageName);
 
