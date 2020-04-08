@@ -34,10 +34,23 @@ class HomeController extends Controller
         $total_penduduk = \DB::table('kependudukans')
         ->get();
 
-        // dd($id);
+        $total_berita = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.name as user_created_by',
+            'c.nama as category_name'
+        )
+        ->leftJoin('users as b', 'a.created_by', '=', 'b.id')
+        ->leftJoin('kategori_beritas as c', 'a.kategori_id', '=', 'c.id')
+        ->get();
+
+
+        // dd($total_berita);
         return view('home', [
             'user_name' => $data->name,
-            'total_penduduk' => count($total_penduduk)
+            'total_penduduk' => count($total_penduduk),
+            'total_berita' => count($total_berita),
+            'berita' => $total_berita
         ]);
     }
 }

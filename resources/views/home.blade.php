@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="display-4 fw-600">1200</h1>
+                        <h1 class="display-4 fw-600">{{ $total_berita }}</h1>
                         <div class="h6">
                             <span class="text-primary"> <i class="mdi mdi-buffer"></i> Total dalam semua kategori berita </span>
                             {{-- Less activity than usual. --}}
@@ -152,19 +152,21 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div class="avatar avatar-sm "><img src="{{ asset('atmos/getting started/light/assets/img/users/user-1.jpg') }}"
-                                                                        class="avatar-img avatar-sm rounded-circle"
-                                                                        alt=""></div>
-                                </td>
-                                <td>Senam Kesegaran Jasmani</td>
-                                <td>Kegiatan Desa</td>
-                                <td>Ken Abdullah</td>
-                                <td>Feb 20, 2019</td>
-                            </tr>
+                                @foreach ($berita as $b)
+                                    <tr>
+                                        <td>
+                                            <div class="avatar">
+                                    <div class="avatar-title rounded-circle bg-dark"><i
+                                                class="mdi mdi-new-box "></i></div>
 
-
+                                </div>
+                                        </td>
+                                        <td>{{ $b->judul }}</td>
+                                        <td>{{ $b->category_name }}</td>
+                                        <td>{{ $b->user_created_by }}</td>
+                                        <td>{{ $b->created_at }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
