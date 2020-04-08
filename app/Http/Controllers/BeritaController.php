@@ -82,18 +82,6 @@ class BeritaController extends Controller
         return $dd;
     }
 
-    public function tagDatatable()
-    {
-
-        $data = \DB::table('tag_beritas as a')
-        ->select(
-            'a.*',
-        )
-        ->get();
-
-        return \DataTables::of($data)->make();
-    }
-
     public function create()
     {
         $kategori = \DB::table('kategori_beritas as a')
@@ -415,6 +403,103 @@ class BeritaController extends Controller
         $validator = \Validator::make($inputs, $rules);
 
         return $validator;
+
+    }
+
+    /*----------- TAG ----------------*/
+    public function indexTag(){
+
+        return view('admin.berita.tag.index');
+    }
+
+    public function tagDatatable()
+    {
+
+        $data = \DB::table('tag_beritas as a')
+        ->select(
+            'a.*',
+        )
+        ->get();
+
+        return \DataTables::of($data)->make();
+    }
+
+    public function createTag(){
+
+        return view('admin.berita.tag.create');
+    }
+
+    public function storeTag(Request $req){
+
+        // dd($req->all());
+        $inputs = $req->all();
+        $date_time = Carbon::now()->toDateTimeString();
+        $inputs['created_at'] = $date_time;
+
+        $validate = $this->verifyKategori($inputs);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'message' => $validate->errors()->first()
+            ], 400);
+        }
+
+        try {
+            \DB::table('tag_beritas')
+                ->insert($inputs);
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json(true, 200);
+    }
+
+    public function updateTag(Request $req){
+
+        $inputs = $req->all();
+
+        $date_time = Carbon::now()->toDateTimeString();
+        $inputs['updated_at'] = $date_time;
+
+        $validate = $this->verifyKategori($inputs);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'message' => $validate->errors()->first()
+            ], 400);
+        }
+        // dd($inputs);
+        try {
+            \DB::table('tag_beritas')
+                ->where('id', $req->id)
+                ->update($inputs);
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json(true, 200);
+
+    }
+
+    public function deleteTag(Request $req)
+    {
+
+        try {
+            \DB::table('tag_beritas')
+                        ->where('id', $req->id)
+                        ->delete();
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return sendResponse([
+                        'message' => $e->getMessage()
+                    ], 500);
+        }
 
     }
 

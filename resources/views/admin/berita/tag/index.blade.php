@@ -24,13 +24,13 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Kategori Berita</strong></h2>
+                                <h2><strong>Daftar Tag Berita</strong></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
-                        <a href="{{ route('buat.kategori.berita.desa') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
-                                class="mdi mdi-playlist-plus"></i> Buat Kategori Berita
+                        <a href="{{ route('buat.tag.berita.desa') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                                class="mdi mdi-playlist-plus"></i> Buat Tag Berita
                         </a>
                     </div>
 
@@ -45,11 +45,11 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="table-responsive p-t-10">
-                                <table id="kategori-berita-table" class="table" style="width:100%">
+                                <table id="tag-berita-table" class="table" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nama Kategori</th>
+                                        <th>Nama Tag</th>
                                         <th>Dibuat Tanggal</th>
                                     </tr>
                                     </thead>
@@ -65,8 +65,7 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
-    {{-- @include('parts.modals.berita.detail_data') --}}
-    @include('parts.modals.berita.kategori.update_data')
+    @include('parts.modals.berita.tag.update_data')
 
 @endsection
 
@@ -77,7 +76,7 @@
     <script src="{{ asset('atmos/demos/light/assets/vendor/apexchart/apexcharts.min.js') }}"></script>
     <script>
 
-        var dataTable = $('#kategori-berita-table').DataTable({
+        var dataTable = $('#tag-berita-table').DataTable({
             orderCellsTop: true,
             fixedHeader: true,
             "searchDelay": 350,
@@ -86,7 +85,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: '{{route("kategori.desa.datatable")}}',
+                url: '{{route("tag.berita.desa.datatable")}}',
                 // dataSrc: '',
                 // draw: 'original.draw'
             },
@@ -102,52 +101,52 @@
             "order" :[[ 0, 'desc' ]]
         });
 
-        var nama_kategori = $('#u_nama_kategori');
+        var nama_tag = $('#u_nama_tag');
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
             // console.log(data.nama);
 
-            $('#updateKategoriModalViewer').modal('show');
-            $('#u_nama_kategori').val(data.nama);
+            $('#updateTagModalViewer').modal('show');
+            $('#u_nama_tag').val(data.nama);
             $('#id_hide').val(data.id);
 
-            $('#perbarui_data_kategori').click((e)=>{
-                $('#u_nama_kategori').prop("disabled", false);
+            $('#perbarui_data_tag').click((e)=>{
+                $('#u_nama_tag').prop("disabled", false);
                 $('#btn_perbarui_hapus').addClass('d-none');
-                $('#simpan_data_kategori').removeClass('d-none');
+                $('#simpan_data_tag').removeClass('d-none');
 
-                nama_kategori.on('input', (e)=> {
+                nama_tag.on('input', (e)=> {
                     var value = e.target.value
 
                     if (value.length === 0) {
-                        nama_kategori.addClass('is-invalid');
-                        nama_kategori.removeClass('is-valid');
+                        nama_tag.addClass('is-invalid');
+                        nama_tag.removeClass('is-valid');
                     }else{
-                        nama_kategori.addClass('is-valid');
-                        nama_kategori.removeClass('is-invalid');
+                        nama_tag.addClass('is-valid');
+                        nama_tag.removeClass('is-invalid');
                     }
 
                 })
 
             });
 
-            $('#simpan_data_kategori').click((e)=>{
+            $('#simpan_data_tag').click((e)=>{
                 e.preventDefault();
 
-                $('#u_nama_kategori').prop("disabled", true);
+                $('#u_nama_tag').prop("disabled", true);
                 $('#btn_perbarui_hapus').removeClass('d-none');
-                $('#simpan_data_kategori').addClass('d-none');
-                $('#updateKategoriModalViewer').modal('hide');
+                $('#simpan_data_tag').addClass('d-none');
+                $('#updateTagModalViewer').modal('hide');
 
-                ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+                ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
 
                 // console.log($('#id_hide').val());
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
-                formData.append('nama', nama_kategori.val());
+                formData.append('nama', nama_tag.val());
 
-                axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("update.tag.berita.desa")}}', formData).then((res) => {
 
                     Swal.fire({
                         title: 'Success',
@@ -166,7 +165,7 @@
                     }).then((result) => {
                         if (result.value) {
                             dataTable.draw();
-                            ((nama_kategori.val() == "") ? nama_kategori.removeClass('is-invalid') : nama_kategori.removeClass('is-valid'));
+                            ((nama_tag.val() == "") ? nama_tag.removeClass('is-invalid') : nama_tag.removeClass('is-valid'));
                         }
                     });
 
@@ -175,15 +174,15 @@
                 });
             });
 
-            $('#hapus_data_kategori').click((e)=>{
+            $('#hapus_data_tag').click((e)=>{
                 e.preventDefault();
 
-                $('#updateKategoriModalViewer').modal('hide');
+                $('#updateTagModalViewer').modal('hide');
 
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("delete.tag.berita.desa")}}', formData).then((res) => {
 
                     Swal.fire({
                         title: 'Success',
