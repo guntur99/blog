@@ -123,7 +123,7 @@ class BeritaController extends Controller
                 'message' => $validate->errors()->first()
             ], 400);
         }
-
+        dd($inputs);
         try {
             \DB::table('beritas')
                 ->insert($inputs);
