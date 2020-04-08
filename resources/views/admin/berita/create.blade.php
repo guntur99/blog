@@ -49,7 +49,7 @@
                                     <div class="form-group col-md-6">
                                         <div>
                                             <label for="kategori_id">Kategori Berita</label>
-                                            <select class="form-control" id="kategori_id" name="kategori_id" required>
+                                            <select class="form-control select2" id="kategori_id" name="kategori_id" required>
                                                 @foreach($kategori as $k)
                                                     <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                                 @endforeach
@@ -181,8 +181,6 @@
             // MultipleSelection: true,
             // tokenSeparators: ['+1'],
             // dropdownParent: $('#addWishlistsViewer'),
-            "processing": true,
-        "serverSide": true,
             ajax: {
                 url: '{{route("tag.berita.desa.datatable")}}',
                 dataType: 'json',
@@ -221,7 +219,7 @@
                     }
 
                 },
-                cache: true
+                // cache: true
             },
             // insertTag: function (data, tag) {
             //     data.push(tag);

@@ -70,7 +70,7 @@
                     </li>
                     <hr>
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Semua Kategori Berita</span>
                             </span>
@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('buat.kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Kategori Berita Baru</span>
                             </span>

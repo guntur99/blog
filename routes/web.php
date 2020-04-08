@@ -40,10 +40,6 @@ Route::get('/berita-desa', 'BeritaController@index')->name('berita.desa.index')-
 
 Route::get('/berita-datatable', 'BeritaController@datatable')->name('berita.desa.datatable')->middleware('auth');
 
-Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.berita.desa.datatable');
-
-Route::post('/tag-berita', 'BeritaController@tagBerita')->name('tag.berita.desa.get')->middleware('auth');
-
 Route::get('/create-berita', 'BeritaController@create')->name('berita.desa.create')->middleware('auth');
 
 Route::get('/edit-berita/{id}', 'BeritaController@edit')->name('berita.desa.edit')->middleware('auth');
@@ -57,6 +53,30 @@ Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.dele
 Route::post('/detail-berita', 'BeritaController@detailBerita')->name('berita.desa.detail')->middleware('auth');
 
 Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
+
+
+
+// -------------- KATEGORI BERITA --------------------------------
+Route::get('/kategori-berita', 'BeritaController@indexKategori')->name('kategori.berita.desa')->middleware('auth');
+
+Route::get('/buat-kategori-berita', 'BeritaController@createKategori')->name('buat.kategori.berita.desa')->middleware('auth');
+
+Route::post('/store-kategori-berita', 'BeritaController@storeKategori')->name('store.kategori.berita.desa')->middleware('auth');
+
+Route::post('/update-kategori-berita', 'BeritaController@updateKategori')->name('update.kategori.berita.desa')->middleware('auth');
+
+Route::post('/delete-kategori-berita', 'BeritaController@deleteKategori')->name('delete.kategori.berita.desa')->middleware('auth');
+
+Route::get('/kategori-datatable', 'BeritaController@kategoriDatatable')->name('kategori.desa.datatable')->middleware('auth');
+
+
+
+// --------------- TAG BERITA ------------------------------
+Route::post('/tag-berita', 'BeritaController@tagBerita')->name('tag.berita.desa.get')->middleware('auth');
+
+Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.berita.desa.datatable')->middleware('auth');
+
+Route::get('/buat-tag-berita', 'BeritaController@createTag')->name('buat.tag.berita.desa')->middleware('auth');
 
 
 Auth::routes();
