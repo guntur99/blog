@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use File;
 
 class BeritaController extends Controller
 {
@@ -122,6 +122,7 @@ class BeritaController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             \File::put('img_berita'. '/' . $imageName, base64_decode($image));
+            // Storage::put('img_berita'. '/' . $imageName, base64_decode($image));
 
             $dd = asset('img_berita/'.$imageName);
 
@@ -244,14 +245,27 @@ class BeritaController extends Controller
         if($image != null){
             $image = str_replace('data:image/png;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'berita-'.$req->slug.$id.'.'.'jpg';
-            \File::put('img_berita'. '/' . $imageName, base64_decode($image));
+            $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
+            File::put('img_berita'. '/' . $imageName, base64_decode($image));
+            // file_put_contents('img_berita'. '/' . $imageName, base64_decode($image));
+            // \Storage::disk('local')->put('file.txt', 'Content\s');
+            // Storage::disk('public')->put('img_berita'. '/' . $imageName, base64_decode($image));
+
+            // Storage::put('img_berita'. '/' . $imageName, base64_decode($image));
+
+            // Storage::disk('local')->put('file.txt', base64_decode($image));
+            // Storage::put('file.jpg', base64_decode($image));
+
+
+
+            // $contents = Storage::get('img_berita/'.$imageName);
 
             $dd = asset('img_berita/'.$imageName);
 
             $inputs['image'] = $dd;
 
         }
+        // dd($dd);
 
         $validate = $this->verify($inputs);
 

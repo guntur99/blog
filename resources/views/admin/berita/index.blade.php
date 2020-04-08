@@ -51,7 +51,7 @@
                                         <th>ID</th>
                                         <th>Judul Berita</th>
                                         <th>Kategori</th>
-                                        <th>Tag</th>
+                                        {{-- <th>Tag</th> --}}
                                         <th>Dibuat Oleh</th>
                                         <th>Dibuat Tanggal</th>
                                     </tr>
@@ -96,8 +96,14 @@
             "columns": [
                 { "name": "id", "data": "id"},
                 { "name": "judul", "data": "judul" },
-                { "name": "category_name", "data": "category_name" },
-                { "name": "tag_id", "data": "tag_id" },
+                { "name": "category_name", "data": function(data){
+                    if(data.kategori_id == 1){
+                        return '<span class=" text-success"> '+data.category_name+'</span>'
+                    }else if(data.kategori_id == 2){
+                        return '<span class=" text-info"> '+data.category_name+'</span>'
+                    }
+                } },
+                // { "name": "tag_id", "data": "tag_id" },
                 { "name": "user_created_by", "data": "user_created_by" },
                 { "name": "created_at", "data": function(data){
                     var created_at = data.created_at;
@@ -173,7 +179,7 @@
             $('#beritaModalViewer').modal('show');
             $('#judul').html(data.judul);
             $('#desc_singkat').html(data.desc_singkat);
-            $('#kategori').html(data.category_name);
+            $('#kategori').html('Preview : '+'<b class="text-primary">'+data.category_name+'</b>');
             var created_at = moment(data.created_at).format('DD MMMM YYYY');
             $('#created_at').html(created_at);
             $('#created_by').html(data.user_created_by);

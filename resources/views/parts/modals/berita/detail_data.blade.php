@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         {{-- <h5 class="modal-title">Location (<span id="location_name_modal_title"></span>) - Facility (<span id="facility_name_modal_title"></span>) - Client (<span id="client_name_modal_title"></span>)</h5> --}}
-                        <h5 class="modal-title">Detil Berita Desa</h5>
+                        <h5 class="modal-title" id="kategori"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -24,7 +24,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-controls pt-1">
+                                {{-- <div class="col-md-2 card-controls pt-1">
                                     <a href="#!" class="text-warning">
                                         <i class="mdi mdi-font-awesome"></i>
                                     </a>
@@ -32,7 +32,7 @@
                                         <p class=" text-warning" style="font-weight:800" id="kategori">  </p>
 
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body">
                                 <div class="p-b-10 text-center" id="image_cover">
