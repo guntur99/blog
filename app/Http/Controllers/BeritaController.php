@@ -247,19 +247,6 @@ class BeritaController extends Controller
             $image = str_replace(' ', '+', $image);
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             File::put('img_berita'. '/' . $imageName, base64_decode($image));
-            // file_put_contents('img_berita'. '/' . $imageName, base64_decode($image));
-            // \Storage::disk('local')->put('file.txt', 'Content\s');
-            // Storage::disk('public')->put('img_berita'. '/' . $imageName, base64_decode($image));
-
-            // Storage::put('img_berita'. '/' . $imageName, base64_decode($image));
-
-            // Storage::disk('local')->put('file.txt', base64_decode($image));
-            // Storage::put('file.jpg', base64_decode($image));
-
-
-
-            // $contents = Storage::get('img_berita/'.$imageName);
-
             $dd = asset('img_berita/'.$imageName);
 
             $inputs['image'] = $dd;
@@ -292,7 +279,6 @@ class BeritaController extends Controller
 
     public function delete(Request $req)
     {
-        // dd($req->id);
 
         try {
             \DB::table('beritas')
@@ -315,6 +301,115 @@ class BeritaController extends Controller
             'tag_id' => 'required',
             'desc_singkat' => 'required',
             'desc' => 'required',
+        ];
+
+        $validator = \Validator::make($inputs, $rules);
+
+        return $validator;
+
+    }
+
+    /*----------- KATEGORI ----------------*/
+    public function indexKategori(){
+
+        return view('admin.berita.kategori.index');
+    }
+
+    public function kategoriDatatable()
+    {
+
+        $data = \DB::table('kategori_beritas as a')
+        ->select(
+            'a.*',
+        )
+        ->get();
+
+        return \DataTables::of($data)->make();
+    }
+
+    public function createKategori(){
+
+        return view('admin.berita.kategori.create');
+    }
+
+    public function storeKategori(Request $req){
+
+        // dd($req->all());
+        $inputs = $req->all();
+        $date_time = Carbon::now()->toDateTimeString();
+        $inputs['created_at'] = $date_time;
+
+        $validate = $this->verifyKategori($inputs);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'message' => $validate->errors()->first()
+            ], 400);
+        }
+
+        try {
+            \DB::table('kategori_beritas')
+                ->insert($inputs);
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json(true, 200);
+    }
+
+    public function updateKategori(Request $req){
+
+        $inputs = $req->all();
+
+        $date_time = Carbon::now()->toDateTimeString();
+        $inputs['updated_at'] = $date_time;
+
+        $validate = $this->verifyKategori($inputs);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'message' => $validate->errors()->first()
+            ], 400);
+        }
+        // dd($inputs);
+        try {
+            \DB::table('kategori_beritas')
+                ->where('id', $req->id)
+                ->update($inputs);
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+        return response()->json(true, 200);
+
+    }
+
+    public function deleteKategori(Request $req)
+    {
+
+        try {
+            \DB::table('kategori_beritas')
+                        ->where('id', $req->id)
+                        ->delete();
+        } catch (\Exception $e) {
+            \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
+            return sendResponse([
+                        'message' => $e->getMessage()
+                    ], 500);
+        }
+
+    }
+
+    public function verifyKategori($inputs){
+
+        $rules = [
+            'nama' => 'required',
         ];
 
         $validator = \Validator::make($inputs, $rules);
