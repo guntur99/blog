@@ -40,7 +40,7 @@ Route::get('/berita-desa', 'BeritaController@index')->name('berita.desa.index')-
 
 Route::get('/berita-datatable', 'BeritaController@datatable')->name('berita.desa.datatable')->middleware('auth');
 
-Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.berita.desa.datatable')->middleware('auth');
+Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.berita.desa.datatable');
 
 Route::post('/tag-berita', 'BeritaController@tagBerita')->name('tag.berita.desa.get')->middleware('auth');
 

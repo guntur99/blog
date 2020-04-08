@@ -47,7 +47,7 @@
                                     <div class="form-group col-md-6">
                                         <div>
                                             <label for="kategori_id">Kategori Berita</label>
-                                            <select class="form-control select2" id="kategori_id" name="kategori_id" required>
+                                            <select class="form-control" id="kategori_id" name="kategori_id" required>
                                                 @foreach($kategori as $k)
                                                     <option value="{{ $k->id }}">{{ $k->nama }}</option>
                                                 @endforeach
