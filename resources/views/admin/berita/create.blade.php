@@ -181,6 +181,8 @@
             // MultipleSelection: true,
             // tokenSeparators: ['+1'],
             // dropdownParent: $('#addWishlistsViewer'),
+            "processing": true,
+        "serverSide": true,
             ajax: {
                 url: '{{route("tag.berita.desa.datatable")}}',
                 dataType: 'json',
@@ -219,7 +221,7 @@
                     }
 
                 },
-                // cache: true
+                cache: true
             },
             // insertTag: function (data, tag) {
             //     data.push(tag);
