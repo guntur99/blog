@@ -106,7 +106,7 @@ class BeritaController extends Controller
 
         $image = $req->image;  // your base64 encoded
         if($image != null){
-            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace('data:image/jpeg;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             \File::put('img_berita'. '/' . $imageName, base64_decode($image));
@@ -230,9 +230,9 @@ class BeritaController extends Controller
 
         $image = $req->image;  // your base64 encoded
         if($image != null){
-            $image = str_replace('data:image/png;base64,', '', $image);
+            $image = str_replace('data:image/jpeg;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
+            $imageName = 'berita-'.$req->slug.$date_time.'.'.'png';
             File::put('img_berita'. '/' . $imageName, base64_decode($image));
             $dd = asset('img_berita/'.$imageName);
 
@@ -288,6 +288,7 @@ class BeritaController extends Controller
             'tag_id' => 'required',
             'desc_singkat' => 'required',
             'desc' => 'required',
+            'image' => 'required|max:2048',
         ];
 
         $validator = \Validator::make($inputs, $rules);

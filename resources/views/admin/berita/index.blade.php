@@ -172,7 +172,7 @@
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
-            console.log(data);
+            // console.log(data);
 
             var res = "";
 
@@ -186,28 +186,28 @@
             // console.log(data.image);
             var tag_string = data.tag_id;
             var tags = tag_string.split(",");
-            console.log(tags);
+            // console.log(tags);
 
             var formData = new FormData()
             formData.append('tag_id', data.tag_id);
             axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 var tag_array = res.data;
+                var tag_list = '';
 
                 for (let i = 0; i < tag_array.length; i++) {
+                    tag_list = tag_list + `<a href="#!" class="badge badge-soft-primary"><strong>@`+tag_array[i].nama+`</strong></a>`;
 
-                    $('#tags_berita').append(`
-                        <a href="#!" class="badge badge-soft-primary"><strong>@`+tag_array[i].nama+`</strong></a>
-                    `);
 
                 }
+                $('#tags_berita').html(tag_list);
 
             });
 
             $('#avatar_cover').html(`
                 <img src="`+data.image+`" alt="..." class="avatar-img rounded-circle">
             `);
-            console.log(data.image);
+            // console.log(data.image);
 
             $('#image_cover').html(`
                 <img class="rounded" id="image" src="`+data.image+`" alt="">
@@ -398,7 +398,8 @@
                     // alert(err.response.data.message)
                     return showModal('error', err.response.data.message);
                 });
-            })
+            });
+
         });
 
 
