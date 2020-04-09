@@ -137,7 +137,7 @@
                                         <div>
                                             <label for="last_name">Cover Berita*</label>
                                             <div class="custom-file" id="custom_file">
-                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".png,.jpg,.jpeg" onchange="fileGambar(this)">
+                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".jpg,.jpeg" onchange="fileGambar(this)">
                                                 <label class="custom-file-label" for="file_gambar"
                                                     >Pilih Gambar Baru</label>
                                                 <textarea id="file_gambar_lain" style="display: none;"></textarea>

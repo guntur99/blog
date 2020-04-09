@@ -232,7 +232,7 @@ class BeritaController extends Controller
         if($image != null){
             $image = str_replace('data:image/jpeg;base64,', '', $image);
             $image = str_replace(' ', '+', $image);
-            $imageName = 'berita-'.$req->slug.$date_time.'.'.'png';
+            $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             File::put('img_berita'. '/' . $imageName, base64_decode($image));
             $dd = asset('img_berita/'.$imageName);
 
