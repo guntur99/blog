@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         {{-- <h5 class="modal-title">Location (<span id="location_name_modal_title"></span>) - Facility (<span id="facility_name_modal_title"></span>) - Client (<span id="client_name_modal_title"></span>)</h5> --}}
-                        <h5 class="modal-title">Perbarui Data Tag</h5>
+                        <h5 class="modal-title">Tambah Tag Baru</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

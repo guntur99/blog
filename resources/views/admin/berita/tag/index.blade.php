@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
-                        <button id="buat_kategori_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                        <button id="buat_tag_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
                                 class="mdi mdi-playlist-plus"></i> Buat Tag Berita
                         </button>
                     </div>
@@ -102,7 +102,7 @@
             "order" :[[ 0, 'desc' ]]
         });
 
-        var nama_tag = $('#u_nama_tag');
+        var u_nama_tag = $('#u_nama_tag');
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
@@ -117,15 +117,15 @@
                 $('#btn_perbarui_hapus').addClass('d-none');
                 $('#simpan_data_tag').removeClass('d-none');
 
-                nama_tag.on('input', (e)=> {
+                u_nama_tag.on('input', (e)=> {
                     var value = e.target.value
 
                     if (value.length === 0) {
-                        nama_tag.addClass('is-invalid');
-                        nama_tag.removeClass('is-valid');
+                        u_nama_tag.addClass('is-invalid');
+                        u_nama_tag.removeClass('is-valid');
                     }else{
-                        nama_tag.addClass('is-valid');
-                        nama_tag.removeClass('is-invalid');
+                        u_nama_tag.addClass('is-valid');
+                        u_nama_tag.removeClass('is-invalid');
                     }
 
                 })
@@ -140,12 +140,12 @@
                 $('#simpan_data_tag').addClass('d-none');
                 $('#updateTagModalViewer').modal('hide');
 
-                ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
+                ((u_nama_tag.val() == "") ? u_nama_tag.addClass('is-invalid') : u_nama_tag.addClass('is-valid'));
 
                 // console.log($('#id_hide').val());
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
-                formData.append('nama', nama_tag.val());
+                formData.append('nama', u_nama_tag.val());
 
                 axios.post('{{route("update.tag.berita.desa")}}', formData).then((res) => {
 
@@ -166,7 +166,7 @@
                     }).then((result) => {
                         if (result.value) {
                             dataTable.draw();
-                            ((nama_tag.val() == "") ? nama_tag.removeClass('is-invalid') : nama_tag.removeClass('is-valid'));
+                            ((u_nama_tag.val() == "") ? u_nama_tag.removeClass('is-invalid') : u_nama_tag.removeClass('is-valid'));
                         }
                     });
 
@@ -213,7 +213,7 @@
 
         });
 
-        $('#buat_kategori_baru').click((e)=>{
+        $('#buat_tag_baru').click((e)=>{
             $('#createTagModalViewer').modal('show');
         });
 
@@ -244,7 +244,7 @@
 
                 Swal.fire({
                     title: 'Success',
-                    text: "Buat Berita Berhasil!",
+                    text: "Buat Tag Berhasil!",
                     icon: 'success',
                     showCancelButton: false,
                     confirmButtonText: 'Close',

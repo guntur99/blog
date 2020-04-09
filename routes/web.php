@@ -59,8 +59,6 @@ Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.dele
 // -------------- KATEGORI BERITA --------------------------------
 Route::get('/kategori-berita', 'BeritaController@indexKategori')->name('kategori.berita.desa')->middleware('auth');
 
-Route::get('/buat-kategori-berita', 'BeritaController@createKategori')->name('buat.kategori.berita.desa')->middleware('auth');
-
 Route::post('/store-kategori-berita', 'BeritaController@storeKategori')->name('store.kategori.berita.desa')->middleware('auth');
 
 Route::post('/update-kategori-berita', 'BeritaController@updateKategori')->name('update.kategori.berita.desa')->middleware('auth');

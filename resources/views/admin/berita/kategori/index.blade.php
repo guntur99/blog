@@ -29,9 +29,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
-                        <a href="{{ route('buat.kategori.berita.desa') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                        <button id="buat_kategori_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
                                 class="mdi mdi-playlist-plus"></i> Buat Kategori Berita
-                        </a>
+                        </button>
                     </div>
 
                 </div>
@@ -65,7 +65,7 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
-    {{-- @include('parts.modals.berita.detail_data') --}}
+    @include('parts.modals.berita.kategori.create_data')
     @include('parts.modals.berita.kategori.update_data')
 
 @endsection
@@ -102,7 +102,22 @@
             "order" :[[ 0, 'desc' ]]
         });
 
-        var nama_kategori = $('#u_nama_kategori');
+        var nama_kategori = $('#nama_kategori');
+
+        nama_kategori.on('input', (e)=> {
+            var value = e.target.value
+
+            if (value.length === 0) {
+                nama_kategori.addClass('is-invalid');
+                nama_kategori.removeClass('is-valid');
+            }else{
+                nama_kategori.addClass('is-valid');
+                nama_kategori.removeClass('is-invalid');
+            }
+
+        });
+
+        var u_nama_kategori = $('#u_nama_kategori');
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
@@ -117,15 +132,15 @@
                 $('#btn_perbarui_hapus').addClass('d-none');
                 $('#simpan_data_kategori').removeClass('d-none');
 
-                nama_kategori.on('input', (e)=> {
+                u_nama_kategori.on('input', (e)=> {
                     var value = e.target.value
 
                     if (value.length === 0) {
-                        nama_kategori.addClass('is-invalid');
-                        nama_kategori.removeClass('is-valid');
+                        u_nama_kategori.addClass('is-invalid');
+                        u_nama_kategori.removeClass('is-valid');
                     }else{
-                        nama_kategori.addClass('is-valid');
-                        nama_kategori.removeClass('is-invalid');
+                        u_nama_kategori.addClass('is-valid');
+                        u_nama_kategori.removeClass('is-invalid');
                     }
 
                 })
@@ -140,12 +155,12 @@
                 $('#simpan_data_kategori').addClass('d-none');
                 $('#updateKategoriModalViewer').modal('hide');
 
-                ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+                ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
 
                 // console.log($('#id_hide').val());
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
-                formData.append('nama', nama_kategori.val());
+                formData.append('nama', u_nama_kategori.val());
 
                 axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
 
@@ -166,7 +181,7 @@
                     }).then((result) => {
                         if (result.value) {
                             dataTable.draw();
-                            ((nama_kategori.val() == "") ? nama_kategori.removeClass('is-invalid') : nama_kategori.removeClass('is-valid'));
+                            ((u_nama_kategori.val() == "") ? u_nama_kategori.removeClass('is-invalid') : u_nama_kategori.removeClass('is-valid'));
                         }
                     });
 
@@ -213,6 +228,45 @@
 
         });
 
+        $('#buat_kategori_baru').click(()=>{
+            $('#createKategoriModalViewer').modal('show');
+        });
+
+        $('#buat_data_kategori').click((e)=>{
+            e.preventDefault();
+
+            ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+
+            var formData = new FormData()
+            formData.append('nama', nama_kategori.val());
+
+            axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+
+                Swal.fire({
+                    title: 'Success',
+                    text: "Buat Kategori Berhasil!",
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonText: 'Close',
+                    allowOutsideClick: false,
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-success px-3 ml-2',
+                        title: 'swal-title-custom',
+                        content: 'swal-text-custom mb-2',
+                        popup: 'swal-popup-custom'
+                    }
+                }).then((result) => {
+                    if(result.value){
+                        $('#createKategoriModalViewer').modal('hide');
+                        dataTable.draw();
+                    }
+                });
+
+            }).catch((err) => {
+                return 'error';
+            });
+        });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
