@@ -41,7 +41,7 @@
                     <li class="menu-item">
                         <a href="{{ route('berita.desa.index') }}" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Semua Berita</span>
+                                <span class="menu-name" style="font-size:14px">Daftar Berita</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder mdi mdi-view-list "></i>
@@ -61,7 +61,7 @@
                     <li class="menu-item">
                         <a href="{{ route('kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Semua Kategori Berita</span>
+                                <span class="menu-name" style="font-size:14px">Kategori Berita</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder mdi mdi-format-list-checks "></i>
@@ -81,7 +81,7 @@
                     <li class="menu-item">
                         <a href="{{ route('tag.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Semua Tag Berita</span>
+                                <span class="menu-name" style="font-size:14px">Tag Berita</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder mdi mdi-format-list-bulleted-type "></i>
