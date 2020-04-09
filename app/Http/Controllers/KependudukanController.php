@@ -9,6 +9,7 @@ use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use File;
+use Illuminate\Support\Facades\Auth;
 
 class KependudukanController extends Controller
 {
