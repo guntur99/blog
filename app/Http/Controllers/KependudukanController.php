@@ -9,7 +9,6 @@ use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use File;
-use Illuminate\Support\Facades\Auth;
 
 class KependudukanController extends Controller
 {
@@ -91,12 +90,9 @@ class KependudukanController extends Controller
     public function store(Request $req)
     {
 
-        $id = Auth::id();
-
         $inputs = $req->all();
 
         $inputs['created_at'] = Carbon::now()->toDateTimeString();
-        $inputs['created_by'] = $id;
 
         // dd($inputs);
 
