@@ -29,9 +29,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
-                        <a href="{{ route('buat.tag.berita.desa') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                        <button id="buat_kategori_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
                                 class="mdi mdi-playlist-plus"></i> Buat Tag Berita
-                        </a>
+                        </button>
                     </div>
 
                 </div>
@@ -65,6 +65,7 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
+    @include('parts.modals.berita.tag.create_data')
     @include('parts.modals.berita.tag.update_data')
 
 @endsection
@@ -212,6 +213,61 @@
 
         });
 
+        $('#buat_kategori_baru').click((e)=>{
+            $('#createTagModalViewer').modal('show');
+        });
+
+        var nama_tag = $('#nama_tag');
+
+        nama_tag.on('input', (e)=> {
+            var value = e.target.value
+
+            if (value.length === 0) {
+                nama_tag.addClass('is-invalid');
+                nama_tag.removeClass('is-valid');
+            }else{
+                nama_tag.addClass('is-valid');
+                nama_tag.removeClass('is-invalid');
+            }
+
+        })
+
+        $('#buat_data_tag').click((e) => {
+            e.preventDefault();
+
+            ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
+
+            var formData = new FormData()
+            formData.append('nama', nama_tag.val());
+
+            axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+
+                Swal.fire({
+                    title: 'Success',
+                    text: "Buat Berita Berhasil!",
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonText: 'Close',
+                    allowOutsideClick: false,
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'btn btn-success px-3 ml-2',
+                        title: 'swal-title-custom',
+                        content: 'swal-text-custom mb-2',
+                        popup: 'swal-popup-custom'
+                    }
+                }).then((result) => {
+                    if(result.value){
+                        $('#createTagModalViewer').modal('hide');
+                        dataTable.draw();
+                    }
+                });
+
+            }).catch((err) => {
+                return 'error';
+            });
+
+        });
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
