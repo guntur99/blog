@@ -48,10 +48,9 @@
                                 <table id="berita-table" class="table" style="width:100%">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>No.</th>
                                         <th>Judul Berita</th>
                                         <th>Kategori</th>
-                                        {{-- <th>Tag</th> --}}
                                         <th>Dibuat Oleh</th>
                                         <th>Dibuat Tanggal</th>
                                     </tr>

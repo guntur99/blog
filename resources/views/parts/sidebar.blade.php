@@ -49,16 +49,6 @@
                         </a>
                     </li>
                     {{-- <li class="menu-item">
-                        <a href="#" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Berita Disembunyikan</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
-                            </span>
-                        </a>
-                    </li> --}}
-                    <li class="menu-item">
                         <a href="{{ route('berita.desa.create') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Berita Baru</span>
@@ -67,8 +57,7 @@
                                 <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
-                    </li>
-                    <hr>
+                    </li> --}}
                     <li class="menu-item">
                         <a href="{{ route('kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
@@ -79,7 +68,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="{{ route('buat.kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Kategori Berita Baru</span>
@@ -88,8 +77,7 @@
                                 <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
-                    </li>
-                    <hr>
+                    </li> --}}
                     <li class="menu-item">
                         <a href="{{ route('tag.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
@@ -100,7 +88,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="{{ route('buat.tag.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Tag Berita Baru</span>
@@ -109,7 +97,7 @@
                                 <i class="icon-placeholder mdi mdi-playlist-plus "></i>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

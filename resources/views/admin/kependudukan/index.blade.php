@@ -43,7 +43,7 @@
                                 <table id="kependudukan-table" class="table" style="width:100%">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>No.</th>
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>Jenis Kelamin</th>
