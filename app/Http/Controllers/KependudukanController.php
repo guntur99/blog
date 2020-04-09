@@ -90,6 +90,8 @@ class KependudukanController extends Controller
     public function store(Request $req)
     {
 
+        $id = Auth::id();
+
         $inputs = $req->all();
 
         $inputs['created_at'] = Carbon::now()->toDateTimeString();
