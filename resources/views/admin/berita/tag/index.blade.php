@@ -235,6 +235,8 @@
         $('#buat_data_tag').click((e) => {
             e.preventDefault();
 
+            $('#createTagModalViewer').modal('hide');
+
             ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
 
             var formData = new FormData()
@@ -258,7 +260,6 @@
                     }
                 }).then((result) => {
                     if(result.value){
-                        $('#createTagModalViewer').modal('hide');
                         dataTable.draw();
                     }
                 });

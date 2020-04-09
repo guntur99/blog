@@ -235,6 +235,8 @@
         $('#buat_data_kategori').click((e)=>{
             e.preventDefault();
 
+            $('#createKategoriModalViewer').modal('hide');
+
             ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
 
             var formData = new FormData()
@@ -258,7 +260,6 @@
                     }
                 }).then((result) => {
                     if(result.value){
-                        $('#createKategoriModalViewer').modal('hide');
                         dataTable.draw();
                     }
                 });

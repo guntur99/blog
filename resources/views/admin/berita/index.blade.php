@@ -296,6 +296,8 @@
             $('#btn_hapus_berita').click((e)=>{
                 e.preventDefault();
 
+                $('#beritaModalViewer').modal('hide');
+
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
@@ -317,7 +319,6 @@
                         }
                     }).then((result) => {
                         if (result.value) {
-                            $('#beritaModalViewer').modal('hide');
                             dataTable.draw();
                             // location.reload();
                         }

@@ -119,7 +119,7 @@
                     <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Semua Informasi</span>
+                                <span class="menu-name" style="font-size:14px">Daftar Informasi</span>
                             </span>
                             <span class="menu-icon">
                                 <i class="icon-placeholder mdi mdi-hexagon-multiple "></i>
