@@ -58,6 +58,13 @@
             margin-right: 10px;
             z-index: 1;
         }
+
+        .pointer_card {cursor: pointer;}
+
+        .no-drop_cursor {cursor: no-drop;}
+
+        .datepicker{z-index:9999 !important}
+
     </style>
     @yield('custom_css')
     <!-- Additional library for page -->

@@ -8,6 +8,9 @@
 @include('parts.modals.kependudukan.delete_data')
 @include('parts.modals.kependudukan.add_data')
 
+@include('parts.modals.berita.tag.create_data')
+@include('parts.modals.berita.tag.update_data')
+
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery/jquery.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery-ui/jquery-ui.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/popper/popper.js') }}"   ></script>
@@ -37,6 +40,8 @@
 <script src="{{asset('js/penduduk.js')}}"></script>
 <script src="{{asset('js/berita.js')}}"></script>
 <script src="{{asset('js/pemerintah.js')}}"></script>
+
+<!------------ START JS FOR KEPENDUDUKAN -------------->
 <script>
 
     $('.tgl').datepicker({
@@ -514,8 +519,76 @@
     });
     // END ADD DATA KEPENDUDUKAN
 </script>
+<!------------ END JS FOR KEPENDUDUKAN -------------->
+
+<!------------ START JS FOR KEPENDUDUKAN -------------->
+<script>
+
+    // START ADD TAG BERITA
+    var nama_tag = $('#nama_tag');
+
+    nama_tag.on('input', (e)=> {
+        var value = e.target.value
+
+        if (value.length === 0) {
+            nama_tag.addClass('is-invalid');
+            nama_tag.removeClass('is-valid');
+        }else{
+            nama_tag.addClass('is-valid');
+            nama_tag.removeClass('is-invalid');
+        }
+    });
+
+    $('#buat_data_tag_global').click((e) => {
+        e.preventDefault();
+
+        ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
+
+        var formData = new FormData()
+        formData.append('nama', nama_tag.val());
+
+        axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+
+            $('#createTagModalViewer').modal('hide');
+
+            Swal.fire({
+                title: 'Success',
+                text: "Buat Tag Berhasil!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if (result.value) {
+                    ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
+                    window.location.href = "{{route('tag.berita.desa')}}";
+                }
+            });
+
+        }).catch((err) => {
+            return 'error';
+        });
+
+    });
+
+    // END ADD TAG BERITA
+
+
+    // START UPDATE TAG BERITA
+
+    // END UPDATE TAG BERITA
+
+</script>
+<!------------ END JS FOR KEPENDUDUKAN -------------->
 
 @yield('custom_script')
-<!--page specific scripts for demo-->
+
 </body>
 </html>

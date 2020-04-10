@@ -288,7 +288,7 @@ class BeritaController extends Controller
             'tag_id' => 'required',
             'desc_singkat' => 'required',
             'desc' => 'required',
-            'image' => 'required|max:2048',
+            // 'image' => 'required|max:2048',
         ];
 
         $validator = \Validator::make($inputs, $rules);

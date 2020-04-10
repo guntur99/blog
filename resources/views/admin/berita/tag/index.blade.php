@@ -213,10 +213,6 @@
 
         });
 
-        $('#buat_tag_baru').click((e)=>{
-            $('#createTagModalViewer').modal('show');
-        });
-
         var nama_tag = $('#nama_tag');
 
         nama_tag.on('input', (e)=> {
@@ -230,19 +226,25 @@
                 nama_tag.removeClass('is-invalid');
             }
 
-        })
+        });
+
+        $('#buat_tag_baru').click((e)=>{
+            $('#createTagModalViewer').modal('show');
+            $('#nama_tag').val('');
+        });
 
         $('#buat_data_tag').click((e) => {
             e.preventDefault();
 
-            $('#createTagModalViewer').modal('hide');
-
             ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
+
 
             var formData = new FormData()
             formData.append('nama', nama_tag.val());
 
             axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+
+                $('#createTagModalViewer').modal('hide');
 
                 Swal.fire({
                     title: 'Success',
@@ -261,6 +263,7 @@
                 }).then((result) => {
                     if(result.value){
                         dataTable.draw();
+                        ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
                     }
                 });
 

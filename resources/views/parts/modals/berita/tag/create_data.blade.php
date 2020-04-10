@@ -31,6 +31,9 @@
                                 <button type="button" id="buat_data_tag" class="btn ml-2 btn-success float-right">
                                     <i class="mdi mdi-cube-outline"></i> Buat Tag
                                 </button>
+                                <button type="button" id="buat_data_tag_global" class="btn ml-2 btn-success float-right d-none">
+                                    <i class="mdi mdi-cube-outline"></i> Buat Tag
+                                </button>
                             </div>
                         </div>
                     </div>
