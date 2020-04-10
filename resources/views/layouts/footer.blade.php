@@ -567,6 +567,8 @@
                 }
             }).then((result) => {
                 if (result.value) {
+                    $('#buat_data_tag').removeClass('d-none');
+                    $('#buat_data_tag_global').addClass('d-none');
                     ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
                     window.location.href = "{{route('tag.berita.desa')}}";
                 }

@@ -12,8 +12,6 @@ $('#form_tambah_tag').click((e) =>
     $('#createTagModalViewer').modal('show');
     $('#buat_data_tag').addClass('d-none');
     $('#buat_data_tag_global').removeClass('d-none');
-    $('#buat_data_tag').removeClass('d-none');
-    $('#buat_data_tag_global').addClass('d-none');
     $('#nama_tag').val('');
 });
 
