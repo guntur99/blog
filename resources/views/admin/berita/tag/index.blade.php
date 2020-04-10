@@ -109,6 +109,7 @@
             // console.log(data.nama);
 
             $('#updateTagModalViewer').modal('show');
+            $('#update_data_tag').addClass('d-none');
             $('#u_nama_tag').val(data.nama);
             $('#id_hide').val(data.id);
 

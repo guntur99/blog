@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         {{-- <h5 class="modal-title">Location (<span id="location_name_modal_title"></span>) - Facility (<span id="facility_name_modal_title"></span>) - Client (<span id="client_name_modal_title"></span>)</h5> --}}
-                        <h5 class="modal-title">Perbarui Data Tag</h5>
+                        <h5 class="modal-title">Mode Pembaruan Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -13,7 +13,26 @@
                     <div class="modal-body">
                         <!--card begins-->
                         <div class="row">
-                            <div class="form-group col-md-12">
+                            <div id="update_data_tag" class="col-md-12 bg-dark m-b-10 d-none">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-8 m-auto text-white p-t-40 p-b-20">
+
+                                            <h3 class="fw-300 text-center">Masukkan Nama Tag yang anda cari!
+                                            </h3>
+                                            <p class="p-t-30 form-dark">
+                                                <input type="search" id="search_by_tag" placeholder="Masukkan Nama Tag" class=" form-control form-control-lg">
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="all_result_tag">
+
+                            </div>
+                            <div class="form-group col-md-12" id="form_nama_tag">
                                 <label for="u_nama_tag">Nama Tag</label>
                                 <input autocomplete="off" type="text" class="form-control" name="u_nama_tag" id="u_nama_tag"
                                     placeholder="Nama Tag" required disabled>
@@ -25,8 +44,8 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row w-100" id="btn_form_nama_tag">
                         <hr>
-                        <div class="row w-100">
                             <div class="col-md-12" id="button-modals" style="padding:0px 0px">
                                 <div id="btn_perbarui_hapus">
                                     <button type="button" id="hapus_data_tag" class="btn ml-2 btn-danger float-right">

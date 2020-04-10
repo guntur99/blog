@@ -21,7 +21,7 @@
                                             <h1 class="fw-300 text-center">Masukkan NIK orang yang anda cari!
                                             </h1>
                                             <p class="p-t-30 form-dark">
-                                                <input type="search" id="search_by_nik" placeholder="Search Something" class=" form-control form-control-lg">
+                                                <input type="search" id="search_by_nik" placeholder="Masukkan NIK" class=" form-control form-control-lg">
                                             </p>
 
                                         </div>

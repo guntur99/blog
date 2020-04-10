@@ -459,7 +459,9 @@ class BeritaController extends Controller
 
     public function updateTag(Request $req){
 
-        $inputs = $req->all();
+        $inputs = $req->except('old_name');
+        // dd($req->all());
+        $old_name = $req->old_name;
 
         $date_time = Carbon::now()->toDateTimeString();
         $inputs['updated_at'] = $date_time;
@@ -473,9 +475,19 @@ class BeritaController extends Controller
         }
         // dd($inputs);
         try {
-            \DB::table('tag_beritas')
-                ->where('id', $req->id)
-                ->update($inputs);
+            if($old_name !== null){
+
+                \DB::table('tag_beritas')
+                    ->where('nama', $old_name)
+                    ->update($inputs);
+
+            }else{
+
+                \DB::table('tag_beritas')
+                    ->where('id', $req->id)
+                    ->update($inputs);
+
+            }
         } catch (\Exception $e) {
             \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
             return response()->json([
