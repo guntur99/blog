@@ -389,11 +389,19 @@ class BeritaController extends Controller
 
     public function deleteKategori(Request $req)
     {
+        $old_name = $req->old_name;
 
         try {
-            \DB::table('kategori_beritas')
+            if($old_name !== null)
+            {
+                \DB::table('kategori_beritas')
+                    ->where('nama', $req->nama)
+                    ->delete();
+            }else{
+                \DB::table('kategori_beritas')
                         ->where('id', $req->id)
                         ->delete();
+            }
         } catch (\Exception $e) {
             \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
             return sendResponse([
@@ -513,7 +521,8 @@ class BeritaController extends Controller
         // dd($req->all());
         $old_name = $req->old_name;
 
-        try {if($old_name !== null)
+        try {
+            if($old_name !== null)
             {
                 \DB::table('tag_beritas')
                     ->where('nama', $req->nama)

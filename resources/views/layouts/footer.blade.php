@@ -851,7 +851,7 @@
     // END ADD KATEGORI BERITA
 
 
-    // START UPDATE TAG BERITA
+    // START UPDATE KATEGORI BERITA
     var u_nama_kategori = $('#u_nama_kategori');
     $("#search_by_kategori").keypress(function(event) {
         if (event.keyCode === 13) {
@@ -860,17 +860,17 @@
 
             axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
 
-                var dataTag = res.data.data;
+                var dataKategori = res.data.data;
                 var test = 0;
-                // console.log(dataTag);
+                // console.log(dataKategori);
                 // console.log(tag_now);
 
-                var arrayTag = [];
-                for (let index = 0; index < dataTag.length; index++) {
-                    arrayTag.push(dataTag[index].nama);
+                var arrayKategori = [];
+                for (let index = 0; index < dataKategori.length; index++) {
+                    arrayKategori.push(dataKategori[index].nama);
                 }
 
-                var arrayResult = arrayTag.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                var arrayResult = arrayKategori.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
                 // console.log(arrayResult);
 
                 var res = '';
@@ -967,7 +967,111 @@
         }
 
     }
-    // END UPDATE TAG BERITA
+    // END UPDATE KATEGORI BERITA
+
+
+    // START DELETE KATEGORI BERITA
+    $("#search_by_kategori_hapus").keypress(function(event) {
+        if (event.keyCode === 13) {
+
+            var tag_now = $("#search_by_kategori_hapus").val();
+
+            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+
+                var dataKategori = res.data.data;
+                // console.log(dataKategori);
+                // console.log(tag_now);
+
+                var arrayKategori = [];
+                for (let index = 0; index < dataKategori.length; index++) {
+                    arrayKategori.push(dataKategori[index].nama);
+                }
+
+                var arrayResult = arrayKategori.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                // console.log(arrayResult);
+
+                var res = '';
+
+                $.each(arrayResult, function(key, val){
+
+                    // console.log('key: '+key+', => value: '+val);
+                    res += `<div class="option-box ml-3 mr-1">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeKategori(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content  p-all-15 text-center mr-4">
+                                        <span class="mdi h1 d-block mdi-new-box"></span>
+                                        <span class="h5">`+val+`</span>
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+
+                $('#all_result_kategori').html(res);
+
+                $('#hapus_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Dihapus!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function removeKategori(id){
+
+        var checkBox = document.getElementById(id);
+        var valueKategori = document.getElementById(id).value;
+
+        if (checkBox.checked == true){
+
+            // $('#form_nama_tag').removeClass('d-none');
+            $('#btn_form_nama_kategori').removeClass('d-none');
+            $('#perbarui_data_kategori').addClass('d-none');
+            $('#simpan_data_kategori').addClass('d-none');
+            $('#hapus_data_kategori').removeClass('d-none');
+            $('#u_nama_kategori').val(valueKategori);
+            $('#u_nama_kategori').prop('disabled', true);
+            $('#update_id_hide').val(valueKategori);
+
+        }
+
+    }
+    // END DELETE KATEGORI BERITA
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->
 

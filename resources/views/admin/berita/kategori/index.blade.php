@@ -153,11 +153,6 @@
             $('#simpan_data_kategori').click((e)=>{
                 e.preventDefault();
 
-                $('#u_nama_kategori').prop("disabled", true);
-                $('#btn_perbarui_hapus_kategori').removeClass('d-none');
-                $('#simpan_data_kategori').addClass('d-none');
-                $('#updateKategoriModalViewer').modal('hide');
-
                 ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
 
                 // console.log($('#id_hide').val());
@@ -166,6 +161,11 @@
                 formData.append('nama', u_nama_kategori.val());
 
                 axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+
+                    $('#u_nama_kategori').prop("disabled", true);
+                    $('#btn_perbarui_hapus_kategori').removeClass('d-none');
+                    $('#simpan_data_kategori').addClass('d-none');
+                    $('#updateKategoriModalViewer').modal('hide');
 
                     Swal.fire({
                         title: 'Success',
@@ -196,13 +196,12 @@
             $('#hapus_data_kategori').click((e)=>{
                 e.preventDefault();
 
-                $('#updateKategoriModalViewer').modal('hide');
-
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
                 axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
 
+                    $('#updateKategoriModalViewer').modal('hide');
                     Swal.fire({
                         title: 'Success',
                         text: "Data Berhasil Dihapus!",

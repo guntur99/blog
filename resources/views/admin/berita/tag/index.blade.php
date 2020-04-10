@@ -139,10 +139,6 @@
             $('#simpan_data_tag').click((e)=>{
                 e.preventDefault();
 
-                $('#u_nama_tag').prop("disabled", true);
-                $('#btn_perbarui_hapus').removeClass('d-none');
-                $('#simpan_data_tag').addClass('d-none');
-                $('#updateTagModalViewer').modal('hide');
 
                 ((u_nama_tag.val() == "") ? u_nama_tag.addClass('is-invalid') : u_nama_tag.addClass('is-valid'));
 
@@ -153,6 +149,10 @@
 
                 axios.post('{{route("update.tag.berita.desa")}}', formData).then((res) => {
 
+                    $('#u_nama_tag').prop("disabled", true);
+                    $('#btn_perbarui_hapus').removeClass('d-none');
+                    $('#simpan_data_tag').addClass('d-none');
+                    $('#updateTagModalViewer').modal('hide');
                     Swal.fire({
                         title: 'Success',
                         text: "Data Berhasil Diperbarui!",
