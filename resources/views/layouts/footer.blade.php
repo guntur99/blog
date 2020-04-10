@@ -593,8 +593,8 @@
 
                 var dataTag = res.data.data;
                 var test = 0;
-                console.log(dataTag);
-                console.log(tag_now);
+                // console.log(dataTag);
+                // console.log(tag_now);
 
                 var arrayTag = [];
                 for (let index = 0; index < dataTag.length; index++) {
@@ -602,13 +602,13 @@
                 }
 
                 var arrayResult = arrayTag.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
-                console.log(arrayResult);
+                // console.log(arrayResult);
 
                 var res = '';
 
                 $.each(arrayResult, function(key, val){
 
-                    console.log('key: '+key+', => value: '+val);
+                    // console.log('key: '+key+', => value: '+val);
                     res += `<div class="option-box ml-1 mr-1">
                                 <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="checkTag(`+key+`)">
                                 <label for="`+key+`">
@@ -660,19 +660,9 @@
                         });
 
                     }).catch((err) => {
-                        // hideLoader();
-                        // alert(err.response.data.message)
                         return showModal('error', err.response.data.message);
                     });
                 })
-                    // }
-                // if(test == 0)
-                // {
-                //     $('#form_nama_tag').addClass('d-none');
-                //     $('#btn_form_nama_tag').addClass('d-none');
-                // }
-
-
             });
         }
     });
@@ -682,10 +672,9 @@
 
         var checkBox = document.getElementById(id);
         var valueTag = document.getElementById(id).value;
-        var tt = $("#"+id+"").val();
+
         if (checkBox.checked == true){
-            // alert(id)
-            // test = test+1;
+
             $('#form_nama_tag').removeClass('d-none');
             $('#btn_form_nama_tag').removeClass('d-none');
             $('#btn_perbarui_hapus').addClass('d-none');
@@ -693,13 +682,115 @@
             $('#u_nama_tag').val(valueTag);
             $('#u_nama_tag').prop('disabled', false);
             $('#update_id_hide').val(valueTag);
-            console.log(tt);
 
         }
 
-
     }
     // END UPDATE TAG BERITA
+
+
+    // START DELETE TAG BERITA
+    $("#search_by_tag_hapus").keypress(function(event) {
+        if (event.keyCode === 13) {
+
+            var tag_now = $("#search_by_tag_hapus").val();
+
+            axios.get("{{ route('tag.berita.desa.datatable') }}").then((res) => {
+
+                var dataTag = res.data.data;
+                console.log(dataTag);
+                console.log(tag_now);
+
+                var arrayTag = [];
+                for (let index = 0; index < dataTag.length; index++) {
+                    arrayTag.push(dataTag[index].nama);
+                }
+
+                var arrayResult = arrayTag.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                console.log(arrayResult);
+
+                var res = '';
+
+                $.each(arrayResult, function(key, val){
+
+                    console.log('key: '+key+', => value: '+val);
+                    res += `<div class="option-box ml-1 mr-1">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeTag(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content">
+                                        <span class="h6 d-block">`+val+`
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+
+                $('#all_result_tag').html(res);
+
+                $('#hapus_data_tag').click((e)=>{
+                    e.preventDefault();
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_tag').val());
+
+                    axios.post('{{route("delete.tag.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateTagModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Tag Berhasil Dihapus!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('tag.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function removeTag(id){
+
+        var checkBox = document.getElementById(id);
+        var valueTag = document.getElementById(id).value;
+
+        if (checkBox.checked == true){
+
+            // $('#form_nama_tag').removeClass('d-none');
+            $('#btn_form_nama_tag').removeClass('d-none');
+            $('#perbarui_data_tag').addClass('d-none');
+            $('#simpan_data_tag').addClass('d-none');
+            $('#hapus_data_tag').removeClass('d-none');
+            $('#u_nama_tag').val(valueTag);
+            $('#u_nama_tag').prop('disabled', true);
+            $('#update_id_hide').val(valueTag);
+
+        }
+
+    }
+    // END DELETE TAG BERITA
 
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->

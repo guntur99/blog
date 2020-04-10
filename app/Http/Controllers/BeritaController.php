@@ -501,11 +501,19 @@ class BeritaController extends Controller
 
     public function deleteTag(Request $req)
     {
+        // dd($req->all());
+        $old_name = $req->old_name;
 
-        try {
-            \DB::table('tag_beritas')
-                        ->where('id', $req->id)
-                        ->delete();
+        try {if($old_name !== null)
+            {
+                \DB::table('tag_beritas')
+                    ->where('nama', $req->nama)
+                    ->delete();
+            }else{
+                \DB::table('tag_beritas')
+                    ->where('id', $req->id)
+                    ->delete();
+            }
         } catch (\Exception $e) {
             \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
             return sendResponse([

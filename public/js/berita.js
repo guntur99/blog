@@ -25,4 +25,23 @@ $('#form_perbarui_tag').click((e) =>
     $('#btn_form_nama_tag').addClass('d-none');
     $('#all_result_tag').html('');
     $('#search_by_tag').val('');
+    $('#mode_pembaruan').removeClass('d-none');
+    $('#mode_penghapusan').addClass('d-none');
+    $('#search_by_tag_hapus').addClass('d-none');
+    $('#search_by_tag').removeClass('d-none');
+});
+
+$('#form_hapus_tag').click((e) => {
+    e.preventDefault();
+    $('#allMenuBeritaModalViewer').modal('hide');
+    $('#updateTagModalViewer').modal('show');
+    $('#update_data_tag').removeClass('d-none');
+    $('#form_nama_tag').addClass('d-none');
+    $('#btn_form_nama_tag').addClass('d-none');
+    $('#all_result_tag').html('');
+    $('#search_by_tag').val('');
+    $('#mode_pembaruan').addClass('d-none');
+    $('#mode_penghapusan').removeClass('d-none');
+    $('#search_by_tag_hapus').removeClass('d-none');
+    $('#search_by_tag').addClass('d-none');
 });

@@ -5,7 +5,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         {{-- <h5 class="modal-title">Location (<span id="location_name_modal_title"></span>) - Facility (<span id="facility_name_modal_title"></span>) - Client (<span id="client_name_modal_title"></span>)</h5> --}}
-                        <h5 class="modal-title">Mode Pembaruan Data</h5>
+                        <h5 class="modal-title" id="mode_pembaruan">Mode Pembaruan Data</h5>
+                        <h5 class="modal-title d-none" id="mode_penghapusan">Mode Penghapusan Data</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -22,6 +23,7 @@
                                             </h3>
                                             <p class="p-t-30 form-dark">
                                                 <input type="search" id="search_by_tag" placeholder="Masukkan Nama Tag" class=" form-control form-control-lg">
+                                                <input type="search" id="search_by_tag_hapus" placeholder="Masukkan Nama Tag" class="d-none form-control form-control-lg">
                                             </p>
 
                                         </div>
