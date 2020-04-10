@@ -114,7 +114,7 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-15 m-t-35" style="margin-left:-17px;">
-                                    <div class="card-body pointer_card">
+                                    <div class="card-body pointer_card" id="form_perbarui_kategori">
                                         <div class="row">
                                             <div class="col-md-12 my-auto">
                                                 <div class="media">

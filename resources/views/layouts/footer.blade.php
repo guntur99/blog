@@ -582,7 +582,6 @@
         });
 
     });
-
     // END ADD TAG BERITA
 
 
@@ -629,8 +628,6 @@
 
                 $('#simpan_data_tag').click((e)=>{
                     e.preventDefault();
-
-                    validInvalid();
 
                     var formData = new FormData()
                     formData.append('old_name', $('#update_id_hide').val());
@@ -812,47 +809,6 @@
 
     });
 
-    $('#buat_data_tag_global').click((e) => {
-        e.preventDefault();
-
-        ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
-
-        var formData = new FormData()
-        formData.append('nama', nama_tag.val());
-
-        axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
-
-            $('#createTagModalViewer').modal('hide');
-
-            Swal.fire({
-                title: 'Success',
-                text: "Buat Tag Berhasil!",
-                icon: 'success',
-                showCancelButton: false,
-                confirmButtonText: 'Close',
-                allowOutsideClick: false,
-                buttonsStyling: false,
-                customClass: {
-                    confirmButton: 'btn btn-success px-3 ml-2',
-                    title: 'swal-title-custom',
-                    content: 'swal-text-custom mb-2',
-                    popup: 'swal-popup-custom'
-                }
-            }).then((result) => {
-                if (result.value) {
-                    $('#buat_data_tag').removeClass('d-none');
-                    $('#buat_data_tag_global').addClass('d-none');
-                    ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
-                    window.location.href = "{{route('tag.berita.desa')}}";
-                }
-            });
-
-        }).catch((err) => {
-            return 'error';
-        });
-
-    });
-
     $('#buat_data_kategori_global').click((e)=>{
         e.preventDefault();
 
@@ -894,6 +850,124 @@
     });
     // END ADD KATEGORI BERITA
 
+
+    // START UPDATE TAG BERITA
+    var u_nama_kategori = $('#u_nama_kategori');
+    $("#search_by_kategori").keypress(function(event) {
+        if (event.keyCode === 13) {
+
+            var tag_now = $("#search_by_kategori").val();
+
+            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+
+                var dataTag = res.data.data;
+                var test = 0;
+                // console.log(dataTag);
+                // console.log(tag_now);
+
+                var arrayTag = [];
+                for (let index = 0; index < dataTag.length; index++) {
+                    arrayTag.push(dataTag[index].nama);
+                }
+
+                var arrayResult = arrayTag.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                // console.log(arrayResult);
+
+                var res = '';
+
+                $.each(arrayResult, function(key, val){
+
+                    // console.log('key: '+key+', => value: '+val);
+                    res += `<div class="option-box ml-3 mr-1">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="checkKategori(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content  p-all-15 text-center mr-4">
+                                        <span class="mdi h1 d-block mdi-new-box"></span>
+                                        <span class="h5">`+val+`</span>
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                u_nama_kategori.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        u_nama_kategori.addClass('is-invalid');
+                        u_nama_kategori.removeClass('is-valid');
+                    }else{
+                        u_nama_kategori.addClass('is-valid');
+                        u_nama_kategori.removeClass('is-invalid');
+                    }
+
+                })
+
+                $('#all_result_kategori').html(res);
+
+                $('#simpan_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Diperbarui!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function checkKategori(id){
+
+        var checkBox = document.getElementById(id);
+        var valueKategori = document.getElementById(id).value;
+
+        if (checkBox.checked == true){
+
+            $('#form_nama_kategori').removeClass('d-none');
+            $('#btn_form_nama_kategori').removeClass('d-none');
+            $('#btn_perbarui_hapus_kategori').addClass('d-none');
+            $('#simpan_data_kategori').removeClass('d-none');
+            $('#u_nama_kategori').val(valueKategori);
+            $('#u_nama_kategori').prop('disabled', false);
+            $('#update_id_hide').val(valueKategori);
+
+        }
+
+    }
+    // END UPDATE TAG BERITA
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->
 

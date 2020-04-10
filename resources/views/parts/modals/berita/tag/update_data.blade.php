@@ -31,9 +31,7 @@
                                 </div>
 
                             </div>
-                            <div id="all_result_tag">
-
-                            </div>
+                            <div id="all_result_tag"></div>
                             <div class="form-group col-md-12" id="form_nama_tag">
                                 <label for="u_nama_tag">Nama Tag</label>
                                 <input autocomplete="off" type="text" class="form-control" name="u_nama_tag" id="u_nama_tag"

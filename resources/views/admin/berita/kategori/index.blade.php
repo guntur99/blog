@@ -125,14 +125,14 @@
 
             $('#updateKategoriModalViewer').modal('show');
             $('#u_nama_kategori').prop("disabled", true);
-            $('#btn_perbarui_hapus').removeClass('d-none');
+            $('#btn_perbarui_hapus_kategori').removeClass('d-none');
             $('#simpan_data_kategori').addClass('d-none');
             $('#u_nama_kategori').val(data.nama);
             $('#id_hide').val(data.id);
 
             $('#perbarui_data_kategori').click((e)=>{
                 $('#u_nama_kategori').prop("disabled", false);
-                $('#btn_perbarui_hapus').addClass('d-none');
+                $('#btn_perbarui_hapus_kategori').addClass('d-none');
                 $('#simpan_data_kategori').removeClass('d-none');
 
                 u_nama_kategori.on('input', (e)=> {
@@ -154,7 +154,7 @@
                 e.preventDefault();
 
                 $('#u_nama_kategori').prop("disabled", true);
-                $('#btn_perbarui_hapus').removeClass('d-none');
+                $('#btn_perbarui_hapus_kategori').removeClass('d-none');
                 $('#simpan_data_kategori').addClass('d-none');
                 $('#updateKategoriModalViewer').modal('hide');
 

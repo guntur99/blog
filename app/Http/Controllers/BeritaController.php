@@ -350,7 +350,10 @@ class BeritaController extends Controller
 
     public function updateKategori(Request $req){
 
-        $inputs = $req->all();
+        $inputs = $req->except('old_name');
+        // dd($inputs);
+
+        $old_name = $req->old_name;
 
         $date_time = Carbon::now()->toDateTimeString();
         $inputs['updated_at'] = $date_time;
@@ -364,9 +367,15 @@ class BeritaController extends Controller
         }
         // dd($inputs);
         try {
-            \DB::table('kategori_beritas')
+            if($old_name !== null){
+                \DB::table('kategori_beritas')
+                    ->where('nama', $old_name)
+                    ->update($inputs);
+            }else{
+                \DB::table('kategori_beritas')
                 ->where('id', $req->id)
                 ->update($inputs);
+            }
         } catch (\Exception $e) {
             \Log::error('Error : '.$e->getMessage().' File : '.$e->getFile().' ('.$e->getLine().') -- Request : '.json_encode($inputs));
             return response()->json([

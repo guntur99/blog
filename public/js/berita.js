@@ -58,5 +58,20 @@ $('#form_tambah_kategori').click((e) => {
     $('#buat_data_kategori_global').removeClass('d-none');
     $('#nama_kategori').val('');
 });
+
+$('#form_perbarui_kategori').click((e) => {
+    e.preventDefault();
+    $('#allMenuBeritaModalViewer').modal('hide');
+    $('#updateKategoriModalViewer').modal('show');
+    $('#update_data_kategori').removeClass('d-none');
+    $('#form_nama_kategori').addClass('d-none');
+    $('#btn_form_nama_kategori').addClass('d-none');
+    $('#all_result_kategori').html('');
+    $('#search_by_kategori').val('');
+    $('#mode_pembaruan_kategori').removeClass('d-none');
+    $('#mode_penghapusan_kategori').addClass('d-none');
+    $('#search_by_kategori_hapus').addClass('d-none');
+    $('#search_by_kategori').removeClass('d-none');
+});
 // ------------- END KATEGORI BERITA --------------------
 
