@@ -110,6 +110,9 @@
 
             $('#updateTagModalViewer').modal('show');
             $('#update_data_tag').addClass('d-none');
+            $('#u_nama_tag').prop("disabled", true);
+            $('#btn_perbarui_hapus').removeClass('d-none');
+            $('#simpan_data_tag').addClass('d-none');
             $('#u_nama_tag').val(data.nama);
             $('#id_hide').val(data.id);
 

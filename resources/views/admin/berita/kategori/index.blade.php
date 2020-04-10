@@ -124,6 +124,9 @@
             // console.log(data.nama);
 
             $('#updateKategoriModalViewer').modal('show');
+            $('#u_nama_kategori').prop("disabled", true);
+            $('#btn_perbarui_hapus').removeClass('d-none');
+            $('#simpan_data_kategori').addClass('d-none');
             $('#u_nama_kategori').val(data.nama);
             $('#id_hide').val(data.id);
 
@@ -235,14 +238,14 @@
         $('#buat_data_kategori').click((e)=>{
             e.preventDefault();
 
-            $('#createKategoriModalViewer').modal('hide');
-
             ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
 
             var formData = new FormData()
             formData.append('nama', nama_kategori.val());
 
             axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+
+                $('#createKategoriModalViewer').modal('hide');
 
                 Swal.fire({
                     title: 'Success',

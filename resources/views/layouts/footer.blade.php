@@ -11,6 +11,9 @@
 @include('parts.modals.berita.tag.create_data')
 @include('parts.modals.berita.tag.update_data')
 
+@include('parts.modals.berita.kategori.create_data')
+@include('parts.modals.berita.kategori.update_data')
+
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery/jquery.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery-ui/jquery-ui.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/popper/popper.js') }}"   ></script>
@@ -698,8 +701,8 @@
             axios.get("{{ route('tag.berita.desa.datatable') }}").then((res) => {
 
                 var dataTag = res.data.data;
-                console.log(dataTag);
-                console.log(tag_now);
+                // console.log(dataTag);
+                // console.log(tag_now);
 
                 var arrayTag = [];
                 for (let index = 0; index < dataTag.length; index++) {
@@ -707,13 +710,13 @@
                 }
 
                 var arrayResult = arrayTag.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
-                console.log(arrayResult);
+                // console.log(arrayResult);
 
                 var res = '';
 
                 $.each(arrayResult, function(key, val){
 
-                    console.log('key: '+key+', => value: '+val);
+                    // console.log('key: '+key+', => value: '+val);
                     res += `<div class="option-box ml-1 mr-1">
                                 <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeTag(`+key+`)">
                                 <label for="`+key+`">
@@ -791,6 +794,105 @@
 
     }
     // END DELETE TAG BERITA
+
+
+     // START ADD KATEGORI BERITA
+    var nama_kategori = $('#nama_kategori');
+
+    nama_kategori.on('input', (e)=> {
+        var value = e.target.value
+
+        if (value.length === 0) {
+            nama_kategori.addClass('is-invalid');
+            nama_kategori.removeClass('is-valid');
+        }else{
+            nama_kategori.addClass('is-valid');
+            nama_kategori.removeClass('is-invalid');
+        }
+
+    });
+
+    $('#buat_data_tag_global').click((e) => {
+        e.preventDefault();
+
+        ((nama_tag.val() == "") ? nama_tag.addClass('is-invalid') : nama_tag.addClass('is-valid'));
+
+        var formData = new FormData()
+        formData.append('nama', nama_tag.val());
+
+        axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+
+            $('#createTagModalViewer').modal('hide');
+
+            Swal.fire({
+                title: 'Success',
+                text: "Buat Tag Berhasil!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if (result.value) {
+                    $('#buat_data_tag').removeClass('d-none');
+                    $('#buat_data_tag_global').addClass('d-none');
+                    ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
+                    window.location.href = "{{route('tag.berita.desa')}}";
+                }
+            });
+
+        }).catch((err) => {
+            return 'error';
+        });
+
+    });
+
+    $('#buat_data_kategori_global').click((e)=>{
+        e.preventDefault();
+
+        ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+
+        var formData = new FormData()
+        formData.append('nama', nama_kategori.val());
+
+        axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+
+            $('#createKategoriModalViewer').modal('hide');
+
+            Swal.fire({
+                title: 'Success',
+                text: "Buat Kategori Berhasil!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if(result.value){
+                    $('#buat_data_kategori').removeClass('d-none');
+                    $('#buat_data_kategori_global').addClass('d-none');
+                    ((nama_kategori.val() == "") ? nama_kategori.addClass('is-valid') : nama_kategori.removeClass('is-invalid'), nama_kategori.removeClass('is-valid'));
+                    window.location.href = "{{route('kategori.berita.desa')}}";
+                }
+            });
+
+        }).catch((err) => {
+            return 'error';
+        });
+    });
+    // END ADD KATEGORI BERITA
 
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->

@@ -5,6 +5,7 @@ $('#guide_berita_desa').click((e)=>
     $('#allMenuBeritaModalViewer').modal('show');
 });
 
+// ------------- START TAG BERITA --------------------
 $('#form_tambah_tag').click((e) =>
 {
     e.preventDefault();
@@ -45,3 +46,17 @@ $('#form_hapus_tag').click((e) => {
     $('#search_by_tag_hapus').removeClass('d-none');
     $('#search_by_tag').addClass('d-none');
 });
+// ------------- END TAG BERITA --------------------
+
+
+// ------------- START KATEGORI BERITA --------------------
+$('#form_tambah_kategori').click((e) => {
+    e.preventDefault();
+    $('#allMenuBeritaModalViewer').modal('hide');
+    $('#createKategoriModalViewer').modal('show');
+    $('#buat_data_kategori').addClass('d-none');
+    $('#buat_data_kategori_global').removeClass('d-none');
+    $('#nama_kategori').val('');
+});
+// ------------- END KATEGORI BERITA --------------------
+

@@ -50,7 +50,7 @@
     <div class="container p-t-20">
         <div class="row">
             <div class="col-12 m-b-10">
-                <h3>Hi <strong class="text-primary">{{ $user_name }}</strong>, Selamat Datang!</h3>
+                <h3>Hi <strong class="text-primary">{{ $user_name }}</strong>, Selamat Datang.</h3>
             </div>
 
             <div class="col-md-6 col-lg-4">

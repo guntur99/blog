@@ -29,7 +29,10 @@
                         <div class="row w-100">
                             <div class="col-md-12" id="button-modals" style="padding:0px 0px">
                                 <button type="button" id="buat_data_kategori" class="btn ml-2 btn-success float-right">
-                                    <i class="mdi mdi-cube-outline"></i> Simpan Data
+                                    <i class="mdi mdi-cube-outline"></i> Buat Kategori
+                                </button>
+                                <button type="button" id="buat_data_kategori_global" class="btn ml-2 btn-success float-right d-none">
+                                    <i class="mdi mdi-cube-outline"></i> Buat Kategori
                                 </button>
                             </div>
                         </div>

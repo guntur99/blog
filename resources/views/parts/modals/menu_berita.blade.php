@@ -33,7 +33,7 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-30">
-                                    <div class="card bg-primary pointer_card">
+                                    <div class="card bg-primary pointer_card" id="form_tambah_kategori">
 
                                         <div class="card-body text-white">
                                             <div class="text-center p-b-0">
