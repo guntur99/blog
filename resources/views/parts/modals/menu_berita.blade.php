@@ -15,7 +15,7 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-30 m-t-10">
-                                    <div class="card bg-dark pointer_card">
+                                    <div class="card bg-dark pointer_card" id="form_tambah_berita" onclick="createBeritaDesa()">
 
                                         <div class="card-body text-white">
                                             <div class="text-center p-b-0">
@@ -72,13 +72,13 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-15 m-t-10" style="margin-left:-17px;">
-                                    <div class="card-body pointer_card">
+                                    <div class="card-body pointer_card" id="form_perbarui_berita">
                                         <div class="row">
                                             <div class="col-md-12 my-auto">
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-dark"><i
-                                                                    class="mdi mdi-newspaper"></i></div>
+                                                                    class="mdi mdi-view-list"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Perbarui Berita</h5>
@@ -92,13 +92,13 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-0" style="margin-left:-17px;">
-                                    <div class="card-body pointer_card">
+                                    <div class="card-body pointer_card" id="form_hapus_berita">
                                         <div class="row">
                                             <div class="col-md-12 my-auto">
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-dark"><i
-                                                                    class="mdi mdi-file-remove"></i></div>
+                                                                    class="mdi mdi-playlist-remove"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Hapus Berita</h5>
@@ -120,7 +120,7 @@
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-primary"><i
-                                                                    class="mdi mdi-newspaper"></i></div>
+                                                                    class="mdi mdi-format-list-checks"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Perbarui Kategori</h5>
@@ -140,7 +140,7 @@
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-primary"><i
-                                                                    class="mdi mdi-file-remove"></i></div>
+                                                                    class="mdi mdi-playlist-remove"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Hapus Kategori</h5>
@@ -162,7 +162,7 @@
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-success"><i
-                                                                    class="mdi mdi-newspaper"></i></div>
+                                                                    class="mdi mdi-format-list-bulleted-type"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Perbarui Tag</h5>
@@ -182,7 +182,7 @@
                                                 <div class="media">
                                                     <div class="avatar mr-3">
                                                         <div class="avatar-title rounded-circle bg-success"><i
-                                                                    class="mdi mdi-file-remove"></i></div>
+                                                                    class="mdi mdi-playlist-remove"></i></div>
                                                     </div>
                                                     <div class="media-body p-t-10">
                                                         <h5 class="m-b-0">Hapus Tag</h5>

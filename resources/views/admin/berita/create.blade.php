@@ -124,10 +124,6 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
-
-    @include('parts.modals.kependudukan.import_excel')
-
-
 @endsection
 @section('custom_script')
 

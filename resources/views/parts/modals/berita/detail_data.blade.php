@@ -12,7 +12,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- Single post-->
-                        <div class="card m-b-10">
+                        <div class=" m-b-10">
                             <div class="card-header pt-3">
                                 <div class="media">
                                     <div class="avatar mr-3 my-auto  avatar-xs " id="avatar_cover">
@@ -50,26 +50,19 @@
 
                                 </div>
                                 <hr>
-
-                        <div class="row col-md-12 w-100">
+                            </div>
+                        </div>
+                        <div class="row col-md-12 w-100 m-b-30">
                             <div class="col-md-4">
-                                {{-- <a href="#"
-                                       class="mdi mr-2 mdi-24px mdi-bookmark-outline opacity-75 align-middle"></a> --}}
                                     <div class="avatar-group">
                                         <div class="avatar avatar-xs">
                                             <img src="{{ asset('atmos/getting started/light/assets/img/users/user-2.jpg') }}" alt="..."
                                                  class="avatar-img rounded-circle">
                                         </div>
                                         <strong><p id="created_by" class="ml-1" style="margin-top:1px;"></p></strong>
-                                        {{-- <div class="avatar avatar-xs">
-                                            <span class="avatar-title rounded-circle">AB</span>
-                                        </div> --}}
                                     </div>
                             </div>
                             <div class="col-md-8" id="button-modal" style="padding:2px 2px">
-                            {{-- <div class="col-md-12" id="button-modal" style="padding:2px 2px"> --}}
-                            </div>
-                        </div>
                             </div>
                         </div>
                         <!--card begins-->

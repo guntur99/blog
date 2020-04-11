@@ -14,6 +14,9 @@
 @include('parts.modals.berita.kategori.create_data')
 @include('parts.modals.berita.kategori.update_data')
 
+@include('parts.modals.berita.detail_data')
+@include('parts.modals.berita.update_data')
+
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery/jquery.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery-ui/jquery-ui.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/popper/popper.js') }}"   ></script>
@@ -36,6 +39,12 @@
 <script src="{{ asset('atmos/getting started/light/assets/vendor/datedropper/datedropper.min.js') }}"></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/dropzone/dropzone.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery.mask/jquery.mask.min.js') }}"></script>
+
+<script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/trumbowyg.min.js') }}"></script>
+<script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js') }}"></script>
+<script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js') }}"></script>
+<script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{ asset('trumbowyg/js/vendor/jquery-3.3.1.min.js') }}"><\/script>')</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -1072,6 +1081,354 @@
 
     }
     // END DELETE KATEGORI BERITA
+
+
+
+    // START TAMBAH BERITA DESA
+    function createBeritaDesa(){
+        window.location.href = "{{ route('berita.desa.create') }}";
+    }
+    // END TAMBAH BERITA DESA
+
+    // START TAMBAH BERITA DESA
+    var arrayBeritaRes = [];
+    $("#search_by_berita").keypress(function(event) {
+
+        if (event.keyCode === 13) {
+
+            var title_now = $("#search_by_berita").val();
+            axios.get("{{ route('berita.desa.datatable') }}").then((res) => {
+
+                var dataBerita = res.data.data;
+                var arrayBerita = [];
+                for (let index = 0; index < dataBerita.length; index++) {
+                    arrayBerita.push(dataBerita[index].judul);
+                    arrayBeritaRes.push({
+                        'id': dataBerita[index].id,
+                        'judul': dataBerita[index].judul,
+                        'desc_singkat': dataBerita[index].desc_singkat,
+                        'desc': dataBerita[index].desc,
+                        'tag_id': dataBerita[index].tag_id,
+                        'category_name': dataBerita[index].category_name,
+                        'user_created_by': dataBerita[index].user_created_by,
+                        'image': dataBerita[index].image,
+                    });
+                }
+
+                var arrayResult = arrayBerita.filter(item => item.toLowerCase().indexOf(title_now) > -1);
+
+                var res = '';
+                $.each(arrayResult, function(key, val){
+
+                    res += `<div class="option-box ml-4 mt-1 mb-1">
+                                <input id="`+key+`" name="bigradios" value="`+val+`" type="radio" onclick="checkBerita(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content">
+                                        <span class="h5 text-primary d-block">`+val+`
+                                        </span>
+
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                $('#all_result_berita').html(res);
+
+                $('#simpan_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Diperbarui!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function checkBerita(id){
+
+        var checkBox = document.getElementById(id);
+        var valueBerita = document.getElementById(id).value;
+        var kategori_id = $('#u_kategori_id');
+        var desc = $('#desc');
+
+        if (checkBox.checked == true){
+            $('#form_berita_desa').removeClass('d-none');
+            // $('#btn_form_berita_desa').removeClass('d-none');
+            // $('#btn_perbarui_hapus_kategori').addClass('d-none');
+            // $('#simpan_data_kategori').removeClass('d-none');
+            // $('#u_judul_global').html(valueBerita);
+            // $('#u_nama_kategori').prop('disabled', false);
+            $('#update_id_hide').val(valueBerita);
+
+            for (let i = 0; i < arrayBeritaRes.length; i++) {
+                if(valueBerita == arrayBeritaRes[i].judul){
+
+                    var tag_string = arrayBeritaRes[i].tag_id;
+                    var tags = tag_string.split(",");
+                    // console.log(tags);
+
+                    var formData = new FormData()
+                    formData.append('tag_id', arrayBeritaRes[i].tag_id);
+                    axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+                        // console.log(res.data);
+                        var tag_array = res.data;
+                        var tag_list = '';
+
+                        for (let i = 0; i < tag_array.length; i++) {
+                            tag_list = tag_list + `<a href="#!" class="badge badge-soft-primary mr-2"><strong>@`+tag_array[i].nama+`</strong></a>`;
+
+
+                        }
+                        $('#u_tags_berita_global').html(tag_list);
+
+                    });
+
+                    var created_at = moment(arrayBeritaRes[i].created_at).format('DD MMMM YYYY');
+
+                    $('#u_judul_global').html(arrayBeritaRes[i].judul);
+                    $('#u_desc_singkat_global').html(arrayBeritaRes[i].desc_singkat);
+                    $('#u_created_at_global').html(created_at);
+                    $('#u_created_by_global').html(arrayBeritaRes[i].user_created_by);
+                    $('#u_avatar_cover_global').html(`<img src="`+arrayBeritaRes[i].image+`" alt="..."
+                        class="avatar-img rounded-circle">`);
+                    $('#u_image_cover_global').html(`<img class="rounded" id="image"
+                        src="`+arrayBeritaRes[i].image+`" alt="">`);
+
+                    $('#u_button_modal_global').html(`
+                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                            <label onclick="updateBeritaDesa(`+arrayBeritaRes[i].id+`)" class="btn  btn-light active pointer_card">
+                                <i class="mdi mdi-file-check"></i>
+                                <input type="radio" name="radio2" id="option1"   checked>
+                                Perbarui Berita
+                            </label>
+                        </div>
+                        `);
+
+                }
+            }
+
+        }
+    }
+
+    function updateBeritaDesa(id){
+        window.location.href = '{{url("edit-berita")}}/'+id;
+    }
+    // END UPDATE BERITA DESA
+
+
+    // START DELETE BERITA DESA
+    $("#search_by_berita_hapus").keypress(function(event) {
+
+        if (event.keyCode === 13) {
+
+            var title_now = $("#search_by_berita_hapus").val();
+            axios.get("{{ route('berita.desa.datatable') }}").then((res) => {
+
+                var dataBerita = res.data.data;
+                var arrayBerita = [];
+                for (let index = 0; index < dataBerita.length; index++) {
+                    arrayBerita.push(dataBerita[index].judul);
+                    arrayBeritaRes.push({
+                        'id': dataBerita[index].id,
+                        'judul': dataBerita[index].judul,
+                        'desc_singkat': dataBerita[index].desc_singkat,
+                        'desc': dataBerita[index].desc,
+                        'tag_id': dataBerita[index].tag_id,
+                        'category_name': dataBerita[index].category_name,
+                        'user_created_by': dataBerita[index].user_created_by,
+                        'image': dataBerita[index].image,
+                    });
+                }
+
+                var arrayResult = arrayBerita.filter(item => item.toLowerCase().indexOf(title_now) > -1);
+                var res = '';
+                $.each(arrayResult, function(key, val){
+
+                    res += `<div class="option-box ml-4 mt-1 mb-1">
+                                <input id="`+key+`" name="bigradios" value="`+val+`" type="radio" onclick="checkBeritaHapus(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content">
+                                        <span class="h5 text-primary d-block">`+val+`
+                                        </span>
+
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                $('#all_result_berita').html(res);
+
+                $('#simpan_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Diperbarui!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+    function checkBeritaHapus(id){
+
+        var checkBox = document.getElementById(id);
+        var valueBerita = document.getElementById(id).value;
+        var kategori_id = $('#u_kategori_id');
+        var desc = $('#desc');
+
+        if (checkBox.checked == true){
+            $('#form_berita_desa').removeClass('d-none');
+            $('#update_id_hide').val(valueBerita);
+
+            for (let i = 0; i < arrayBeritaRes.length; i++) {
+                if(valueBerita == arrayBeritaRes[i].judul){
+
+                    var tag_string = arrayBeritaRes[i].tag_id;
+                    var tags = tag_string.split(",");
+                    // console.log(tags);
+
+                    var formData = new FormData()
+                    formData.append('tag_id', arrayBeritaRes[i].tag_id);
+                    axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+                        // console.log(res.data);
+                        var tag_array = res.data;
+                        var tag_list = '';
+
+                        for (let i = 0; i < tag_array.length; i++) {
+                            tag_list = tag_list + `<a href="#!" class="badge badge-soft-primary mr-2"><strong>@`+tag_array[i].nama+`</strong></a>`;
+
+
+                        }
+                        $('#u_tags_berita_global').html(tag_list);
+
+                    });
+
+                    var created_at = moment(arrayBeritaRes[i].created_at).format('DD MMMM YYYY');
+
+                    $('#u_judul_global').html(arrayBeritaRes[i].judul);
+                    $('#u_desc_singkat_global').html(arrayBeritaRes[i].desc_singkat);
+                    $('#u_created_at_global').html(created_at);
+                    $('#u_created_by_global').html(arrayBeritaRes[i].user_created_by);
+                    $('#u_avatar_cover_global').html(`<img src="`+arrayBeritaRes[i].image+`" alt="..."
+                        class="avatar-img rounded-circle">`);
+                    $('#u_image_cover_global').html(`<img class="rounded" id="image"
+                        src="`+arrayBeritaRes[i].image+`" alt="">`);
+
+                    $('#u_button_modal_global').html(`
+                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                            <label onclick="deleteBeritaDesa(`+arrayBeritaRes[i].id+`)" class="btn  btn-dark pointer_card">
+                                <i class="mdi mdi-file-remove"></i>
+                                <input type="radio" name="radio2" id="option2"  > Hapus Berita
+                            </label>
+                        </div>
+                        `);
+
+                }
+            }
+
+        }
+    }
+
+    function deleteBeritaDesa(id){
+
+        var formData = new FormData()
+        formData.append('id', id);
+
+        axios.post('{{route("berita.desa.delete")}}', formData).then((res) => {
+
+            Swal.fire({
+                title: 'Success',
+                text: "Data Berhasil Dihapus!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '{{ route("berita.desa.index") }}';
+                }
+            });
+
+        }).catch((err) => {
+            return showModal('error', err.response.data.message);
+        });
+    }
+    // END DELETE BERITA DESA
+
+
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->
 

@@ -22,8 +22,8 @@
                                             <h3 class="fw-300 text-center">Masukkan Nama Tag yang anda cari!
                                             </h3>
                                             <p class="p-t-30 form-dark">
-                                                <input type="search" id="search_by_tag" placeholder="Masukkan Nama Tag" class=" form-control form-control-lg">
-                                                <input type="search" id="search_by_tag_hapus" placeholder="Masukkan Nama Tag" class="d-none form-control form-control-lg">
+                                                <input type="search" id="search_by_tag" placeholder="Nama Tag" class=" form-control form-control-lg">
+                                                <input type="search" id="search_by_tag_hapus" placeholder="Nama Tag" class="d-none form-control form-control-lg">
                                             </p>
 
                                         </div>

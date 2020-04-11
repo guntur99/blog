@@ -68,7 +68,6 @@
     </section>
 
     @include('parts.modals.berita.detail_data')
-    @include('parts.modals.berita.update_data')
 
 @endsection
 
@@ -95,14 +94,14 @@
             "columns": [
                 { "name": "id", "data": "id"},
                 { "name": "judul", "data": "judul" },
-                { "name": "category_name", "data": function(data){
-                    if(data.kategori_id == 1){
-                        return '<span class=" text-success"> '+data.category_name+'</span>'
-                    }else if(data.kategori_id == 2){
-                        return '<span class=" text-info"> '+data.category_name+'</span>'
-                    }
-                } },
-                // { "name": "tag_id", "data": "tag_id" },
+                // { "name": "category_name", "data": function(data){
+                //     if(data.kategori_id == 1){
+                //         return '<span class=" text-success"> '+data.category_name+'</span>'
+                //     }else if(data.kategori_id == 2){
+                //         return '<span class=" text-info"> '+data.category_name+'</span>'
+                //     }
+                // } },
+                { "name": "category_name", "data": "category_name" },
                 { "name": "user_created_by", "data": "user_created_by" },
                 { "name": "created_at", "data": function(data){
                     var created_at = data.created_at;
@@ -195,7 +194,7 @@
                 var tag_list = '';
 
                 for (let i = 0; i < tag_array.length; i++) {
-                    tag_list = tag_list + `<a href="#!" class="badge badge-soft-primary"><strong>@`+tag_array[i].nama+`</strong></a>`;
+                    tag_list = tag_list + `<a href="#!" class="badge badge-soft-primary mr-2"><strong>@`+tag_array[i].nama+`</strong></a>`;
 
 
                 }
@@ -286,7 +285,6 @@
                 })
 
                 $('#beritaModalViewer').modal('hide');
-                // $('#updateBeritaModalViewer').modal('show');
                 axios.get('{{url("edit-berita")}}/'+data.id).then((res) => {
                     window.location.href = '{{url("edit-berita")}}/'+data.id;
                 });

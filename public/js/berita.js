@@ -90,3 +90,35 @@ $('#form_hapus_kategori').click((e) => {
 });
 // ------------- END KATEGORI BERITA --------------------
 
+
+// ------------- START BERITA DESA --------------------
+$('#form_perbarui_berita').click((e) => {
+    e.preventDefault();
+    $('#allMenuBeritaModalViewer').modal('hide');
+    $('#updateBeritaModalViewer').modal('show');
+    $('#update_data_berita').removeClass('d-none');
+    $('#form_berita_desa').addClass('d-none');
+    $('#btn_form_berita_desa').addClass('d-none');
+    $('#all_result_berita').html('');
+    $('#search_by_berita').val('');
+    $('#mode_pembaruan_berita').removeClass('d-none');
+    $('#mode_penghapusan_berita').addClass('d-none');
+    $('#search_by_berita_hapus').addClass('d-none');
+    $('#search_by_berita').removeClass('d-none');
+});
+
+$('#form_hapus_berita').click((e) => {
+    e.preventDefault();
+    $('#allMenuBeritaModalViewer').modal('hide');
+    $('#updateBeritaModalViewer').modal('show');
+    $('#update_data_berita').removeClass('d-none');
+    $('#form_berita_desa').addClass('d-none');
+    $('#btn_form_berita_desa').addClass('d-none');
+    $('#all_result_berita').html('');
+    $('#search_by_berita').val('');
+    $('#mode_pembaruan_berita').addClass('d-none');
+    $('#mode_penghapusan_berita').removeClass('d-none');
+    $('#search_by_berita_hapus').removeClass('d-none');
+    $('#search_by_berita').addClass('d-none');
+});
+// ------------- END BERITA DESA --------------------
