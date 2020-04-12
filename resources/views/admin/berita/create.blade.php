@@ -179,12 +179,9 @@
         // }
 
         const compress = new Compress()
-
         const upload = document.getElementById('file_gambar')
-
         upload.addEventListener('change', (evt) => {
         const files = [...evt.target.files]
-        // console.log(files);
 
         compress.compress(files, {
             size: 4, // the max size in MB, defaults to 2MB
@@ -205,7 +202,7 @@
             // console.log(data)
             // console.log(res_img)
         })
-        }, false)
+        }, false);
 
         $('.desc_berita').trumbowyg();
 

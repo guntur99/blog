@@ -49,6 +49,8 @@
 <script>window.jQuery || document.write('<script src="{{ asset('trumbowyg/js/vendor/jquery-3.3.1.min.js') }}"><\/script>')</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.5/xlsx.full.min.js"></script>
+<script src="https://compressjs.herokuapp.com/compress.js"></script>
+<script src="{{ asset('js/compress.js') }}"></script>
 <script src="{{asset('js/penduduk.js')}}"></script>
 <script src="{{asset('js/berita.js')}}"></script>
 <script src="{{asset('js/pemerintah.js')}}"></script>

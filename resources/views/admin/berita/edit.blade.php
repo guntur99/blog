@@ -190,6 +190,8 @@
     <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js') }}"></script>
     <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js') }}"></script>
     <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script>
+    <script src="https://compressjs.herokuapp.com/compress.js"></script>
+    <script src="{{ asset('js/compress.js') }}"></script>
     <script>
 
         $('.tgl').datepicker({
@@ -199,27 +201,31 @@
         $('#importExcelModalViewer').on('hidden.bs.modal', function (e) {
         });
 
-        function fileGambar(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    if(e.target.result == undefined){
-                        alert('Something Wrong!')
-                    }
-                    // console.log(e.target.result);
+        const compress = new Compress()
+        const upload = document.getElementById('file_gambar')
+        upload.addEventListener('change', (evt) => {
+        const files = [...evt.target.files]
 
-                    $('#cover_berita')
-                        .attr('src', e.target.result)
-                        // .width(150)
-                        // .height(200)
-                        ;
+        compress.compress(files, {
+            size: 4, // the max size in MB, defaults to 2MB
+            quality: 0.75, // the quality of the image, max is 1,
+            maxWidth: 1920, // the max width of the output image, defaults to 1920px
+            maxHeight: 1920, // the max height of the output image, defaults to 1920px
+            resize: true // defaults to true, set false if you do not want to resize the image width and height
+        }).then((data) => {
+            // returns an array of compressed images
+            var res_img = data[0].prefix+data[0].data;
+            $('#cover_berita')
+                .attr('src', res_img)
+                // .width(150)
+                // .height(200)
+                ;
 
-                    $('#file_gambar_lain').val(e.target.result);
-
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+            $('#file_gambar_lain').val(res_img);
+            // console.log(data)
+            // console.log(res_img)
+        })
+        }, false);
 
         $('.desc_berita').trumbowyg();
 
