@@ -67,10 +67,6 @@
                                         </div>
                                         <br>
                                         <div>
-                                            {{-- <label>Tag Berita</label>
-                                            <select class="form-control select2" multiple="multiple" id="tag-berita-picker"
-                                                name=tag_berita_id[]>
-                                            </select> --}}
                                             <div class="card m-b-30">
                                                 <div class="card-header">
                                                     <h5 class="m-b-0">
@@ -82,29 +78,6 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div>
-                                                        {{-- <div class="">
-                                                            <div class="tag-input">
-                                                                <input checked id="oreo" type="checkbox">
-                                                                <label for="oreo">Oreo</label>
-                                                            </div>
-                                                            <div class="tag-input">
-                                                                <input id="kitkat" type="checkbox">
-                                                                <label for="kitkat">Kitkat</label>
-                                                            </div>
-                                                            <div class="tag-input">
-                                                                <input id="Eclair" type="checkbox">
-                                                                <label for="Eclair">Eclair</label>
-                                                            </div>
-                                                            <div class="tag-input">
-                                                                <input id="Gingerbread" type="checkbox">
-                                                                <label for="Gingerbread">Gingerbread</label>
-                                                            </div>
-                                                            <div class="tag-input">
-                                                                <input id="Honeycomb" type="checkbox">
-                                                                <label for="Honeycomb"> Honeycomb</label>
-                                                            </div>
-
-                                                        </div> --}}
                                                         <div class="">
 
                                                                 @foreach ($tag_selected as $ts)
@@ -361,7 +334,6 @@
             ((desc.val() == "") ? desc.addClass('is-invalid') : desc.addClass('is-valid'));
 
             var ss = $('input[name="tag[]"]');
-
             var tab_berita = [];
             ss.each(function () {
 
@@ -370,7 +342,6 @@
 
                 }
             });
-            // console.log(img_prefix);
 
             var formData = new FormData()
             formData.append('id', {{ $data->id }});
