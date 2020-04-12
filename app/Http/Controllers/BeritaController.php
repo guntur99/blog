@@ -100,6 +100,8 @@ class BeritaController extends Controller
         $inputs = $req->except('image');
         $id = Auth::id();
 
+        // dd($req->all());
+
         $date_time = Carbon::now()->toDateTimeString();
         $inputs['created_at'] = $date_time;
         $inputs['created_by'] = $id;
