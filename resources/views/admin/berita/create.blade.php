@@ -79,7 +79,7 @@
                                         <div>
                                             <label for="last_name">Cover Berita*</label>
                                             <div class="custom-file" id="custom_file">
-                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".jpg,.jpeg" onchange="fileGambar(this)" required>
+                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".png,.jpg,.jpeg" required>
                                                 <label class="custom-file-label" for="file_gambar"
                                                     >Pilih Gambar</label>
                                                 <textarea id="file_gambar_lain" style="display: none;"></textarea>
@@ -143,40 +143,7 @@
         $('#importExcelModalViewer').on('hidden.bs.modal', function (e) {
         });
 
-        // function fileGambar(input) {
-        //     if (input.files && input.files[0]) {
-        //         var reader = new FileReader();
-        //         reader.onload = function (e) {
-        //             if(e.target.result == undefined){
-        //                 alert('Something Wrong!')
-        //             }
-        //             console.log(e.target.result);
-
-        //             // const compress = new Compress()
-        //             // compress.compress(e.target.result, {
-        //             //     size: 4, // the max size in MB, defaults to 2MB
-        //             //     quality: 0.75, // the quality of the image, max is 1,
-        //             //     maxWidth: 1920, // the max width of the output image, defaults to 1920px
-        //             //     maxHeight: 1920, // the max height of the output image, defaults to 1920px
-        //             //     resize: true // defaults to true, set false if you do not want to resize the image width and height
-        //             // }).then((data) => {
-        //             //     // returns an array of compressed images
-        //             //     console.log(data)
-        //             // })
-
-        //             // $('#cover_berita')
-        //             //     .attr('src', e.target.result)
-        //             //     // .width(150)
-        //             //     // .height(200)
-        //             //     ;
-
-        //             // $('#file_gambar_lain').val(e.target.result);
-
-
-        //         };
-        //         reader.readAsDataURL(input.files[0]);
-        //     }
-        // }
+        var img_prefix = '';
 
         const compress = new Compress()
         const upload = document.getElementById('file_gambar')
@@ -199,6 +166,7 @@
                 ;
 
             $('#file_gambar_lain').val(res_img);
+            img_prefix = data[0].prefix;
             // console.log(data)
             // console.log(res_img)
         })
@@ -342,6 +310,7 @@
             formData.append('desc_singkat', desc_singkat.val());
             formData.append('desc', desc.val());
             formData.append('image', image.val());
+            formData.append('image_prefix', img_prefix);
             formData.append('slug', string_to_slug(judul.val()));
 
             axios.post('{{route("berita.desa.store")}}', formData).then((res) => {

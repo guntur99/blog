@@ -97,7 +97,7 @@ class BeritaController extends Controller
 
     public function store(Request $req)
     {
-        $inputs = $req->except('image');
+        $inputs = $req->except(['image', 'image_prefix']);
         $id = Auth::id();
 
         // dd($req->all());
@@ -108,8 +108,14 @@ class BeritaController extends Controller
 
         $image = $req->image;  // your base64 encoded
         if($image != null){
-            $image = str_replace('data:image/jpeg;base64,', '', $image);
-            $image = str_replace(' ', '+', $image);
+            if ($req->image_prefix == 'data:image/jpeg;base64,') {
+                $image = str_replace('data:image/jpeg;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+            } elseif ($req->image_prefix == 'data:image/png;base64,') {
+                $image = str_replace('data:image/png;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+            }
+
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             \File::put('img_berita'. '/' . $imageName, base64_decode($image));
 
@@ -223,7 +229,7 @@ class BeritaController extends Controller
     public function update(Request $req)
     {
         // dd($req->all());
-        $inputs = $req->except('image');
+        $inputs = $req->except(['image', 'image_prefix']);
         $id = Auth::id();
 
         $date_time = Carbon::now()->toDateTimeString();
@@ -232,8 +238,18 @@ class BeritaController extends Controller
 
         $image = $req->image;  // your base64 encoded
         if($image != null){
-            $image = str_replace('data:image/jpeg;base64,', '', $image);
-            $image = str_replace(' ', '+', $image);
+            if($req->image_prefix == 'data:image/jpeg;base64,'){
+
+                $image = str_replace('data:image/jpeg;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+
+            }elseif ($req->image_prefix == 'data:image/png;base64,') {
+
+                $image = str_replace('data:image/png;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+
+            }
+
             $imageName = 'berita-'.$req->slug.$date_time.'.'.'jpg';
             File::put('img_berita'. '/' . $imageName, base64_decode($image));
             $dd = asset('img_berita/'.$imageName);

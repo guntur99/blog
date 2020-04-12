@@ -137,7 +137,7 @@
                                         <div>
                                             <label for="last_name">Cover Berita*</label>
                                             <div class="custom-file" id="custom_file">
-                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".jpg,.jpeg" onchange="fileGambar(this)">
+                                                <input type="file" class="custom-file-input" id="file_gambar" accept=".png,.jpg,.jpeg">
                                                 <label class="custom-file-label" for="file_gambar"
                                                     >Pilih Gambar Baru</label>
                                                 <textarea id="file_gambar_lain" style="display: none;"></textarea>
@@ -201,6 +201,8 @@
         $('#importExcelModalViewer').on('hidden.bs.modal', function (e) {
         });
 
+        var img_prefix = '';
+
         const compress = new Compress()
         const upload = document.getElementById('file_gambar')
         upload.addEventListener('change', (evt) => {
@@ -222,6 +224,7 @@
                 ;
 
             $('#file_gambar_lain').val(res_img);
+            img_prefix = data[0].prefix;
             // console.log(data)
             // console.log(res_img)
         })
@@ -367,6 +370,7 @@
 
                 }
             });
+            // console.log(img_prefix);
 
             var formData = new FormData()
             formData.append('id', {{ $data->id }});
@@ -376,6 +380,7 @@
             formData.append('desc_singkat', desc_singkat.val());
             formData.append('desc', desc.val());
             formData.append('image', image.val());
+            formData.append('image_prefix', img_prefix);
             formData.append('slug', string_to_slug(judul.val()));
 
             axios.post('{{route("berita.desa.update")}}', formData).then((res) => {
