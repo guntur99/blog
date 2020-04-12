@@ -229,7 +229,7 @@ class BeritaController extends Controller
     public function update(Request $req)
     {
         // dd($req->all());
-        $inputs = $req->except(['image', 'image_prefix']);
+        $inputs = $req->except(['image', 'image_prefix', 'old_image']);
         $id = Auth::id();
 
         $date_time = Carbon::now()->toDateTimeString();
