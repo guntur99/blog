@@ -48,16 +48,6 @@
                             </span>
                         </a>
                     </li>
-                    {{-- <li class="menu-item">
-                        <a href="{{ route('berita.desa.create') }}" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Buat Berita Baru</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
-                            </span>
-                        </a>
-                    </li> --}}
                     <li class="menu-item">
                         <a href="{{ route('kategori.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
@@ -68,16 +58,6 @@
                             </span>
                         </a>
                     </li>
-                    {{-- <li class="menu-item">
-                        <a href="{{ route('buat.kategori.berita.desa') }}" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Buat Kategori Berita Baru</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
-                            </span>
-                        </a>
-                    </li> --}}
                     <li class="menu-item">
                         <a href="{{ route('tag.berita.desa') }}" class=" menu-link">
                             <span class="menu-label">
@@ -88,16 +68,6 @@
                             </span>
                         </a>
                     </li>
-                    {{-- <li class="menu-item">
-                        <a href="{{ route('buat.tag.berita.desa') }}" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Buat Tag Berita Baru</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-playlist-plus "></i>
-                            </span>
-                        </a>
-                    </li> --}}
                 </ul>
             </li>
 
@@ -126,16 +96,6 @@
                             </span>
                         </a>
                     </li>
-                    {{-- <li class="menu-item">
-                        <a href="#" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Informasi Disembunyikan</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-checkbook "></i>
-                            </span>
-                        </a>
-                    </li> --}}
                     <li class="menu-item">
                         <a href="#" class=" menu-link">
                             <span class="menu-label">
@@ -147,7 +107,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('kategori.pemerintahan.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Kategori Informasi</span>
                             </span>

@@ -333,11 +333,6 @@ class BeritaController extends Controller
         return \DataTables::of($data)->make();
     }
 
-    public function createKategori(){
-
-        return view('admin.berita.kategori.create');
-    }
-
     public function storeKategori(Request $req){
 
         // dd($req->all());
@@ -457,11 +452,6 @@ class BeritaController extends Controller
         ->get();
 
         return \DataTables::of($data)->make();
-    }
-
-    public function createTag(){
-
-        return view('admin.berita.tag.create');
     }
 
     public function storeTag(Request $req){

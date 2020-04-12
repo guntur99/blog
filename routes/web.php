@@ -85,4 +85,19 @@ Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.
 Route::get('/buat-tag-berita', 'BeritaController@createTag')->name('buat.tag.berita.desa')->middleware('auth');
 
 
+
+
+
+// -------------- KATEGORI BERITA --------------------------------
+Route::get('/kategori-pemerintahan', 'PemerintahanController@indexKategori')->name('kategori.pemerintahan.desa')->middleware('auth');
+
+Route::post('/store-kategori-pemerintahan', 'PemerintahanController@storeKategori')->name('store.kategori.pemerintahan.desa')->middleware('auth');
+
+Route::post('/update-kategori-pemerintahan', 'PemerintahanController@updateKategori')->name('update.kategori.pemerintahan.desa')->middleware('auth');
+
+Route::post('/delete-kategori-pemerintahan', 'PemerintahanController@deleteKategori')->name('delete.kategori.pemerintahan.desa')->middleware('auth');
+
+Route::get('/kategori-pemerintahan-datatable', 'PemerintahanController@kategoriDatatable')->name('kategori.pemerintahan.desa.datatable')->middleware('auth');
+
+
 Auth::routes();
