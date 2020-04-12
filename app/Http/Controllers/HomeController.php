@@ -42,6 +42,7 @@ class HomeController extends Controller
         )
         ->leftJoin('users as b', 'a.created_by', '=', 'b.id')
         ->leftJoin('kategori_beritas as c', 'a.kategori_id', '=', 'c.id')
+        ->orderByDesc('created_at')
         ->get();
 
 

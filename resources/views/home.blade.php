@@ -152,7 +152,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($berita as $b)
+                                @foreach ($berita->take(5) as $b)
                                     <tr>
                                         <td>
                                             <div class="avatar">
