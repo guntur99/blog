@@ -65,8 +65,8 @@
         <!-- END PLACE PAGE CONTENT HERE -->
     </section>
 
-    @include('parts.modals.berita.kategori.create_data')
-    @include('parts.modals.berita.kategori.update_data')
+    @include('parts.modals.pemerintahan.kategori.create_data')
+    @include('parts.modals.pemerintahan.kategori.update_data')
 
 @endsection
 
@@ -123,7 +123,7 @@
             var data = dataTable.row(this).data();
             // console.log(data.nama);
 
-            $('#updateKategoriModalViewer').modal('show');
+            $('#updateKategoriPemerintahanModalViewer').modal('show');
             $('#u_nama_kategori').prop("disabled", true);
             $('#btn_perbarui_hapus_kategori').removeClass('d-none');
             $('#simpan_data_kategori').addClass('d-none');
@@ -160,12 +160,12 @@
                 formData.append('id', $('#id_hide').val());
                 formData.append('nama', u_nama_kategori.val());
 
-                axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("update.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
                     $('#u_nama_kategori').prop("disabled", true);
                     $('#btn_perbarui_hapus_kategori').removeClass('d-none');
                     $('#simpan_data_kategori').addClass('d-none');
-                    $('#updateKategoriModalViewer').modal('hide');
+                    $('#updateKategoriPemerintahanModalViewer').modal('hide');
 
                     Swal.fire({
                         title: 'Success',
@@ -199,9 +199,9 @@
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("delete.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-                    $('#updateKategoriModalViewer').modal('hide');
+                    $('#updateKategoriPemerintahanModalViewer').modal('hide');
                     Swal.fire({
                         title: 'Success',
                         text: "Data Berhasil Dihapus!",
@@ -231,7 +231,7 @@
         });
 
         $('#buat_kategori_baru').click(()=>{
-            $('#createKategoriModalViewer').modal('show');
+            $('#createKategoriPemerintahanModalViewer').modal('show');
         });
 
         $('#buat_data_kategori').click((e)=>{
@@ -242,9 +242,9 @@
             var formData = new FormData()
             formData.append('nama', nama_kategori.val());
 
-            axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+            axios.post('{{route("store.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-                $('#createKategoriModalViewer').modal('hide');
+                $('#createKategoriPemerintahanModalViewer').modal('hide');
 
                 Swal.fire({
                     title: 'Success',

@@ -52,8 +52,6 @@ Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.dele
 
 Route::post('/detail-berita', 'BeritaController@detailBerita')->name('berita.desa.detail')->middleware('auth');
 
-Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
-
 
 
 // -------------- KATEGORI BERITA --------------------------------
@@ -86,9 +84,24 @@ Route::get('/buat-tag-berita', 'BeritaController@createTag')->name('buat.tag.ber
 
 
 
+//---------------- BAGIAN PEMERINTAHAN --------------------------
+Route::get('/pemerintahan-desa', 'PemerintahanController@index')->name('pemerintahan.desa.index')->middleware('auth');
+
+Route::get('/pemerintahan-datatable', 'PemerintahanController@datatable')->name('pemerintahan.desa.datatable')->middleware('auth');
+
+Route::get('/create-info-pemerintahan', 'PemerintahanController@create')->name('pemerintahan.desa.create')->middleware('auth');
+
+Route::get('/edit-info-pemerintahan/{id}', 'PemerintahanController@edit')->name('pemerintahan.desa.edit')->middleware('auth');
+
+Route::post('/update-info-pemerintahan', 'PemerintahanController@update')->name('pemerintahan.desa.update')->middleware('auth');
+
+Route::post('/store-info-pemerintahan', 'PemerintahanController@store')->name('pemerintahan.desa.store')->middleware('auth');
+
+Route::post('/delete-info-pemerintahan', 'PemerintahanController@delete')->name('pemerintahan.desa.delete')->middleware('auth');
 
 
-// -------------- KATEGORI BERITA --------------------------------
+
+// -------------- KATEGORI PEMERINTAHAN --------------------------------
 Route::get('/kategori-pemerintahan', 'PemerintahanController@indexKategori')->name('kategori.pemerintahan.desa')->middleware('auth');
 
 Route::post('/store-kategori-pemerintahan', 'PemerintahanController@storeKategori')->name('store.kategori.pemerintahan.desa')->middleware('auth');

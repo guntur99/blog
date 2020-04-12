@@ -87,7 +87,7 @@
                 <ul class="sub-menu">
 
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('pemerintahan.desa.index') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Daftar Informasi</span>
                             </span>
@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class=" menu-link">
+                        <a href="{{ route('pemerintahan.desa.create') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Buat Informasi Baru</span>
                             </span>
