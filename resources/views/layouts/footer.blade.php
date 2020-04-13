@@ -1503,13 +1503,13 @@
 
 
     // START UPDATE KATEGORI INFORMASI
-    var u_nama_kategori = $('#u_nama_kategori');
-    $("#search_by_kategori").keypress(function(event) {
+    var u_nama_kategori = $('#u_nama_kategori_info');
+    $("#search_by_kategori_informasi").keypress(function(event) {
         if (event.keyCode === 13) {
 
-            var tag_now = $("#search_by_kategori").val();
+            var tag_now = $("#search_by_kategori_informasi").val();
 
-            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+            axios.get("{{ route('kategori.pemerintahan.desa.datatable') }}").then((res) => {
 
                 var dataKategori = res.data.data;
                 var test = 0;
@@ -1530,7 +1530,7 @@
 
                     // console.log('key: '+key+', => value: '+val);
                     res += `<div class="option-box ml-3 mr-1">
-                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="checkKategori(`+key+`)">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="checkKategoriInformasi(`+key+`)">
                                 <label for="`+key+`">
                                     <span class="radio-content  p-all-15 text-center mr-4">
                                         <span class="mdi h1 d-block mdi-new-box"></span>
@@ -1554,20 +1554,20 @@
 
                 })
 
-                $('#all_result_kategori').html(res);
+                $('#all_result_kategori_informasi').html(res);
 
-                $('#simpan_data_kategori').click((e)=>{
+                $('#simpan_data_kategori_informasi').click((e)=>{
                     e.preventDefault();
 
                     ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
 
                     var formData = new FormData()
                     formData.append('old_name', $('#update_id_hide').val());
-                    formData.append('nama', $('#u_nama_kategori').val());
+                    formData.append('nama', $('#u_nama_kategori_info').val());
 
-                    axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+                    axios.post('{{route("update.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-                        $('#updateKategoriModalViewer').modal('hide');
+                        $('#updateKategoriPemerintahanModalViewer').modal('hide');
 
                         Swal.fire({
                             title: 'Success',
@@ -1585,7 +1585,7 @@
                             }
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                window.location.href = "{{route('kategori.pemerintahan.desa')}}";
                                 // $('#updateKependudukanModalViewer').modal('hide');
                                 // location.reload();
                             }
@@ -1600,19 +1600,19 @@
     });
 
 
-    function checkKategori(id){
+    function checkKategoriInformasi(id){
 
         var checkBox = document.getElementById(id);
         var valueKategori = document.getElementById(id).value;
 
         if (checkBox.checked == true){
 
-            $('#form_nama_kategori').removeClass('d-none');
-            $('#btn_form_nama_kategori').removeClass('d-none');
-            $('#btn_perbarui_hapus_kategori').addClass('d-none');
-            $('#simpan_data_kategori').removeClass('d-none');
-            $('#u_nama_kategori').val(valueKategori);
-            $('#u_nama_kategori').prop('disabled', false);
+            $('#form_nama_kategori_informasi').removeClass('d-none');
+            $('#btn_form_nama_kategori_informasi').removeClass('d-none');
+            $('#btn_perbarui_hapus_kategori_informasi').addClass('d-none');
+            $('#simpan_data_kategori_informasi').removeClass('d-none');
+            $('#u_nama_kategori_info').val(valueKategori);
+            $('#u_nama_kategori_info').prop('disabled', false);
             $('#update_id_hide').val(valueKategori);
 
         }

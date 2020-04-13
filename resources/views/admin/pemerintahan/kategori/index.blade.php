@@ -117,21 +117,21 @@
 
         });
 
-        var u_nama_kategori = $('#u_nama_kategori');
+        var u_nama_kategori = $('#u_nama_kategori_info');
 
         $('.dataTable').on('click', 'tbody tr', function() {
             var data = dataTable.row(this).data();
             // console.log(data.nama);
 
             $('#updateKategoriPemerintahanModalViewer').modal('show');
-            $('#u_nama_kategori').prop("disabled", true);
+            u_nama_kategori.prop("disabled", true);
             $('#btn_perbarui_hapus_kategori').removeClass('d-none');
             $('#simpan_data_kategori').addClass('d-none');
-            $('#u_nama_kategori').val(data.nama);
+            u_nama_kategori.val(data.nama);
             $('#id_hide').val(data.id);
 
             $('#perbarui_data_kategori').click((e)=>{
-                $('#u_nama_kategori').prop("disabled", false);
+                u_nama_kategori.prop("disabled", false);
                 $('#btn_perbarui_hapus_kategori').addClass('d-none');
                 $('#simpan_data_kategori').removeClass('d-none');
 

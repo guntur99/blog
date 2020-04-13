@@ -50,17 +50,17 @@ $('#form_tambah_kategori_informasi').click((e) => {
 
 $('#form_perbarui_kategori_informasi').click((e) => {
     e.preventDefault();
-    $('#allMenuBeritaModalViewer').modal('hide');
-    $('#updateKategoriModalViewer').modal('show');
-    $('#update_data_kategori').removeClass('d-none');
-    $('#form_nama_kategori').addClass('d-none');
-    $('#btn_form_nama_kategori').addClass('d-none');
-    $('#all_result_kategori').html('');
-    $('#search_by_kategori').val('');
-    $('#mode_pembaruan_kategori').removeClass('d-none');
-    $('#mode_penghapusan_kategori').addClass('d-none');
-    $('#search_by_kategori_hapus').addClass('d-none');
-    $('#search_by_kategori').removeClass('d-none');
+    $('#allMenuPemerintahanModalViewer').modal('hide');
+    $('#updateKategoriPemerintahanModalViewer').modal('show');
+    $('#update_data_kategori_informasi').removeClass('d-none');
+    $('#form_nama_kategori_informasi').addClass('d-none');
+    $('#btn_form_nama_kategori_informasi').addClass('d-none');
+    $('#all_result_kategori_informasi').html('');
+    $('#search_by_kategori_informasi').val('');
+    $('#mode_pembaruan_kategori_informasi').removeClass('d-none');
+    $('#mode_penghapusan_kategori_informasi').addClass('d-none');
+    $('#search_by_kategori_informasi_hapus').addClass('d-none');
+    $('#search_by_kategori_informasi').removeClass('d-none');
 });
 
 $('#form_hapus_kategori').click((e) => {
