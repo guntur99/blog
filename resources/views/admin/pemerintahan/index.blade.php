@@ -24,13 +24,13 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Berita Desa</strong></h2>
+                                <h2><strong>Daftar Informasi Desa</strong></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
                         <a href="{{ route('pemerintahan.desa.create') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
-                                class="mdi mdi-playlist-plus"></i> Buat Berita
+                                class="mdi mdi-playlist-plus"></i> Buat Informasi
                         </a>
                     </div>
 

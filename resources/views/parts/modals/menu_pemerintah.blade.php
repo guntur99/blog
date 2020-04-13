@@ -1,5 +1,5 @@
 <!---Modal-->
-    <div class="modal fade" id="allMenuPemerintahModalViewer" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal fade" id="allMenuPemerintahanModalViewer" data-keyboard="false" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
             {{-- <form id="manageLeads_filter" class="w-100"> --}}
                 <div class="modal-content">
@@ -10,91 +10,133 @@
                         </button>
                     </div>
                     <div class="modal-body " style="background-color:#f2f2f2">
-                        <div class="row ">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8">
 
-                            <!--widget card begin-->
-                            <div class="card m-b-30 col-md-5 ml-5 mr-3 mt-3">
-                                <div class="card-body" id="tambah_data_penduduk">
-                                    <div class="row p-t-20 p-b-20">
-                                        <div class="my-auto col-md-8">
+                                <!--widget card begin-->
+                                <div class="card m-b-30 m-t-10">
+                                    <div class="card bg-dark pointer_card" id="form_tambah_informasi" onclick="createInformasiDesa()">
 
-                                            <a href="#">
-                                                <h5 class="m-0">Tambah Penduduk Baru per Orang</h5>
-                                            </a>
-                                        </div>
-                                        <div class="my-auto text-md-right col-md-4">
-                                            <a href="#" class="btn btn-rounded-circle btn-lg btn-white text-primary">
-                                                <i class="mdi mdi-account-plus-outline"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <div class="card-body text-white">
+                                            <div class="text-center p-b-0">
+                                                <a href="#" class="badge    text-uppercase bg-white-translucent">Bagian Pemerintahan Desa</a>
+                                                <div class="p-t-20 p-b-20">
 
-                            </div>
-                            <!--widget card ends-->
-
-                            <!--widget card begin-->
-                            <div class="card m-b-30 col-md-5 ml-3 mr-5 mt-3">
-                                <div class="card-body" id="import_excel_card">
-                                    <div class="row p-t-20 p-b-20">
-                                        <div class="my-auto col-md-8">
-
-                                            <a href="#">
-                                                <h5 class="m-0">Tambah Penduduk Baru via Excel</h5>
-                                            </a>
-                                        </div>
-                                        <div class="my-auto text-md-right col-md-4">
-                                            <a href="#" class="btn btn-rounded-circle btn-lg btn-white text-success">
-                                                <i class="mdi mdi-account-multiple-plus-outline"></i>
-                                            </a>
+                                                </div>
+                                                <h3 class="font-primary fw-300  ">Tambah Informasi Baru</h3>
+                                                <p class="opacity-75"><a href="#">Klik disini!</a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--widget card ends-->
 
-                            </div>
-                            <!--widget card ends-->
+                                <!--widget card begin-->
+                                <div class="card m-b-30">
+                                    <div class="card bg-primary pointer_card" id="form_tambah_kategori_informasi">
 
-                            <!--widget card begin-->
-                            <div class="card m-b-30 col-md-5 ml-5 mr-3">
-                                <div class="card-body" id="perbarui_data_penduduk">
-                                    <div class="row p-t-20 p-b-20">
-                                        <div class="my-auto col-md-8">
+                                        <div class="card-body text-white">
+                                            <div class="text-center p-b-0">
+                                                <a href="#" class="badge    text-uppercase bg-white-translucent">Bagian Kategori</a>
+                                                <div class="p-t-20 p-b-20">
 
-                                            <a href="#">
-                                                <h5 class="m-0">Perbarui Data Penduduk Lama</h5>
-                                            </a>
-                                        </div>
-                                        <div class="my-auto text-md-right col-md-4">
-                                            <a href="#" class="btn btn-rounded-circle btn-lg btn-white text-warning">
-                                                <i class="mdi mdi-account-edit"></i>
-                                            </a>
+                                                </div>
+                                                <h3 class="font-primary fw-300  ">Tambah Kategori Baru</h3>
+                                                <p class="opacity-75"><a href="#">Klik disini!</a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--widget card ends-->
 
                             </div>
-                            <!--widget card ends-->
+                            <div class="col-lg-4 col-md-4">
 
-                            <!--widget card begin-->
-                            <div class="card m-b-30 col-md-5 ml-3 mr-5">
-                                <div class="card-body" id="hapus_data_penduduk">
-                                    <div class="row p-t-20 p-b-20">
-                                        <div class="my-auto col-md-8">
-
-                                            <a href="#">
-                                                <h5 class="m-0">Hapus Data Penduduk Lama</h5>
-                                            </a>
-                                        </div>
-                                        <div class="my-auto text-md-right col-md-4">
-                                            <a href="#" class="btn btn-rounded-circle btn-lg btn-white text-danger">
-                                                <i class="mdi mdi-account-remove-outline"></i>
-                                            </a>
+                                <!--widget card begin-->
+                                <div class="card m-b-15 m-t-10" style="margin-left:-17px;">
+                                    <div class="card-body pointer_card" id="form_perbarui_informasi">
+                                        <div class="row">
+                                            <div class="col-md-12 my-auto">
+                                                <div class="media">
+                                                    <div class="avatar mr-3">
+                                                        <div class="avatar-title rounded-circle bg-dark"><i
+                                                                    class="mdi mdi-view-list"></i></div>
+                                                    </div>
+                                                    <div class="media-body p-t-10">
+                                                        <h5 class="m-b-0">Perbarui Informasi</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--widget card ends-->
+
+                                <!--widget card begin-->
+                                <div class="card m-b-0" style="margin-left:-17px;">
+                                    <div class="card-body pointer_card" id="form_hapus_informasi">
+                                        <div class="row">
+                                            <div class="col-md-12 my-auto">
+                                                <div class="media">
+                                                    <div class="avatar mr-3">
+                                                        <div class="avatar-title rounded-circle bg-dark"><i
+                                                                    class="mdi mdi-playlist-remove"></i></div>
+                                                    </div>
+                                                    <div class="media-body p-t-10">
+                                                        <h5 class="m-b-0">Hapus Informasi</h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--widget card ends-->
+
+
+                                <!--widget card begin-->
+                                <div class="card m-b-15 m-t-35" style="margin-left:-17px;">
+                                    <div class="card-body pointer_card" id="form_perbarui_kategori_informasi">
+                                        <div class="row">
+                                            <div class="col-md-12 my-auto">
+                                                <div class="media">
+                                                    <div class="avatar mr-3">
+                                                        <div class="avatar-title rounded-circle bg-primary"><i
+                                                                    class="mdi mdi-format-list-checks"></i></div>
+                                                    </div>
+                                                    <div class="media-body p-t-10">
+                                                        <h5 class="m-b-0">Perbarui Kategori</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--widget card ends-->
+
+                                <!--widget card begin-->
+                                <div class="card m-b-0" style="margin-left:-17px;">
+                                    <div class="card-body pointer_card" id="form_hapus_kategori_informasi">
+                                        <div class="row">
+                                            <div class="col-md-12 my-auto">
+                                                <div class="media">
+                                                    <div class="avatar mr-3">
+                                                        <div class="avatar-title rounded-circle bg-primary"><i
+                                                                    class="mdi mdi-playlist-remove"></i></div>
+                                                    </div>
+                                                    <div class="media-body p-t-10">
+                                                        <h5 class="m-b-0">Hapus Kategori</h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--widget card ends-->
 
                             </div>
-                            <!--widget card ends-->
+
                         </div>
 
 

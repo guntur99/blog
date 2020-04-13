@@ -17,6 +17,9 @@
 @include('parts.modals.berita.detail_data')
 @include('parts.modals.berita.update_data')
 
+@include('parts.modals.pemerintahan.detail_data')
+@include('parts.modals.pemerintahan.update_data')
+
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery/jquery.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery-ui/jquery-ui.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/popper/popper.js') }}"   ></script>
@@ -535,7 +538,7 @@
 </script>
 <!------------ END JS FOR KEPENDUDUKAN -------------->
 
-<!------------ START JS FOR KEPENDUDUKAN -------------->
+<!------------ START JS FOR BERITA DESA -------------->
 <script>
 
     // START ADD TAG BERITA
@@ -1432,7 +1435,521 @@
 
 
 </script>
-<!------------ END JS FOR KEPENDUDUKAN -------------->
+<!------------ END JS FOR BERITA DESA -------------->
+
+
+<!------------ START JS FOR INFORMASI PEMERINTAHAN DESA -------------->
+<script>
+
+     // START ADD KATEGORI INFORMASI
+    var nama_kategori = $('#nama_kategori');
+
+    nama_kategori.on('input', (e)=> {
+        var value = e.target.value
+
+        if (value.length === 0) {
+            nama_kategori.addClass('is-invalid');
+            nama_kategori.removeClass('is-valid');
+        }else{
+            nama_kategori.addClass('is-valid');
+            nama_kategori.removeClass('is-invalid');
+        }
+
+    });
+
+    $('#buat_data_kategori_global').click((e)=>{
+        e.preventDefault();
+
+        ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+
+        var formData = new FormData()
+        formData.append('nama', nama_kategori.val());
+
+        axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+
+            $('#createKategoriModalViewer').modal('hide');
+
+            Swal.fire({
+                title: 'Success',
+                text: "Buat Kategori Berhasil!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if(result.value){
+                    $('#buat_data_kategori').removeClass('d-none');
+                    $('#buat_data_kategori_global').addClass('d-none');
+                    ((nama_kategori.val() == "") ? nama_kategori.addClass('is-valid') : nama_kategori.removeClass('is-invalid'), nama_kategori.removeClass('is-valid'));
+                    window.location.href = "{{route('kategori.berita.desa')}}";
+                }
+            });
+
+        }).catch((err) => {
+            return 'error';
+        });
+    });
+    // END ADD KATEGORI INFORMASI
+
+
+    // START UPDATE KATEGORI INFORMASI
+    var u_nama_kategori = $('#u_nama_kategori');
+    $("#search_by_kategori").keypress(function(event) {
+        if (event.keyCode === 13) {
+
+            var tag_now = $("#search_by_kategori").val();
+
+            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+
+                var dataKategori = res.data.data;
+                var test = 0;
+                // console.log(dataKategori);
+                // console.log(tag_now);
+
+                var arrayKategori = [];
+                for (let index = 0; index < dataKategori.length; index++) {
+                    arrayKategori.push(dataKategori[index].nama);
+                }
+
+                var arrayResult = arrayKategori.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                // console.log(arrayResult);
+
+                var res = '';
+
+                $.each(arrayResult, function(key, val){
+
+                    // console.log('key: '+key+', => value: '+val);
+                    res += `<div class="option-box ml-3 mr-1">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="checkKategori(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content  p-all-15 text-center mr-4">
+                                        <span class="mdi h1 d-block mdi-new-box"></span>
+                                        <span class="h5">`+val+`</span>
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                u_nama_kategori.on('input', (e)=> {
+                    var value = e.target.value
+
+                    if (value.length === 0) {
+                        u_nama_kategori.addClass('is-invalid');
+                        u_nama_kategori.removeClass('is-valid');
+                    }else{
+                        u_nama_kategori.addClass('is-valid');
+                        u_nama_kategori.removeClass('is-invalid');
+                    }
+
+                })
+
+                $('#all_result_kategori').html(res);
+
+                $('#simpan_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Diperbarui!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function checkKategori(id){
+
+        var checkBox = document.getElementById(id);
+        var valueKategori = document.getElementById(id).value;
+
+        if (checkBox.checked == true){
+
+            $('#form_nama_kategori').removeClass('d-none');
+            $('#btn_form_nama_kategori').removeClass('d-none');
+            $('#btn_perbarui_hapus_kategori').addClass('d-none');
+            $('#simpan_data_kategori').removeClass('d-none');
+            $('#u_nama_kategori').val(valueKategori);
+            $('#u_nama_kategori').prop('disabled', false);
+            $('#update_id_hide').val(valueKategori);
+
+        }
+
+    }
+    // END UPDATE KATEGORI INFORMASI
+
+
+    // START DELETE KATEGORI INFORMASI
+    $("#search_by_kategori_hapus").keypress(function(event) {
+        if (event.keyCode === 13) {
+
+            var tag_now = $("#search_by_kategori_hapus").val();
+
+            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+
+                var dataKategori = res.data.data;
+                // console.log(dataKategori);
+                // console.log(tag_now);
+
+                var arrayKategori = [];
+                for (let index = 0; index < dataKategori.length; index++) {
+                    arrayKategori.push(dataKategori[index].nama);
+                }
+
+                var arrayResult = arrayKategori.filter(item => item.toLowerCase().indexOf(tag_now) > -1);
+                // console.log(arrayResult);
+
+                var res = '';
+
+                $.each(arrayResult, function(key, val){
+
+                    // console.log('key: '+key+', => value: '+val);
+                    res += `<div class="option-box ml-3 mr-1">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeKategori(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content  p-all-15 text-center mr-4">
+                                        <span class="mdi h1 d-block mdi-new-box"></span>
+                                        <span class="h5">`+val+`</span>
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+
+                $('#all_result_kategori').html(res);
+
+                $('#hapus_data_kategori').click((e)=>{
+                    e.preventDefault();
+
+                    var formData = new FormData()
+                    formData.append('old_name', $('#update_id_hide').val());
+                    formData.append('nama', $('#u_nama_kategori').val());
+
+                    axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+
+                        $('#updateKategoriModalViewer').modal('hide');
+
+                        Swal.fire({
+                            title: 'Success',
+                            text: "Nama Kategori Berhasil Dihapus!",
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonText: 'Close',
+                            allowOutsideClick: false,
+                            buttonsStyling: false,
+                            customClass: {
+                                confirmButton: 'btn btn-success px-3 ml-2',
+                                title: 'swal-title-custom',
+                                content: 'swal-text-custom mb-2',
+                                popup: 'swal-popup-custom'
+                            }
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                // $('#updateKependudukanModalViewer').modal('hide');
+                                // location.reload();
+                            }
+                        });
+
+                    }).catch((err) => {
+                        return showModal('error', err.response.data.message);
+                    });
+                })
+            });
+        }
+    });
+
+
+    function removeKategori(id){
+
+        var checkBox = document.getElementById(id);
+        var valueKategori = document.getElementById(id).value;
+
+        if (checkBox.checked == true){
+
+            // $('#form_nama_tag').removeClass('d-none');
+            $('#btn_form_nama_kategori').removeClass('d-none');
+            $('#perbarui_data_kategori').addClass('d-none');
+            $('#simpan_data_kategori').addClass('d-none');
+            $('#hapus_data_kategori').removeClass('d-none');
+            $('#u_nama_kategori').val(valueKategori);
+            $('#u_nama_kategori').prop('disabled', true);
+            $('#update_id_hide').val(valueKategori);
+
+        }
+
+    }
+    // END DELETE KATEGORI INFORMASI
+
+
+
+    // START TAMBAH INFORMASI PEMERINTAHAN DESA
+    function createInformasiDesa(){
+        window.location.href = "{{ route('pemerintahan.desa.create') }}";
+    }
+    // END TAMBAH INFORMASI PEMERINTAHAN DESA
+
+    // START UPDATE INFORMASI DESA
+    var arrayBeritaRes = [];
+    $("#search_by_informasi").keypress(function(event) {
+
+        if (event.keyCode === 13) {
+
+            var title_now = $("#search_by_informasi").val();
+            axios.get("{{ route('pemerintahan.desa.datatable') }}").then((res) => {
+
+                var dataBerita = res.data.data;
+                var arrayBerita = [];
+                for (let index = 0; index < dataBerita.length; index++) {
+                    arrayBerita.push(dataBerita[index].judul);
+                    arrayBeritaRes.push({
+                        'id': dataBerita[index].id,
+                        'judul': dataBerita[index].judul,
+                        'desc_singkat': dataBerita[index].desc_singkat,
+                        'desc': dataBerita[index].desc,
+                        'category_name': dataBerita[index].category_name,
+                        'user_created_by': dataBerita[index].user_created_by,
+                        'image': dataBerita[index].image,
+                    });
+                }
+
+                var arrayResult = arrayBerita.filter(item => item.toLowerCase().indexOf(title_now) > -1);
+
+                var res = '';
+                $.each(arrayResult, function(key, val){
+
+                    res += `<div class="option-box ml-4 mt-1 mb-1">
+                                <input id="`+key+`" name="bigradios" value="`+val+`" type="radio" onclick="checkInformasi(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content">
+                                        <span class="h5 text-primary d-block">`+val+`
+                                        </span>
+
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                $('#all_result_informasi').html(res);
+
+            });
+        }
+    });
+
+
+    function checkInformasi(id){
+
+        var checkBox = document.getElementById(id);
+        var valueBerita = document.getElementById(id).value;
+        var kategori_id = $('#u_kategori_info_id');
+        var desc = $('#desc');
+
+        if (checkBox.checked == true){
+            $('#form_informasi_desa').removeClass('d-none');
+            $('#update_id_hide').val(valueBerita);
+
+            for (let i = 0; i < arrayBeritaRes.length; i++) {
+                if(valueBerita == arrayBeritaRes[i].judul){
+
+                    var created_at = moment(arrayBeritaRes[i].created_at).format('DD MMMM YYYY');
+
+                    $('#u_judul_info_global').html(arrayBeritaRes[i].judul);
+                    $('#u_desc_singkat_info_global').html(arrayBeritaRes[i].desc_singkat);
+                    $('#u_created_at_info_global').html(created_at);
+                    $('#u_created_by_info_global').html(arrayBeritaRes[i].user_created_by);
+                    $('#u_kategori_info_id').html('<a href="#!" class="badge badge-soft-primary mr-2"><strong>@'+arrayBeritaRes[i].category_name+'</strong></a>');
+                    $('#u_avatar_cover_info_global').html(`<img src="`+arrayBeritaRes[i].image+`" alt="..."
+                        class="avatar-img rounded-circle">`);
+                    $('#u_image_cover_info_global').html(`<img class="rounded" id="image"
+                        src="`+arrayBeritaRes[i].image+`" alt="">`);
+
+                    $('#u_button_modal_info_global').html(`
+                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                            <label onclick="updateInformasiDesa(`+arrayBeritaRes[i].id+`)" class="btn  btn-light active pointer_card">
+                                <i class="mdi mdi-file-check"></i>
+                                <input type="radio" name="radio2" id="option1"   checked>
+                                Perbarui Berita
+                            </label>
+                        </div>
+                        `);
+
+                }
+            }
+
+        }
+    }
+
+    function updateInformasiDesa(id){
+        window.location.href = '{{url("edit-info-pemerintahan")}}/'+id;
+    }
+    // END UPDATE INFORMASI DESA
+
+
+    // START DELETE INFORMASI DESA
+    $("#search_by_informasi_hapus").keypress(function(event) {
+
+        if (event.keyCode === 13) {
+
+            var title_now = $("#search_by_informasi_hapus").val();
+            axios.get("{{ route('pemerintahan.desa.datatable') }}").then((res) => {
+
+                var dataBerita = res.data.data;
+                var arrayBerita = [];
+                for (let index = 0; index < dataBerita.length; index++) {
+                    arrayBerita.push(dataBerita[index].judul);
+                    arrayBeritaRes.push({
+                        'id': dataBerita[index].id,
+                        'judul': dataBerita[index].judul,
+                        'desc_singkat': dataBerita[index].desc_singkat,
+                        'desc': dataBerita[index].desc,
+                        'category_name': dataBerita[index].category_name,
+                        'user_created_by': dataBerita[index].user_created_by,
+                        'image': dataBerita[index].image,
+                    });
+                }
+
+                var arrayResult = arrayBerita.filter(item => item.toLowerCase().indexOf(title_now) > -1);
+                var res = '';
+                $.each(arrayResult, function(key, val){
+
+                    res += `<div class="option-box ml-4 mt-1 mb-1">
+                                <input id="`+key+`" name="bigradios" value="`+val+`" type="radio" onclick="checkInformasiHapus(`+key+`)">
+                                <label for="`+key+`">
+                                    <span class="radio-content">
+                                        <span class="h5 text-primary d-block">`+val+`
+                                        </span>
+
+                                    </span>
+                                </label>
+                            </div>`;
+
+                })
+
+                $('#all_result_informasi').html(res);
+
+            });
+        }
+    });
+
+    function checkInformasiHapus(id){
+
+        var checkBox = document.getElementById(id);
+        var valueBerita = document.getElementById(id).value;
+        var kategori_id = $('#u_kategori_info_id');
+        var desc = $('#desc');
+
+        if (checkBox.checked == true){
+            $('#form_informasi_desa').removeClass('d-none');
+            $('#update_id_hide').val(valueBerita);
+
+            for (let i = 0; i < arrayBeritaRes.length; i++) {
+                if(valueBerita == arrayBeritaRes[i].judul){
+
+                    var created_at = moment(arrayBeritaRes[i].created_at).format('DD MMMM YYYY');
+
+                    $('#u_judul_info_global').html(arrayBeritaRes[i].judul);
+                    $('#u_desc_singkat_info_global').html(arrayBeritaRes[i].desc_singkat);
+                    $('#u_created_at_info_global').html(created_at);
+                    $('#u_created_by_info_global').html(arrayBeritaRes[i].user_created_by);
+                    $('#u_kategori_info_id').html('<a href="#!" class="badge badge-soft-primary mr-2"><strong>@'+arrayBeritaRes[i].category_name+'</strong></a>');
+                    $('#u_avatar_cover_info_global').html(`<img src="`+arrayBeritaRes[i].image+`" alt="..."
+                        class="avatar-img rounded-circle">`);
+                    $('#u_image_cover_info_global').html(`<img class="rounded" id="image"
+                        src="`+arrayBeritaRes[i].image+`" alt="">`);
+
+                    $('#u_button_modal_info_global').html(`
+                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                            <label onclick="deleteInformasiDesa(`+arrayBeritaRes[i].id+`)" class="btn  btn-dark pointer_card">
+                                <i class="mdi mdi-file-check"></i>
+                                <input type="radio" name="radio2" id="option1"   checked>
+                                Hapus Berita
+                            </label>
+                        </div>
+                        `);
+
+                }
+            }
+
+        }
+    }
+
+    function deleteInformasiDesa(id){
+
+        var formData = new FormData()
+        formData.append('id', id);
+
+        axios.post('{{route("pemerintahan.desa.delete")}}', formData).then((res) => {
+
+            Swal.fire({
+                title: 'Success',
+                text: "Data Berhasil Dihapus!",
+                icon: 'success',
+                showCancelButton: false,
+                confirmButtonText: 'Close',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-success px-3 ml-2',
+                    title: 'swal-title-custom',
+                    content: 'swal-text-custom mb-2',
+                    popup: 'swal-popup-custom'
+                }
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '{{ route("pemerintahan.desa.index") }}';
+                }
+            });
+
+        }).catch((err) => {
+            return showModal('error', err.response.data.message);
+        });
+    }
+    // END DELETE INFORMASI DESA
+
+
+</script>
+<!------------ END JS FOR INFORMASI PEMERINTAHAN DESA -------------->
 
 @yield('custom_script')
 
