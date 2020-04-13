@@ -1622,12 +1622,12 @@
 
 
     // START DELETE KATEGORI INFORMASI
-    $("#search_by_kategori_hapus").keypress(function(event) {
+    $("#search_by_kategori_informasi_hapus").keypress(function(event) {
         if (event.keyCode === 13) {
 
-            var tag_now = $("#search_by_kategori_hapus").val();
+            var tag_now = $("#search_by_kategori_informasi_hapus").val();
 
-            axios.get("{{ route('kategori.desa.datatable') }}").then((res) => {
+            axios.get("{{ route('kategori.pemerintahan.desa.datatable') }}").then((res) => {
 
                 var dataKategori = res.data.data;
                 // console.log(dataKategori);
@@ -1647,7 +1647,7 @@
 
                     // console.log('key: '+key+', => value: '+val);
                     res += `<div class="option-box ml-3 mr-1">
-                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeKategori(`+key+`)">
+                                <input id="`+key+`" name="bigradios" type="radio" value="`+val+`" onclick="removeKategoriInformasi(`+key+`)">
                                 <label for="`+key+`">
                                     <span class="radio-content  p-all-15 text-center mr-4">
                                         <span class="mdi h1 d-block mdi-new-box"></span>
@@ -1659,18 +1659,18 @@
                 })
 
 
-                $('#all_result_kategori').html(res);
+                $('#all_result_kategori_informasi').html(res);
 
-                $('#hapus_data_kategori').click((e)=>{
+                $('#hapus_data_kategori_informasi').click((e)=>{
                     e.preventDefault();
 
                     var formData = new FormData()
                     formData.append('old_name', $('#update_id_hide').val());
-                    formData.append('nama', $('#u_nama_kategori').val());
+                    formData.append('nama', $('#u_nama_kategori_info').val());
 
-                    axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+                    axios.post('{{route("delete.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-                        $('#updateKategoriModalViewer').modal('hide');
+                        $('#updateKategoriPemerintahanModalViewer').modal('hide');
 
                         Swal.fire({
                             title: 'Success',
@@ -1688,7 +1688,7 @@
                             }
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "{{route('kategori.berita.desa')}}";
+                                window.location.href = "{{route('kategori.pemerintahan.desa')}}";
                                 // $('#updateKependudukanModalViewer').modal('hide');
                                 // location.reload();
                             }
@@ -1703,7 +1703,7 @@
     });
 
 
-    function removeKategori(id){
+    function removeKategoriInformasi(id){
 
         var checkBox = document.getElementById(id);
         var valueKategori = document.getElementById(id).value;
@@ -1711,12 +1711,12 @@
         if (checkBox.checked == true){
 
             // $('#form_nama_tag').removeClass('d-none');
-            $('#btn_form_nama_kategori').removeClass('d-none');
-            $('#perbarui_data_kategori').addClass('d-none');
-            $('#simpan_data_kategori').addClass('d-none');
-            $('#hapus_data_kategori').removeClass('d-none');
-            $('#u_nama_kategori').val(valueKategori);
-            $('#u_nama_kategori').prop('disabled', true);
+            $('#btn_form_nama_kategori_informasi').removeClass('d-none');
+            $('#perbarui_data_kategori_informasi').addClass('d-none');
+            $('#simpan_data_kategori_informasi').addClass('d-none');
+            $('#hapus_data_kategori_informasi').removeClass('d-none');
+            $('#u_nama_kategori_info').val(valueKategori);
+            $('#u_nama_kategori_info').prop('disabled', true);
             $('#update_id_hide').val(valueKategori);
 
         }

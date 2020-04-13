@@ -130,10 +130,10 @@
             u_nama_kategori.val(data.nama);
             $('#id_hide').val(data.id);
 
-            $('#perbarui_data_kategori').click((e)=>{
+            $('#perbarui_data_kategori_informasi').click((e)=>{
                 u_nama_kategori.prop("disabled", false);
-                $('#btn_perbarui_hapus_kategori').addClass('d-none');
-                $('#simpan_data_kategori').removeClass('d-none');
+                $('#btn_perbarui_hapus_kategori_informasi').addClass('d-none');
+                $('#simpan_data_kategori_informasi').removeClass('d-none');
 
                 u_nama_kategori.on('input', (e)=> {
                     var value = e.target.value
@@ -150,7 +150,7 @@
 
             });
 
-            $('#simpan_data_kategori').click((e)=>{
+            $('#simpan_data_kategori_informasi').click((e)=>{
                 e.preventDefault();
 
                 ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
@@ -162,9 +162,9 @@
 
                 axios.post('{{route("update.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-                    $('#u_nama_kategori').prop("disabled", true);
-                    $('#btn_perbarui_hapus_kategori').removeClass('d-none');
-                    $('#simpan_data_kategori').addClass('d-none');
+                    $('#u_nama_kategori_info').prop("disabled", true);
+                    $('#btn_perbarui_hapus_kategori_informasi').removeClass('d-none');
+                    $('#simpan_data_kategori_informasi').addClass('d-none');
                     $('#updateKategoriPemerintahanModalViewer').modal('hide');
 
                     Swal.fire({
@@ -193,7 +193,7 @@
                 });
             });
 
-            $('#hapus_data_kategori').click((e)=>{
+            $('#hapus_data_kategori_informasi').click((e)=>{
                 e.preventDefault();
 
                 var formData = new FormData()
