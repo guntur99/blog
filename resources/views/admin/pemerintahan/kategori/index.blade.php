@@ -102,7 +102,7 @@
             "order" :[[ 0, 'desc' ]]
         });
 
-        var nama_kategori = $('#nama_kategori');
+        var nama_kategori = $('#nama_kategori_info');
 
         nama_kategori.on('input', (e)=> {
             var value = e.target.value
@@ -234,7 +234,7 @@
             $('#createKategoriPemerintahanModalViewer').modal('show');
         });
 
-        $('#buat_data_kategori').click((e)=>{
+        $('#buat_data_kategori_info').click((e)=>{
             e.preventDefault();
 
             ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));

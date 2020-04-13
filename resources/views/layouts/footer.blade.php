@@ -20,6 +20,9 @@
 @include('parts.modals.pemerintahan.detail_data')
 @include('parts.modals.pemerintahan.update_data')
 
+@include('parts.modals.pemerintahan.kategori.create_data')
+@include('parts.modals.pemerintahan.kategori.update_data')
+
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery/jquery.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/jquery-ui/jquery-ui.min.js') }}"   ></script>
 <script src="{{ asset('atmos/getting started/light/assets/vendor/popper/popper.js') }}"   ></script>
@@ -1442,7 +1445,7 @@
 <script>
 
      // START ADD KATEGORI INFORMASI
-    var nama_kategori = $('#nama_kategori');
+    var nama_kategori = $('#nama_kategori_info');
 
     nama_kategori.on('input', (e)=> {
         var value = e.target.value
@@ -1457,7 +1460,7 @@
 
     });
 
-    $('#buat_data_kategori_global').click((e)=>{
+    $('#buat_data_kategori_info_global').click((e)=>{
         e.preventDefault();
 
         ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
@@ -1465,9 +1468,9 @@
         var formData = new FormData()
         formData.append('nama', nama_kategori.val());
 
-        axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+        axios.post('{{route("store.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
-            $('#createKategoriModalViewer').modal('hide');
+            $('#createKategoriPemerintahanModalViewer').modal('hide');
 
             Swal.fire({
                 title: 'Success',
@@ -1488,7 +1491,7 @@
                     $('#buat_data_kategori').removeClass('d-none');
                     $('#buat_data_kategori_global').addClass('d-none');
                     ((nama_kategori.val() == "") ? nama_kategori.addClass('is-valid') : nama_kategori.removeClass('is-invalid'), nama_kategori.removeClass('is-valid'));
-                    window.location.href = "{{route('kategori.berita.desa')}}";
+                    window.location.href = "{{route('kategori.pemerintahan.desa')}}";
                 }
             });
 

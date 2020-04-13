@@ -14,8 +14,8 @@
                         <!--card begins-->
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="u_nama_kategori">Nama Kategori</label>
-                                <input autocomplete="off" type="text" class="form-control" name="nama_kategori" id="nama_kategori"
+                                <label for="nama_kategori_info">Nama Kategori</label>
+                                <input autocomplete="off" type="text" class="form-control" name="nama_kategori_info" id="nama_kategori_info"
                                     placeholder="Nama Kategori" required>
                                 <div class="valid-feedback">
                                     Terisi, silahkan cek kembali!
@@ -24,14 +24,25 @@
                                     Masih kosong, silahkan diisi!!
                                 </div>
                             </div>
+                            {{-- <div class="form-group col-md-12 d-none" id="form_kategori_info_global">
+                                <label for="nama_kategori_global">Nama Kategori</label>
+                                <input autocomplete="off" type="text" class="form-control" name="nama_kategori_global" id="nama_kategori_global"
+                                    placeholder="Nama Kategori" required>
+                                <div class="valid-feedback">
+                                    Terisi, silahkan cek kembali!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Masih kosong, silahkan diisi!!
+                                </div>
+                            </div> --}}
                         </div>
                         <hr>
                         <div class="row w-100">
                             <div class="col-md-12" id="button-modals" style="padding:0px 0px">
-                                <button type="button" id="buat_data_kategori" class="btn ml-2 btn-success float-right">
+                                <button type="button" id="buat_data_kategori_info" class="btn ml-2 btn-success float-right">
                                     <i class="mdi mdi-cube-outline"></i> Buat Kategori
                                 </button>
-                                <button type="button" id="buat_data_kategori_global" class="btn ml-2 btn-success float-right d-none">
+                                <button type="button" id="buat_data_kategori_info_global" class="btn ml-2 btn-success float-right d-none">
                                     <i class="mdi mdi-cube-outline"></i> Buat Kategori
                                 </button>
                             </div>

@@ -39,16 +39,16 @@ $('#form_hapus_informasi').click((e) => {
 
 
 // ------------- START KATEGORI INFORMASI --------------------
-$('#form_tambah_kategori').click((e) => {
+$('#form_tambah_kategori_informasi').click((e) => {
     e.preventDefault();
-    $('#allMenuBeritaModalViewer').modal('hide');
-    $('#createKategoriModalViewer').modal('show');
-    $('#buat_data_kategori').addClass('d-none');
-    $('#buat_data_kategori_global').removeClass('d-none');
+    $('#allMenuPemerintahanModalViewer').modal('hide');
+    $('#createKategoriPemerintahanModalViewer').modal('show');
+    $('#buat_data_kategori_info').addClass('d-none');
+    $('#buat_data_kategori_info_global').removeClass('d-none');
     $('#nama_kategori').val('');
 });
 
-$('#form_perbarui_kategori').click((e) => {
+$('#form_perbarui_kategori_informasi').click((e) => {
     e.preventDefault();
     $('#allMenuBeritaModalViewer').modal('hide');
     $('#updateKategoriModalViewer').modal('show');
