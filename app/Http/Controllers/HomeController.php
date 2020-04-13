@@ -45,12 +45,15 @@ class HomeController extends Controller
         ->orderByDesc('created_at')
         ->get();
 
+        $total_informasi = \DB::table('pemerintahans')
+        ->get();
 
         // dd($total_berita);
         return view('home', [
             'user_name' => $data->name,
             'total_penduduk' => count($total_penduduk),
             'total_berita' => count($total_berita),
+            'total_informasi' => count($total_informasi),
             'berita' => $total_berita
         ]);
     }

@@ -87,12 +87,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col my-auto">
-                                <div class="h6 text-muted ">Total Penduduk terinput di sistem</div>
+                                <div class="h6 text-muted ">Total Penduduk terinput </div>
                             </div>
 
                             <div class="col-auto my-auto">
                                 <div class="avatar">
-                                    <div class="avatar-title rounded-circle badge-soft-dark"><i
+                                    <div class="avatar-title rounded-circle bg-dark"><i
                                                 class="mdi mdi-account-group "></i></div>
 
                                 </div>
@@ -115,21 +115,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col my-auto">
-                                <div class="h6 text-muted ">Media Reach (Last 30 Days)</div>
+                                <div class="h6 text-muted ">Total Informasi tentang desa</div>
                             </div>
 
                             <div class="col-auto my-auto">
                                 <div class="avatar">
-                                    <div class="avatar-title rounded-circle badge-soft-success"><i
-                                                class="mdi mdi-heart  "></i></div>
+                                    <div class="avatar-title rounded-circle bg-success"><i
+                                                class="mdi mdi-office-building  "></i></div>
 
                                 </div>
                             </div>
                         </div>
-                        <h1 class="display-4 fw-600">186k</h1>
+                        <h1 class="display-4 fw-600">{{ $total_informasi }}</h1>
                         <div class="h6">
-                            <span class="text-success"> <i class="mdi mdi-arrow-top-right"></i> +0.65% </span>
-                            More activity than usual.
+                            <span class="text-success"> <i class="mdi mdi-office-building"></i> </span>
+                            Informasi tentang Pemerintahan Desa
                         </div>
                     </div>
                 </div>
