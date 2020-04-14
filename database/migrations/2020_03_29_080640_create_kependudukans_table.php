@@ -15,7 +15,7 @@ class CreateKependudukansTable extends Migration
     {
         Schema::create('kependudukans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nik');
+            $table->string('nik')->unique();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->string('tanggal_lahir');
