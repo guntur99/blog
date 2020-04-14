@@ -22,8 +22,8 @@
                                             <h3 class="fw-300 text-center">Masukkan Judul Berita yang anda cari!
                                             </h3>
                                             <p class="p-t-30 form-dark">
-                                                <input type="search" id="search_by_berita" placeholder="Judul Berita" class=" form-control form-control-lg" style="text-transform: lowercase;">
-                                                <input type="search" id="search_by_berita_hapus" placeholder="Judul Berita" class="d-none form-control form-control-lg" style="text-transform: lowercase;">
+                                                <input type="search" id="search_by_berita" placeholder="Judul Berita" class=" form-control form-control-lg" autocapitalize="off">
+                                                <input type="search" id="search_by_berita_hapus" placeholder="Judul Berita" class="d-none form-control form-control-lg" autocapitalize="off">
                                             </p>
 
                                         </div>
