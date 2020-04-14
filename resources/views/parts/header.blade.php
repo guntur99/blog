@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a class="nav-link  " id="search_id" href="#">
                         <i class="mdi mdi-google-assistant mdi-24px align-middle "></i>
-                        Butuh Bantuan? Klik Disini!
+                        Butuh Bantuan?
                     </a>
                 </li>
             </ul>
