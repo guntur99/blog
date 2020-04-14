@@ -192,6 +192,7 @@
                             axios.post('{{route("penduduk.desa.update")}}', formData).then((res) => {
                                 // hideLoader();
 
+                                $('#updateKependudukanModalViewer').modal('hide');
                                 Swal.fire({
                                     title: 'Success',
                                     text: "Data Berhasil Diperbarui!",
@@ -208,7 +209,6 @@
                                     }
                                 }).then((result) => {
                                     if (result.value) {
-                                        $('#updateKependudukanModalViewer').modal('hide');
                                         // location.reload();
                                         window.location.href = "{{route('penduduk.desa.index')}}";
                                     }
@@ -274,6 +274,7 @@
 
                             axios.post('{{route("penduduk.desa.delete")}}', formData).then((res) => {
 
+                                $('#deleteKependudukanModalViewer').modal('hide');
                                 Swal.fire({
                                     title: 'Success',
                                     text: "Data Berhasil Dihapus!",
@@ -290,7 +291,6 @@
                                     }
                                 }).then((result) => {
                                     if (result.value) {
-                                        $('#deleteKependudukanModalViewer').modal('hide');
                                         // location.reload();
                                         window.location.href = "{{route('penduduk.desa.index')}}";
                                     }
@@ -492,7 +492,26 @@
         $('#btn_store_data').click((e) => {
             e.preventDefault();
 
-            validInvalid();
+            ((nik.val() == "") ? nik.addClass('is-invalid') : nik.addClass('is-valid'));
+            ((nama.val() == "") ? nama.addClass('is-invalid') : nama.addClass('is-valid'));
+            ((agama.val() == "") ? agama.addClass('is-invalid') : agama.addClass('is-valid'));
+            ((rt.val() == "") ? rt.addClass('is-invalid') : rt.addClass('is-valid'));
+            ((rw.val() == "") ? rw.addClass('is-invalid') : rw.addClass('is-valid'));
+            ((kelurahan.val() == "") ? kelurahan.addClass('is-invalid') : kelurahan.addClass('is-valid'));
+            ((status_perkawinan.val() == "") ? status_perkawinan.addClass('is-invalid') : status_perkawinan.addClass('is-valid'));
+            ((jenis_kelamin.val() == "") ? jenis_kelamin.addClass('is-invalid') : jenis_kelamin.addClass('is-valid'));
+            ((alamat.val() == "") ? alamat.addClass('is-invalid') : alamat.addClass('is-valid'));
+            ((kecamatan.val() == "") ? kecamatan.addClass('is-invalid') : kecamatan.addClass('is-valid'));
+            ((kewarganegaraan.val() == "") ? kewarganegaraan.addClass('is-invalid') : kewarganegaraan.addClass('is-valid'));
+            ((tempat_lahir.val() == "") ? tempat_lahir.addClass('is-invalid') : tempat_lahir.addClass('is-valid'));
+
+            if (tanggal_lahir.val() == "") {
+                tanggal_lahir.addClass('is-invalid');
+                tanggal_lahir.removeClass('is-valid');
+            } else {
+                tanggal_lahir.addClass('is-valid')
+                tanggal_lahir.removeClass('is-invalid');
+            }
 
             var formData = new FormData()
             formData.append('nik', nik.val());
@@ -511,7 +530,9 @@
 
             axios.post('{{route("penduduk.desa.store")}}', formData).then((res) => {
                 // hideLoader();
-                // return false;
+
+                $('#addKependudukanModalViewer').modal('hide');
+
                 Swal.fire({
                     title: 'Success',
                     text: "Add Data Success",
@@ -527,8 +548,6 @@
                         popup: 'swal-popup-custom'
                     }
                 }).then((result) => {
-                    $('#addKependudukanModalViewer').modal('hide');
-                    $('#allMenuKependudukanModalViewer').modal('hide');
                     window.location.href = "{{route('penduduk.desa.index')}}";
                 });
 

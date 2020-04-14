@@ -354,6 +354,7 @@
 
                 axios.post('{{route("penduduk.desa.delete")}}', formData).then((res) => {
 
+                    $('#kependudukanModalViewer').modal('hide');
                     Swal.fire({
                         title: 'Success',
                         text: "Data Berhasil Dihapus!",
@@ -370,9 +371,8 @@
                         }
                     }).then((result) => {
                         if (result.value) {
-                            dataTable.draw();
-                            // location.reload();
-                            $('#kependudukanModalViewer').modal('hide');
+                            // dataTable.draw();
+                            location.reload();
                         }
                     });
 
