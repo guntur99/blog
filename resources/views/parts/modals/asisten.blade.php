@@ -19,10 +19,10 @@
                                 <div class="row">
                                     <div class="col-8 m-auto text-white p-t-40 p-b-90">
 
-                                        <h1 class="fw-300 text-center">Anda butuh bantuan?
+                                        <h1 class="fw-300 text-center">Silahkan klik untuk memilih!
                                         </h1>
-                                        <p class="p-t-30 p-b-30 form-dark">
-                                            <input type="search" placeholder="Masukkan kata kunci" class=" form-control form-control-lg">
+                                        <p class="p-t-30 p-b-10 form-dark">
+                                            {{-- <input type="search" placeholder="Masukkan kata kunci" class=" form-control form-control-lg"> --}}
                                         </p>
 
                                     </div>
@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="container pull-up">
-                            <div class="row m-b-70">
+                            <div class="row m-b-30">
                                 <div class="col-lg-4 col-md-6">
                                     <a href="#" id="guide_penduduk_desa" class="card shadow-lg guide-item m-b-10  bg-primary">
                                         <div class="card-body text-white">
