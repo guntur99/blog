@@ -209,7 +209,8 @@
                                 }).then((result) => {
                                     if (result.value) {
                                         $('#updateKependudukanModalViewer').modal('hide');
-                                        location.reload();
+                                        // location.reload();
+                                        window.location.href = "{{route('penduduk.desa.index')}}";
                                     }
                                 });
 
@@ -290,7 +291,8 @@
                                 }).then((result) => {
                                     if (result.value) {
                                         $('#deleteKependudukanModalViewer').modal('hide');
-                                        location.reload();
+                                        // location.reload();
+                                        window.location.href = "{{route('penduduk.desa.index')}}";
                                     }
                                 });
 
