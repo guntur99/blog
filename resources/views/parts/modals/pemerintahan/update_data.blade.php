@@ -22,8 +22,8 @@
                                             <h3 class="fw-300 text-center">Masukkan Judul Informasi yang anda cari!
                                             </h3>
                                             <p class="p-t-30 form-dark">
-                                                <input type="search" id="search_by_informasi" placeholder="Judul Informasi" class=" form-control form-control-lg">
-                                                <input type="search" id="search_by_informasi_hapus" placeholder="Judul Informasi" class="d-none form-control form-control-lg">
+                                                <input type="search" id="search_by_informasi" placeholder="Judul Informasi" class=" form-control form-control-lg" autocapitalize="off">
+                                                <input type="search" id="search_by_informasi_hapus" placeholder="Judul Informasi" class="d-none form-control form-control-lg" autocapitalize="off">
                                             </p>
 
                                         </div>
