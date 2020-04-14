@@ -1466,17 +1466,17 @@
 <script>
 
      // START ADD KATEGORI INFORMASI
-    var nama_kategori = $('#nama_kategori_info');
+    var nama_kategori_info = $('#nama_kategori_info');
 
-    nama_kategori.on('input', (e)=> {
+    nama_kategori_info.on('input', (e)=> {
         var value = e.target.value
 
         if (value.length === 0) {
-            nama_kategori.addClass('is-invalid');
-            nama_kategori.removeClass('is-valid');
+            nama_kategori_info.addClass('is-invalid');
+            nama_kategori_info.removeClass('is-valid');
         }else{
-            nama_kategori.addClass('is-valid');
-            nama_kategori.removeClass('is-invalid');
+            nama_kategori_info.addClass('is-valid');
+            nama_kategori_info.removeClass('is-invalid');
         }
 
     });
@@ -1484,10 +1484,10 @@
     $('#buat_data_kategori_info_global').click((e)=>{
         e.preventDefault();
 
-        ((nama_kategori.val() == "") ? nama_kategori.addClass('is-invalid') : nama_kategori.addClass('is-valid'));
+        ((nama_kategori_info.val() == "") ? nama_kategori_info.addClass('is-invalid') : nama_kategori_info.addClass('is-valid'));
 
         var formData = new FormData()
-        formData.append('nama', nama_kategori.val());
+        formData.append('nama', nama_kategori_info.val());
 
         axios.post('{{route("store.kategori.pemerintahan.desa")}}', formData).then((res) => {
 
@@ -1511,7 +1511,7 @@
                 if(result.value){
                     $('#buat_data_kategori').removeClass('d-none');
                     $('#buat_data_kategori_global').addClass('d-none');
-                    ((nama_kategori.val() == "") ? nama_kategori.addClass('is-valid') : nama_kategori.removeClass('is-invalid'), nama_kategori.removeClass('is-valid'));
+                    ((nama_kategori_info.val() == "") ? nama_kategori_info.addClass('is-valid') : nama_kategori_info.removeClass('is-invalid'), nama_kategori.removeClass('is-valid'));
                     window.location.href = "{{route('kategori.pemerintahan.desa')}}";
                 }
             });
@@ -1524,7 +1524,7 @@
 
 
     // START UPDATE KATEGORI INFORMASI
-    var u_nama_kategori = $('#u_nama_kategori_info');
+    var u_nama_kategori_info = $('#u_nama_kategori_info');
     $("#search_by_kategori_informasi").keypress(function(event) {
         if (event.keyCode === 13) {
 
@@ -1562,15 +1562,15 @@
 
                 })
 
-                u_nama_kategori.on('input', (e)=> {
+                u_nama_kategori_info.on('input', (e)=> {
                     var value = e.target.value
 
                     if (value.length === 0) {
-                        u_nama_kategori.addClass('is-invalid');
-                        u_nama_kategori.removeClass('is-valid');
+                        u_nama_kategori_info.addClass('is-invalid');
+                        u_nama_kategori_info.removeClass('is-valid');
                     }else{
-                        u_nama_kategori.addClass('is-valid');
-                        u_nama_kategori.removeClass('is-invalid');
+                        u_nama_kategori_info.addClass('is-valid');
+                        u_nama_kategori_info.removeClass('is-invalid');
                     }
 
                 })
@@ -1580,7 +1580,7 @@
                 $('#simpan_data_kategori_informasi').click((e)=>{
                     e.preventDefault();
 
-                    ((u_nama_kategori.val() == "") ? u_nama_kategori.addClass('is-invalid') : u_nama_kategori.addClass('is-valid'));
+                    ((u_nama_kategori_info.val() == "") ? u_nama_kategori_info.addClass('is-invalid') : u_nama_kategori_info.addClass('is-valid'));
 
                     var formData = new FormData()
                     formData.append('old_name', $('#update_id_hide').val());

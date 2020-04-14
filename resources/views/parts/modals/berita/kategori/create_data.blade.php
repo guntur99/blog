@@ -14,7 +14,7 @@
                         <!--card begins-->
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="u_nama_kategori">Nama Kategori</label>
+                                <label for="nama_kategori">Nama Kategori</label>
                                 <input autocomplete="off" type="text" class="form-control" name="nama_kategori" id="nama_kategori"
                                     placeholder="Nama Kategori" required>
                                 <div class="valid-feedback">
