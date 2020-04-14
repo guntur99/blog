@@ -423,6 +423,7 @@
 
                 axios.post('{{route("penduduk.desa.update")}}', formData).then((res) => {
 
+                    $('#updateKependudukanModalViewer').modal('hide');
                     Swal.fire({
                         title: 'Success',
                         text: "Data Berhasil Diperbarui!",
@@ -441,7 +442,6 @@
                         if (result.value) {
                             dataTable.draw();
                             location.reload();
-                            $('#updateKependudukanModalViewer').modal('hide');
                         }
                     });
 
