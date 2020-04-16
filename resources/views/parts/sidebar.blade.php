@@ -97,22 +97,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('pemerintahan.desa.create') }}" class=" menu-link">
-                            <span class="menu-label">
-                                <span class="menu-name" style="font-size:14px">Buat Informasi Baru</span>
-                            </span>
-                            <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-hexagon-slice-5 "></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menu-item">
                         <a href="{{ route('kategori.pemerintahan.desa') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Kategori Informasi</span>
                             </span>
                             <span class="menu-icon">
-                                <i class="icon-placeholder mdi mdi-hexagon-slice-1 "></i>
+                                <i class="icon-placeholder mdi mdi-hexagon-slice-5 "></i>
                             </span>
                         </a>
                     </li>
