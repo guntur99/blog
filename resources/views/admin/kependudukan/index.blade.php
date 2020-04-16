@@ -21,12 +21,17 @@
             <div class="container-fluid">
                 <div class="row p-b-60 p-l-30 p-t-60">
 
-                    <div class="col-md-12 text-white p-b-30">
+                    <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Warga</strong></h2>
+                                <h2><strong>Daftar Penduduk Desa</strong></h2>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6 p-r-40">
+                        <a href="{{route('penduduk.desa.create')}}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                                class="mdi mdi-playlist-plus"></i> Tambah Penduduk
+                        </a>
                     </div>
 
                 </div>

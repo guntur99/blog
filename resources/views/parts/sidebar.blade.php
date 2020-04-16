@@ -120,22 +120,19 @@
             </li>
 
             <li class="menu-item ">
-                <a href="#" class="open-dropdown menu-link">
+                <a href="{{route('penduduk.desa.index')}}" class="menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">Penduduk Desa
-                            <span class="menu-arrow"></span>
-                        </span>
-                        <span class="menu-info" style="font-size:12px">Memiliki Sub-Menu</span>
+                        <span class="menu-name">Penduduk Desa</span>
                     </span>
                     <span class="menu-icon">
                             <i class="icon-placeholder mdi mdi-account-heart "></i>
                     </span>
                 </a>
                 <!--submenu-->
-                <ul class="sub-menu">
+                {{-- <ul class="sub-menu">
 
                     <li class="menu-item">
-                        <a href="{{route('penduduk.desa.index')}}" class=" menu-link">
+                        <a href="" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Semua Penduduk Desa</span>
                             </span>
@@ -154,7 +151,7 @@
                             </span>
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
             </li>
             {{-- <li class="menu-item ">
                 <a href="#" class="open-dropdown menu-link">
