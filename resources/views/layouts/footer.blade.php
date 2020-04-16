@@ -80,7 +80,7 @@
         axios.post('{{route("import.excel.file")}}', formData).then((res) => {
             Swal.fire({
                 title: 'Success',
-                text: "Add Data Success",
+                text: "Data Berhasil Ditambahkan!",
                 icon: 'success',
                 showCancelButton: false,
                 confirmButtonText: 'Close',
@@ -535,7 +535,7 @@
 
                 Swal.fire({
                     title: 'Success',
-                    text: "Add Data Success",
+                    text: "Data Berhasil Ditambahkan!",
                     icon: 'success',
                     showCancelButton: false,
                     confirmButtonText: 'Close',

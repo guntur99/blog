@@ -315,11 +315,11 @@
             $('#id_hide').val(data.id)
 
             $('#button-modal').html(`
-            <button type="button" id="hapus-data" class="btn ml-2 mr-2 btn-danger float-right">
-                <i class="mdi mdi-cube-outline"></i> Hapus Data
+            <button type="button" id="hapus-data" class="btn ml-2 mr-2 mt-1 mb-1 btn-danger float-right">
+                <i class="mdi mdi-playlist-minus"></i> Hapus Data
             </button>
-            <button type="button" id="perbarui-data" class="btn ml-2 mr-2 btn-primary float-right">
-                <i class="mdi mdi-comment-outline"></i> Perbarui Data
+            <button type="button" id="perbarui-data" class="btn ml-2 mr-2 mt-1 mb-1 btn-primary float-right">
+                <i class="mdi mdi-playlist-edit"></i> Perbarui Data
             </button>
             `);
 
@@ -376,8 +376,8 @@
                         }
                     }).then((result) => {
                         if (result.value) {
-                            // dataTable.draw();
-                            location.reload();
+                            dataTable.draw();
+                            // location.reload();
                         }
                     });
 
