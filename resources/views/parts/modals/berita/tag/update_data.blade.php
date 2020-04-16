@@ -48,9 +48,9 @@
                         <hr>
                             <div class="col-md-12" id="button-modals" style="padding:0px 0px">
                                 <div id="btn_perbarui_hapus">
-                                    <button type="button" id="hapus_data_tag" class="btn ml-2 btn-danger float-right">
+                                    {{-- <button type="button" id="hapus_data_tag" class="btn ml-2 btn-danger float-right">
                                         <i class="mdi mdi-cube-outline"></i> Hapus Data
-                                    </button>
+                                    </button> --}}
                                     <button type="button" id="perbarui_data_tag" class="btn ml-2 btn-warning float-right">
                                         <i class="mdi mdi-cube-outline"></i> Perbarui Data
                                     </button>

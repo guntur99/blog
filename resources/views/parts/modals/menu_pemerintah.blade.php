@@ -37,7 +37,7 @@
 
                                         <div class="card-body text-white">
                                             <div class="text-center p-b-0">
-                                                <a href="#" class="badge    text-uppercase bg-white-translucent">Bagian Kategori</a>
+                                                <a href="#" class="badge    text-uppercase bg-white-translucent">Bagian Kategori Informasi</a>
                                                 <div class="p-t-20 p-b-20">
 
                                                 </div>
@@ -116,7 +116,8 @@
 
                                 <!--widget card begin-->
                                 <div class="card m-b-0" style="margin-left:-17px;">
-                                    <div class="card-body pointer_card" id="form_hapus_kategori_informasi">
+                                    {{-- <div class="card-body pointer_card" id="form_hapus_kategori_informasi"> --}}
+                                    <div class="card-body no-drop_cursor">
                                         <div class="row">
                                             <div class="col-md-12 my-auto">
                                                 <div class="media">

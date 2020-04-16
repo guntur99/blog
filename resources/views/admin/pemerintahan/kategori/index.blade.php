@@ -24,7 +24,7 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Kategori Berita</strong></h2>
+                                <h2><strong>Daftar Kategori Informasi</strong></h2>
                             </div>
                         </div>
                     </div>
