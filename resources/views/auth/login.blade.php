@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <main class="admin-main  bg-pattern">
@@ -10,14 +10,14 @@
                         <div class=" padding-box-2 ">
                             <div class="text-center p-b-20 pull-up-sm">
                                 <div class="avatar avatar-lg avatar-offline">
-                                    <img src="{{ asset('atmos/getting started/light/assets/img/users/user-3.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ asset('atmos/getting started/light/assets/img/users/user-2.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </div>
                             <h3 class="text-center">Access System</h3>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Hi, enter email & password</label>
+                                    <label>Silahkan Isi Email & Password</label>
 
                                     <div class="input-group input-group-flush mb-3">
                                         <input id="email" type="email" class="form-control form-control-prepended @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
