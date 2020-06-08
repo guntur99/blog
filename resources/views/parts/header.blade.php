@@ -18,10 +18,10 @@
             <ul class="nav align-items-center">
 
                 <li class="nav-item">
-                    {{-- <div class="dropdown"> --}}
-                        {{-- <a href="{{ route('index') }}" target="_blank" class="nav-link"> <i class="mdi mdi-24px mdi-web"></i> --}}
+                    <div class="dropdown">
+                        <a href="{{ url('/') }}" target="_blank" class="nav-link"> <i class="mdi mdi-24px mdi-earth"></i>
                         </a>
-                    {{-- </div> --}}
+                    </div>
                 </li>
                 {{-- <li class="nav-item">
                     <div class="dropdown">
