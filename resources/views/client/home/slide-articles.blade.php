@@ -11,7 +11,7 @@
                         <!-- Post Contetnt -->
                         <div class="post-content text-center">
                             <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
-                                <a href="#">{{ $post->created_at }}</a>
+                                <a href="#">{{ Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</a>
                                 <a href="#">{{ $post->category_name }}</a>
                             </div>
                             <a href="#!" class="post-title mx-5" data-animation="fadeInUp" data-delay="300ms">{{ $post->judul }}</a>

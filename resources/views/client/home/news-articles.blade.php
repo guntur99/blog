@@ -40,29 +40,31 @@
 
         <div class="sports-videos-slides owl-carousel mb-30">
 
-        {{-- @foreach($categories_kh2 as $category)
-            @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(3)->get() as $post) --}}
+        @foreach($all_articles as $article)
+            {{-- @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(3)->get() as $post) --}}
+            @if($article->kategori_id == 2)
             <!-- Single Featured Post -->
             <div class="single-featured-post">
                 <!-- Thumbnail -->
                 <div class="post-thumbnail mb-50">
                     <a href="#!">
-                        <img src="" style="height: 350px; object-fit: cover;" alt="">
+                        <img src="{{ $article->image }}" style="height: 350px; object-fit: cover;" alt="">
                     </a>
                     {{--<a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>--}}
                 </div>
                 <!-- Post Contetnt -->
                 <div class="post-content">
                     <div class="post-meta">
-                        <a></a>
-                        <a href="#"></a>
+                        <a>{{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }}</a>
+                        <a href="#">Kegiatan Desa</a>
                     </div>
-                    <a href="#!" class="post-title"></a>
+                    <a href="#!" class="post-title">{{ $article->judul }}</a>
                     <p></p>
                 </div>
             </div>
-                {{-- @endforeach
-            @endforeach --}}
+            @endif
+                {{-- @endforeach --}}
+            @endforeach
 
         </div>
 
