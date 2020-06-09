@@ -11,20 +11,22 @@
 
         <div class="trending-post-slides owl-carousel">
 
-        {{-- @foreach($categories_kh1 as $category)
-            @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(4)->get() as $post) --}}
+        @foreach($all_articles as $article)
+            @if($article->kategori_id == 1)
+            {{-- @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(4)->get() as $post) --}}
             <!-- Single Trending Post -->
             <div class="single-trending-post">
                 <a href="">
-                    <img src="" style="height: 180px; object-fit: cover;" alt="">
+                    <img src="{{ $article->image }}" style="height: 180px; object-fit: cover;" alt="">
                 </a>
                 <div class="post-content">
-                    <a href="#" class="post-cata"></a>
-                    <a href="#!" class="post-title"></a>
+                    {{-- <a href="#" class="post-cata">Berita Desa</a> --}}
+                    <a href="#!" class="post-title">{{ $article->judul }}</a>
                 </div>
             </div>
-            {{-- @endforeach
-        @endforeach --}}
+            @endif
+            {{-- @endforeach --}}
+        @endforeach
 
         </div>
     </div>

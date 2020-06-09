@@ -17,6 +17,8 @@ class ClientController extends Controller
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->take(5)->get();
 
+        $all_articles = \DB::table('beritas')->take(4)->get();
+
         $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
         $info_pemerintahan = \DB::table('pemerintahans')->get();
         // dd($slide_articles);
@@ -24,6 +26,7 @@ class ClientController extends Controller
         [
             'category_berita' => $kategori_berita,
             'slide_articles' => $slide_articles,
+            'all_articles' => $all_articles,
             'category_pemerintahan' => $kategori_pemerintahan,
             'info_pemerintahan' => $info_pemerintahan,
         ]);
