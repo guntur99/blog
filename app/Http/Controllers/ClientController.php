@@ -39,4 +39,18 @@ class ClientController extends Controller
             'info_pemerintahan' => $info_pemerintahan,
         ]);
     }
+
+    public function contact()
+    {
+        $kategori_berita = \DB::table('kategori_beritas')->get();
+        $info_pemerintahan = \DB::table('pemerintahans')->get();
+        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
+
+        return view('client.contact.contact',
+        [
+            'category_berita' => $kategori_berita,
+            'category_pemerintahan' => $kategori_pemerintahan,
+            'info_pemerintahan' => $info_pemerintahan,
+        ]);
+    }
 }

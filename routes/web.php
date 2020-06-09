@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
 
+Route::get('/contact', 'ClientController@contact')->name('client.contact');
+
 
 //---------------- BAGIAN ADMIN --------------------------
 Route::get('/home', 'HomeController@index')->name('home');

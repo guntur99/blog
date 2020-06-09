@@ -72,7 +72,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#!">Contact</a></li>
+                                <li><a href="{{ route('client.contact') }}">Contact</a></li>
                             </ul>
                         </div>
                         <!-- Nav End -->
