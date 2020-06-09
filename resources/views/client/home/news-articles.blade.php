@@ -20,7 +20,7 @@
                     <img src="{{ $article->image }}" style="height: 180px; object-fit: cover;" alt="">
                 </a>
                 <div class="post-content">
-                    {{-- <a href="#" class="post-cata">Berita Desa</a> --}}
+                    <a href="#" class="post-cata">{{ $article->category_name }}</a>
                     <a href="#!" class="post-title">{{ $article->judul }}</a>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="post-content">
                     <div class="post-meta">
                         <a>{{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }}</a>
-                        <a href="#">Kegiatan Desa</a>
+                        <a href="#">{{ $article->category_name }}</a>
                     </div>
                     <a href="#!" class="post-title">{{ $article->judul }}</a>
                     <p></p>
@@ -70,27 +70,29 @@
 
         <div class="row">
 
-        {{-- @foreach($categories_kh2 as $category)
-            @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->skip(3)->take(4)->get() as $post) --}}
+        @foreach($all_articles as $article)
+            @if($article->kategori_id == 2)
+            {{-- @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->skip(3)->take(4)->get() as $post) --}}
             <!-- Single Blog Post -->
             <div class="col-12 col-lg-6">
                 <div class="single-blog-post d-flex style-3 mb-30">
                     <div class="post-thumbnail">
                         <a href="#!">
-                            <img src="" style="height: 60px; object-fit: cover;" alt="">
+                            <img src="{{ $article->image }}" style="height: 50px; object-fit: cover;" alt="">
                         </a>
                     </div>
                     <div class="post-content">
-                        <a href="#!" class="post-title"></a>
+                        <a href="#!" class="post-title">{{ $article->judul }}</a>
                         <div class="post-meta d-flex">
-                            <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> </a>
-                            <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> </a>
+                            <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }} </a>
+                            <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $article->created_by }}</a>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- @endforeach
-        @endforeach --}}
+            @endif
+            {{-- @endforeach --}}
+        @endforeach
 
         </div>
 
@@ -105,27 +107,29 @@
 
         <div class="most-viewed-videos-slide owl-carousel">
 
-        {{-- @foreach($categories_kh4 as $category)
-            @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(4)->get() as $post) --}}
+        @foreach($all_articles as $article)
+            @if($article->kategori_id == 4)
+            {{-- @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(4)->get() as $post) --}}
             <!-- Single Blog Post -->
             <div class="single-blog-post style-4">
                 <div class="post-thumbnail">
                     <a href="#!">
-                        <img src="" style="height: 180px; object-fit: cover;" alt="">
+                        <img src="{{ $article->image }}" style="height: 180px; object-fit: cover;" alt="">
                     </a>
                     {{--<a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>--}}
                     {{--<span class="video-duration">09:27</span>--}}
                 </div>
                 <div class="post-content">
-                    <a href="#!" class="post-title"></a>
+                    <a href="#!" class="post-title">{{ $article->judul }}</a>
                     <div class="post-meta d-flex">
-                        <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> </a>
-                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> </a>
+                        <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }} </a>
+                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $article->created_by }}</a>
                     </div>
                 </div>
             </div>
-            {{-- @endforeach
-        @endforeach --}}
+            @endif
+            {{-- @endforeach --}}
+        @endforeach
 
         </div>
     </div>
