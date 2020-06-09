@@ -27,31 +27,37 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class=""><a href="{{ url('/') }}">Home</a></li>
+                                <li class=""><a href="{{ route('client') }}">Home</a></li>
                                 {{-- <li class="{{ Request::is('/') ? 'active' : null }}"><a href="{{ url('/') }}">Home</a></li> --}}
                                 <li><a href="#">Berita Desa</a>
-                                    {{-- <ul class="dropdown {{ Request::is('berita-desa/*') ? 'active' : null }}">
-                                        @if($categories_khs->count() > 0)
-                                            @foreach($categories_khs->take(10) as $category)
-                                                <li><a href="{{ route('clients.kajian-harian.sub-kajian-harian', ['id' => $category->id]) }}">{!! $category->name  !!}</a></li>
+                                    {{-- <ul class="dropdown {{ Request::is('berita-desa/*') ? 'active' : null }}"> --}}
+                                    <ul class="dropdown">
+                                        @if($category_berita->count() > 0)
+                                            @foreach($category_berita as $category)
+                                                <li><a href="#">{{  $category->nama }}</a></li>
+                                                {{-- <li><a href="{{ route('clients.kajian-harian.sub-kajian-harian', ['id' => $category->id]) }}">{!! $category->name  !!}</a></li> --}}
                                             @endforeach
                                         @endif
-                                    </ul> --}}
+                                    </ul>
                                 </li>
                                 <li><a href="#">Pemerintah Desa</a>
                                     <div class="megamenu">
 
-                                        {{-- @if($categories_ci->count() > 0)
-                                            @foreach($categories_ci->take(5) as $category)
+                                        @if($category_pemerintahan->count() > 0)
+                                            @foreach($category_pemerintahan as $category)
                                         <ul class="single-mega cn-col-5">
-                                            <li><a style="color: #ff8855; text-transform: uppercase;">{!! $category->title  !!}</a></li>
+                                            <li><a style="color: #ff8855; text-transform: uppercase;">{{  $category->nama }}</a></li>
                                             <hr style="margin-top: -5px;">
-                                                @foreach($category->artikels_ci()->orderBy('created_at', 'asc')->take(10)->get() as $post)
-                                            <li><a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}">{{ $post->title }}</a></li>
-                                                @endforeach
+
+                                            @foreach($info_pemerintahan as $info)
+                                                @if($info->kategori_id == $category->id)
+                                                <li><a href="#">{{ $info->judul }}</a></li>
+                                                {{-- <li><a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}">{{ $post->title }}</a></li> --}}
+                                                @endif
+                                            @endforeach
                                         </ul>
                                             @endforeach
-                                        @endif --}}
+                                        @endif
                                     </div>
                                 </li>
                                 <li><a href="#">Inovasi Desa</a>

@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+//---------------- BAGIAN CLIENT --------------------------
+Route::get('/', 'ClientController@index')->name('client');
+
+
+//---------------- BAGIAN ADMIN --------------------------
 Route::get('/home', 'HomeController@index')->name('home');
 
 //---------------- BAGIAN KEPENDUDUKAN --------------------------
