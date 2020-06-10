@@ -51,7 +51,7 @@
 
                                             @foreach($info_pemerintahan as $info)
                                                 @if($info->kategori_id == $category->id)
-                                                <li><a href="#">{{ $info->judul }}</a></li>
+                                                <li><a href="#" onclick="detilInfo('{{ $info->slug }}')">{{ $info->judul }}</a></li>
                                                 {{-- <li><a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}">{{ $post->title }}</a></li> --}}
                                                 @endif
                                             @endforeach

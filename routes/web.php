@@ -26,6 +26,8 @@ Route::get('/daftar-berita/{id}', 'ClientController@showBerita')->name('client.s
 
 Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetilBerita')->name('client.show.detil.berita');
 
+Route::get('/pemerintahan/detil-informasi/{id}', 'ClientController@showDetilInfo')->name('client.show.detil.info');
+
 
 
 //---------------- BAGIAN ADMIN --------------------------

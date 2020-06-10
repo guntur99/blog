@@ -123,82 +123,46 @@ class ClientController extends Controller
             'detil_berita' => $detil_berita,
             'berita_lain' => $berita_lain,
         ]);
-        // dd('haha');
-        // $data = \DB::table('beritas')
-        //     ->select(
-        //         '*',
-        //     )
-        //     ->where('id', $id)
-        //     ->first();
+    }
 
-        // $kategori = \DB::table('kategori_beritas')
-        //     ->select(
-        //         '*',
-        //     )
-        //     ->get();
+    public function showDetilInfo($id)
+    {
+        $kategori_berita = \DB::table('kategori_beritas')->get();
+        // $kategori_berita_now = \DB::table('kategori_beritas')
+        // ->where('nama', $id)->first();
+        $info_pemerintahan = \DB::table('pemerintahans')->get();
+        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
+        // dd($id);
+        // dd($kategori_berita_now);
+        $detil_info = \DB::table('pemerintahans as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name',
+            'c.name as created_by'
+            )
+        ->leftJoin('kategori_pemerintahans as b', 'a.kategori_id', '=', 'b.id')
+        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->where('slug', $id)->first();
 
-        // $kategori_selected = \DB::table('kategori_beritas')
-        //     ->select(
-        //         '*',
-        //     )
-        //     ->where('id', $data->kategori_id)
-        //     ->first();
+        $info_lain = \DB::table('pemerintahans as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name',
+            'c.name as created_by'
+        )
+        ->leftJoin('kategori_pemerintahans as b', 'a.kategori_id', '=', 'b.id')
+        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->where('slug', '!=', $id)->take(3)->get();
 
-        // $tag = \DB::table('tag_beritas')
-        //     ->select(
-        //         '*',
-        //     )
-        //     ->get();
-
-        // $tag_selected = [];
-        // $tag_n_selected = [];
-        // $tag_s = [];
-        // $tag_all = [];
-        // $tags = \explode(",", $data->tag_id);
-
-        // for ($i=0; $i < count($tags); $i++) {
-        //     $datas = \DB::table('tag_beritas as a')
-        //     ->select(
-        //         'a.*',
-        //     )
-        //     ->where('a.id', $tags[$i])
-        //     ->first();
-
-        //     array_push($tag_s, $datas->id);
-        // }
-
-        // for ($i=0; $i < count($tags); $i++) {
-        //     $datas = \DB::table('tag_beritas as a')
-        //     ->select(
-        //         'a.*',
-        //     )
-        //     ->where('a.id', $tags[$i])
-        //     ->first();
-
-        //     array_push($tag_selected, $datas);
-        // }
-
-        // foreach ($tag as $key => $value) {
-        //     array_push($tag_all, $value->id);
-        // }
-
-        // $tag_diff = array_values(array_diff($tag_all, $tag_s));
-
-        // for ($i=0; $i < count($tag_diff); $i++) {
-        //     $datan = \DB::table('tag_beritas')
-        //     ->where('id', $tag_diff[$i])
-        //     ->first();
-
-        //     array_push($tag_n_selected, $datan);
-        // }
-
-        // return view('client.berita.list-berita-desa', [
-        //     'data' => $data,
-        //     'kategori' => $kategori,
-        //     'kategori_selected' => $kategori_selected->id,
-        //     // 'tag' => $tag,
-        //     'tag_selected' => $tag_selected,
-        //     'tag_n_selected' => $tag_n_selected
-        // ]);
+        // dd($info_lain);
+        return view('client.pemerintahan.detil-info',
+        [
+            'category_berita' => $kategori_berita,
+            // 'category_berita_now' => $kategori_berita_now,
+            'category_pemerintahan' => $kategori_pemerintahan,
+            'info_pemerintahan' => $info_pemerintahan,
+            'detil_info' => $detil_info,
+            'info_lain' => $info_lain,
+        ]);
     }
 }

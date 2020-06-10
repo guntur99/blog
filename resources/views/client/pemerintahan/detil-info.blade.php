@@ -3,12 +3,12 @@
 @section('content')
 
     <!-- ********** Cover Artikel Area Start ********** -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('{{ $detil_berita->image }}');">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('{{ $detil_info->image }}');">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content">
-                        <h2>Artikel Berita</h2>
+                        <h2>{{ $detil_info->category_name }}</h2>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('client') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="" onclick="categoryBerita('{{ $detil_berita->category_name }}')">{{ $detil_berita->category_name }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $detil_berita->judul }}</li>
+                            <li class="breadcrumb-item"><a href="" onclick="categoryBerita('{{ $detil_info->category_name }}')">{{ $detil_info->category_name }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $detil_info->judul }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -44,14 +44,14 @@
                     <!-- ********** Latest Area Start ********** -->
                     <div class="post-details-content bg-white mb-30 p-30 box-shadow">
                         <div class="blog-thumb mb-30">
-                            <img src="{{ $detil_berita->image }}" alt="">
+                            <img src="{{ $detil_info->image }}" alt="">
                         </div>
                         <div class="blog-content">
                             <div class="post-meta">
-                                <a href="#">{{ Carbon\Carbon::parse($detil_berita->created_at)->format('d M Y') }}</a>
-                                <a href="#">{{ $detil_berita->category_name }}</a>
+                                <a href="#">{{ Carbon\Carbon::parse($detil_info->created_at)->format('d M Y') }}</a>
+                                <a href="#">{{ $detil_info->category_name }}</a>
                             </div>
-                            <h4 class="post-title">{{ $detil_berita->judul }}</h4>
+                            <h4 class="post-title">{{ $detil_info->judul }}</h4>
                             <!-- Post Meta -->
                             {{--<div class="post-meta-2">--}}
                                 {{--<a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $post->user->name }}</a>--}}
@@ -59,7 +59,7 @@
                                 {{--<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>--}}
                             {{--</div>--}}
 
-                            <p>{!! $detil_berita->desc !!}</p>
+                            <p>{!! $detil_info->desc !!}</p>
 
                             <!-- Like Dislike Share -->
                             {{--<div class="like-dislike-share my-5">--}}
@@ -76,7 +76,7 @@
                                     {{-- <img src="{!! asset($post->user->profile->avatar) !!}" alt=""> --}}
                                 </div>
                                 <div class="post-author-desc pl-4">
-                                    <a href="#" class="author-name">{{ $detil_berita->created_by }}</a>
+                                    <a href="#" class="author-name">{{ $detil_info->created_by }}</a>
                                     {{-- <p>{{ $post->user->profile->about }}</p> --}}
                                 </div>
                             </div>
@@ -95,19 +95,19 @@
 
                         <div class="row">
 
-                        @foreach($berita_lain as $article)
+                        @foreach($info_lain as $article)
                             {{-- @foreach($category->artikels_kh()->orderBy('created_at', 'desc')->take(3)->get() as $post) --}}
                             <!-- Single Blog Post -->
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post style-4 mb-30">
                                     <div class="post-thumbnail">
-                                        <a href="#" onclick="detilBerita('{{ $article->slug }}')">
+                                        <a href="#" onclick="detilInfo('{{ $article->slug }}')">
                                         {{-- <a href="{{ route('clients.artikel-kh', ['slug' => $post->slug]) }}"> --}}
                                             <img src="{{ $article->image }}" style="height: 140px; object-fit: cover;" alt="">
                                         </a>
                                     </div>
                                     <div class="post-content">
-                                        <a href="#" onclick="detilBerita('{{ $article->slug }}')" class="post-title">{{ $article->judul }}</a>
+                                        <a href="#" onclick="detilInfo('{{ $article->slug }}')" class="post-title">{{ $article->judul }}</a>
                                         <div class="post-meta d-flex">
                                             <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }}</a>
                                             <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $article->created_by }}</a>
@@ -150,9 +150,9 @@
             });
         }
 
-        function detilBerita(data){
-            axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
-                window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
+        function detilInfo(data){
+            axios.get('{{url("pemerintahan/detil-informasi")}}/'+data).then((res) => {
+                window.location.href = '{{url("pemerintahan/detil-informasi")}}/'+data;
             });
         }
 

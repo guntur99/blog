@@ -50,6 +50,12 @@
                     window.location.href = '{{url("daftar-berita")}}/'+data;
                 });
             }
+
+            function detilInfo(data){
+                axios.get('{{url("pemerintahan/detil-informasi")}}/'+data).then((res) => {
+                    window.location.href = '{{url("pemerintahan/detil-informasi")}}/'+data;
+                });
+            }
         </script>
         @yield('custom_script')
 
