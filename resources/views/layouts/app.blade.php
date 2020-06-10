@@ -46,26 +46,13 @@
         <!--Additional Page includes-->
         <script>
             function categoryBerita(data){
-                alert(data)
-                var formData = new FormData()
-
-                formData.append('category_id', data);
-
                 axios.get('{{url("daftar-berita")}}/'+data).then((res) => {
                     window.location.href = '{{url("daftar-berita")}}/'+data;
                 });
-                // axios.get('{{config("app.url")}}/daftar-berita/'+data, formData).then((res) => {
-                //     // hideLoader();
-
-
-                // }).catch((err) => {
-                //     // hideLoader();
-                //     console.log(err.message);
-
-                //     return alert('haha');
-                // });
             }
         </script>
+        @yield('custom_script')
+
     </body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>

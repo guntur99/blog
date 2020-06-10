@@ -55,7 +55,7 @@
                                         <a href="#">{{ Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</a>
                                         <a href="#">{{ $post->category_name }}</a>
                                     </div>
-                                    <a href="#" class="post-title">{{ $post->judul }}</a>
+                                    <a href="#" onclick="detilBerita('{{ $post->slug }}')" class="post-title">{{ $post->judul }}</a>
                                     {{-- <a href="{{ route('clients.artikel-kh', ['slug' => $post->slug]) }}" class="post-title">{{ $post->title }}</a> --}}
                                     <!-- Post Meta -->
                                     <div class="post-meta-2">
@@ -94,4 +94,18 @@
         </div>
     </section>
 
+@endsection
+
+@section('custom_script')
+
+    <!--Additional Page includes-->
+    <script>
+
+        function detilBerita(data){
+            axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
+                window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
+            });
+        }
+
+    </script>
 @endsection

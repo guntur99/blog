@@ -91,9 +91,9 @@ class ClientController extends Controller
         // ->where('nama', $id)->first();
         $info_pemerintahan = \DB::table('pemerintahans')->get();
         $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
-        dd($id);
+        // dd($id);
         // dd($kategori_berita_now);
-        $berita = \DB::table('beritas as a')
+        $detil_berita = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name',
@@ -101,16 +101,27 @@ class ClientController extends Controller
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('kategori_id', $kategori_berita_now->id)->take(5)->get();
+        ->where('slug', $id)->first();
 
-        // dd($berita);
-        return view('client.berita.list-berita-desa',
+        $berita_lain = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name',
+            'c.name as created_by'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->where('slug', '!=', $id)->take(3)->get();
+
+        // dd($berita_lain);
+        return view('client.berita.detil-berita',
         [
             'category_berita' => $kategori_berita,
-            'category_berita_now' => $kategori_berita_now,
+            // 'category_berita_now' => $kategori_berita_now,
             'category_pemerintahan' => $kategori_pemerintahan,
             'info_pemerintahan' => $info_pemerintahan,
-            'berita' => $berita,
+            'detil_berita' => $detil_berita,
+            'berita_lain' => $berita_lain,
         ]);
         // dd('haha');
         // $data = \DB::table('beritas')
