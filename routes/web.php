@@ -22,6 +22,11 @@ Route::get('/', 'ClientController@index')->name('client');
 
 Route::get('/contact', 'ClientController@contact')->name('client.contact');
 
+Route::get('/daftar-berita/{id}', 'ClientController@showBerita')->name('client.show.berita');
+
+Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetilBerita')->name('client.show.detil.berita');
+
+
 
 //---------------- BAGIAN ADMIN --------------------------
 Route::get('/home', 'HomeController@index')->name('home');

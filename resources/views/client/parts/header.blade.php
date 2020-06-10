@@ -34,7 +34,7 @@
                                     <ul class="dropdown">
                                         @if($category_berita->count() > 0)
                                             @foreach($category_berita as $category)
-                                                <li><a href="#">{{  $category->nama }}</a></li>
+                                                <li><a href="#" onclick="categoryBerita('{{ $category->nama }}')">{{  $category->nama }}</a></li>
                                                 {{-- <li><a href="{{ route('clients.kajian-harian.sub-kajian-harian', ['id' => $category->id]) }}">{!! $category->name  !!}</a></li> --}}
                                             @endforeach
                                         @endif
