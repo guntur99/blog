@@ -14,7 +14,7 @@
                                 <a href="#">{{ Carbon\Carbon::parse($post->created_at)->format('d M Y') }}</a>
                                 <a href="#">{{ $post->category_name }}</a>
                             </div>
-                            <a href="#!" class="post-title mx-5" data-animation="fadeInUp" data-delay="300ms">{{ $post->judul }}</a>
+                            <a href="" onclick="detilBerita('{{ $post->slug }}')" class="post-title mx-5" data-animation="fadeInUp" data-delay="300ms">{{ $post->judul }}</a>
                             {{--<a href="video-post.html" class="video-play" data-animation="bounceIn" data-delay="500ms"><i class="fa fa-play"></i></a>--}}
                         </div>
                     </div>

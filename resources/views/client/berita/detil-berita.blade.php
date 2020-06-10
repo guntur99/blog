@@ -23,7 +23,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('client') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Berita Desa</a></li>
+                            <li class="breadcrumb-item"><a href="" onclick="categoryBerita('{{ $detil_berita->category_name }}')">{{ $detil_berita->category_name }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $detil_berita->judul }}</li>
                         </ol>
                     </nav>
@@ -143,6 +143,12 @@
 
     <!--Additional Page includes-->
     <script>
+
+        function categoryBerita(data){
+            axios.get('{{url("daftar-berita")}}/'+data).then((res) => {
+                window.location.href = '{{url("daftar-berita")}}/'+data;
+            });
+        }
 
         function detilBerita(data){
             axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {

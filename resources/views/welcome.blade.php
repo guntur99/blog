@@ -22,3 +22,16 @@
     </section>
 
 @endsection
+@section('custom_script')
+
+    <!--Additional Page includes-->
+    <script>
+
+        function detilBerita(data){
+            axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
+                window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
+            });
+        }
+
+    </script>
+@endsection
