@@ -64,7 +64,7 @@
                                     <ul class="dropdown ">
                                     {{-- <ul class="dropdown {{ Request::is('inovasi-desa/*') ? 'active' : null }}"> --}}
                                         <li>
-                                            <a class="" href="#!">Cek Kependudukan</a>
+                                            <a class="" href="{{ route('client.cek.kependudukan') }}">Cek Kependudukan</a>
                                         </li>
                                         <li>
                                             <a class="" href="#!">Surat Digital</a>

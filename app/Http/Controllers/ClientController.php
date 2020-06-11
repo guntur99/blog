@@ -165,4 +165,31 @@ class ClientController extends Controller
             'info_lain' => $info_lain,
         ]);
     }
+
+    public function cekKependudukan()
+    {
+
+        $kategori_berita = \DB::table('kategori_beritas')->get();
+        $info_pemerintahan = \DB::table('pemerintahans')->get();
+        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
+
+        return view('client.inovasi.cek-kependudukan',[
+            'category_berita' => $kategori_berita,
+            'category_pemerintahan' => $kategori_pemerintahan,
+            'info_pemerintahan' => $info_pemerintahan,
+            ]
+        );
+    }
+
+    public function cekStatusKependudukan($id)
+    {
+        $cek_status = \DB::table('kependudukans')
+        ->where('nik', $id)->first();
+
+        if (empty($cek_status)) {
+            return response()->json('not found');
+        }
+
+        return response()->json($cek_status, 200);
+    }
 }

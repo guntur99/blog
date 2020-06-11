@@ -2204,7 +2204,7 @@ textarea.form-control {
 
 /* ====== The End ====== */
 
-form.example input[type=text] {
+div.search-nik-bar input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid #ff8855;
@@ -2213,7 +2213,7 @@ form.example input[type=text] {
     background: #f1f1f1;
 }
 
-form.example button {
+div.search-nik-bar button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -2225,11 +2225,11 @@ form.example button {
     cursor: pointer;
 }
 
-form.example button:hover {
+div.search-nik-bar button:hover {
     background: #ff8855;
 }
 
-form.example::after {
+div.search-nik-bar::after {
     content: "";
     clear: both;
     display: table;

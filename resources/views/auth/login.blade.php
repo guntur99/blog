@@ -17,7 +17,7 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Silahkan Isi Email & Password</label>
+                                    <label>Email Anda</label>
 
                                     <div class="input-group input-group-flush mb-3">
                                         <input id="email" type="email" class="form-control form-control-prepended @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
@@ -33,7 +33,7 @@
                                             </span>
                                         @enderror
                                     </div>
-
+                                    <label>Password Anda</label>
                                     <div class="input-group input-group-flush mb-3">
                                         <input id="password" type="password" class="form-control form-control-prepended @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"
                                                 >

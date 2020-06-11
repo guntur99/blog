@@ -22,6 +22,10 @@ Route::get('/', 'ClientController@index')->name('client');
 
 Route::get('/contact', 'ClientController@contact')->name('client.contact');
 
+Route::get('/inovasi/cek-kependudukan', 'ClientController@cekKependudukan')->name('client.cek.kependudukan');
+
+Route::get('/inovasi/cek-status-kependudukan/{id}', 'ClientController@cekStatusKependudukan');
+
 Route::get('/daftar-berita/{id}', 'ClientController@showBerita')->name('client.show.berita');
 
 Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetilBerita')->name('client.show.detil.berita');
