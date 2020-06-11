@@ -108,7 +108,7 @@
                                     <div class="post-content">
                                         <a href="#" onclick="detilBerita('{{ $article->slug }}')" class="post-title">{{ $article->judul }}</a>
                                         <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }}</a>
+                                            <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($article->created_at)->format('d M') }}</a>
                                             <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $article->created_by }}</a>
                                             {{--<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>--}}
                                         </div>
