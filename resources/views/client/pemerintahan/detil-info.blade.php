@@ -72,12 +72,11 @@
                             <!-- Post Author -->
                             <div class="post-author d-flex align-items-center">
                                 <div class="post-author-thumb">
-                                    <img src="" alt="">
-                                    {{-- <img src="{!! asset($post->user->profile->avatar) !!}" alt=""> --}}
+                                    <img src="{{ asset('atmos/demos/default/assets/img/users/user-8.jpg') }}" alt="">
                                 </div>
                                 <div class="post-author-desc pl-4">
                                     <a href="#" class="author-name">{{ $detil_info->created_by }}</a>
-                                    {{-- <p>{{ $post->user->profile->about }}</p> --}}
+                                    <p>Administrator</p>
                                 </div>
                             </div>
                         </div>
