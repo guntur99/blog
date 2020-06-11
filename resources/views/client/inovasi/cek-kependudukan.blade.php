@@ -40,7 +40,7 @@
     <section class="top-post-area pt-10" style="margin-top: 30px; margin-bottom: 100px;">
         <div class="container no-padding">
             <div class="search-nik-bar">
-                <input type="text" id="input_nik" placeholder="Masukkan Nik Anda.." name="search">
+                <input type="number" id="input_nik" placeholder="Masukkan Nik Anda.." name="search">
                 <button id="btn_search_nik"><i class="fa fa-search"></i></button>
             </div>
         </div>

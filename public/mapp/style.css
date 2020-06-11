@@ -2204,7 +2204,7 @@ textarea.form-control {
 
 /* ====== The End ====== */
 
-div.search-nik-bar input[type=text] {
+div.search-nik-bar input[type=number] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid #ff8855;
