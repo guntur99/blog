@@ -5,7 +5,7 @@
 
     <!-- Sidebar Widget -->
     <div class="single-sidebar-widget">
-        <a href="#!" class="add-img"><img src="{{ asset('mapp/img/bg-img/surat-digital-add.jpg') }}" alt=""></a>
+        <a href="https://demov2.suratdigital.id/" target="__blank" class="add-img"><img src="{{ asset('mapp/img/bg-img/surat-digital-add.jpg') }}" alt=""></a>
     </div>
 
     <!-- Sidebar Widget -->
@@ -25,7 +25,7 @@
                 </div>
                 <div class="youtube-channel-content">
                     <a href="#!" class="channel-title">{{ $lembaga->judul }}</a>
-                    <a href="#!" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Lihat Detil</a>
+                    <a href="" onclick="detilInfo('{{ $lembaga->slug }}')" class="btn subscribe-btn"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Lihat Detil</a>
                 </div>
             </div>
             @endif

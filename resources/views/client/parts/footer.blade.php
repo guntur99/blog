@@ -24,11 +24,11 @@
                     <h6 class="widget-title">Link Terkait</h6>
                     <nav class="footer-widget-nav">
                         <ul>
-                            {{-- @if($categories_khs->count() > 0)
-                                @foreach($categories_khs->take(5) as $category)
-                                    <li><a href="{{ route('clients.kajian-harian.sub-kajian-harian', ['id' => $category->id]) }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {!! $category->name  !!}</a></li>
+                            @if($category_berita->count() > 0)
+                                @foreach($category_berita as $category)
+                                    <li><a href="" onclick="categoryBerita('{{ $category->nama }}')"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{  $category->nama }}</a></li>
                                 @endforeach
-                            @endif --}}
+                            @endif
                         </ul>
                     </nav>
                 </div>
@@ -39,24 +39,24 @@
                 <div class="footer-widget">
                     <h6 class="widget-title">Lembaga Masyarakat</h6>
 
-                    {{-- @foreach($categories_ci1 as $category)
-                        @foreach($category->artikels_ci()->orderBy('created_at', 'asc')->take(2)->get() as $post)
+                     @foreach($info_pemerintahan as $lembaga)
+                        @if($lembaga->kategori_id == 3)
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style-2 d-flex">
                             <div class="post-thumbnail">
-                                <a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}">
-                                    <img style="width: 700px; height: 70px; object-fit: cover;" src="{{ $post->featured }}" alt="">
+                                <a href="" onclick="detilInfo('{{ $lembaga->slug }}')">
+                                    <img style="width: 700px; height: 70px; object-fit: cover;" src="{{ $lembaga->image }}" alt="">
                                 </a>
                             </div>
                             <div class="post-content">
-                                <a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}" class="post-title">{{ $post->title }}</a>
+                                <a href="" onclick="detilInfo('{{ $lembaga->slug }}')" class="post-title">{{ $lembaga->judul }}</a>
                                 <div class="post-meta d-flex justify-content-between">
-                                    <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ $post->created_at->toFormattedDateString() }}</a>
+                                    <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($lembaga->created_at)->format('d M Y') }}</a>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                    @endforeach --}}
+                        @endif
+                    @endforeach
 
                 </div>
             </div>
@@ -64,14 +64,13 @@
             <!-- Footer Widget Area -->
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="footer-widget">
-                    <h6 class="widget-title">Tag</h6>
+                    <h6 class="widget-title">Pemerintahan</h6>
                     <ul class="footer-tags">
-                        {{-- @foreach($tags as $tag)
-                            <li><a href="#">{{ $tag->tag }}</a></li>
-                        @endforeach
-                        @foreach($tagsci as $tag)
-                            <li><a href="#">{{ $tag->tag }}</a></li>
-                        @endforeach --}}
+                        @if($category_pemerintahan->count() > 0)
+                            @foreach($category_pemerintahan as $category)
+                                <li><a href="#">{{ $category->nama }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

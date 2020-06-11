@@ -34,7 +34,7 @@
 
     <!-- Sidebar Widget -->
     <div class="single-sidebar-widget">
-        <a href="#!" class="add-img"><img src="{{ asset('mapp/img/bg-img/cek-kependudukan-add.jpg') }}" alt=""></a>
+        <a href="{{ route('client.cek.kependudukan') }}" class="add-img"><img src="{{ asset('mapp/img/bg-img/cek-kependudukan-add.jpg') }}" alt=""></a>
     </div>
 
 </div>

@@ -67,7 +67,7 @@
                                             <a class="" href="{{ route('client.cek.kependudukan') }}">Cek Kependudukan</a>
                                         </li>
                                         <li>
-                                            <a class="" href="#!">Surat Digital</a>
+                                            <a class="" href="https://demov2.suratdigital.id/" target="__blank">Surat Digital</a>
                                             {{-- <a class="{{ Request::is('berita-desa/surat-digital') ? 'active' : null }}" href="{{ route('surat-digital.create') }}">Surat Digital</a> --}}
                                         </li>
                                     </ul>
