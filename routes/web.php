@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
 
+Route::get('/search-articles/{id}', 'ClientController@searchArticles')->name('client.articles');
+
 Route::get('/contact', 'ClientController@contact')->name('client.contact');
 
 Route::get('/inovasi/cek-kependudukan', 'ClientController@cekKependudukan')->name('client.cek.kependudukan');

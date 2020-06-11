@@ -56,6 +56,22 @@
                     window.location.href = '{{url("pemerintahan/detil-informasi")}}/'+data;
                 });
             }
+
+            function detilBerita(data){
+                axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
+                    window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
+                });
+            }
+
+            $('#search_articles').click((e) => {
+                data = $('#topSearch').val();
+                axios.get('{{url("search-articles")}}/'+data).then((res) => {
+                    console.log(res);
+                    // return false;
+
+                    window.location.href = '{{url("search-articles")}}/'+data;
+                });
+            })
         </script>
         @yield('custom_script')
 

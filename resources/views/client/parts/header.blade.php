@@ -81,9 +81,9 @@
                     <div class="top-meta-data d-flex align-items-center">
                         <!-- Top Search Area -->
                         <div class="top-search-area">
-                            <form method="GET" action="/results">
+                            <form >
                                 <input type="search" name="query" id="topSearch" placeholder="Cari Artikel ...">
-                                <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                <button type="button" id="search_articles" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     </div>

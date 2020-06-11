@@ -192,4 +192,40 @@ class ClientController extends Controller
 
         return response()->json($cek_status, 200);
     }
+
+    public function searchArticles($id)
+    {
+
+        $articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name',
+            'c.name as created_by'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->where('judul', 'LIKE', '%' . $id . '%')->get();
+
+        // dd($articles);
+        if (empty($articles)) {
+            return response()->json('not found');
+        }
+
+        // return response()->json($articles, 200);
+
+        $kategori_berita = \DB::table('kategori_beritas')->get();
+        $info_pemerintahan = \DB::table('pemerintahans')->get();
+        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
+
+        return view('client.search.articles',[
+            'category_berita' => $kategori_berita,
+            'category_pemerintahan' => $kategori_pemerintahan,
+            'info_pemerintahan' => $info_pemerintahan,
+            'query' => $id,
+            'articles' => $articles,
+            ]
+        );
+
+    }
+
 }
