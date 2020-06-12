@@ -1,102 +1,57 @@
-<!-- ##### Footer Area Start ##### -->
-<footer class="footer-area">
-    <div class="container">
+
+
+<footer class="bg-191 color-ash pt-50 pb-20 text-left center-sm-text">
+
+    <div class="container-fluid">
         <div class="row">
-            <!-- Footer Widget Area -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="footer-widget">
-                    <!-- Logo -->
-                    <a href="{{ url('/') }}" class="foo-logo"><img class="mw-100" src="{{ asset('mapp/img/logo-desa-waringinid.png') }}" style="margin-top: -10px;" alt=""></a>
-                    <p>Desa Waringin adalah salah satu desa yang terdapat di Kecamatan Palasah Kabupaten Majalengka Provinsi Jawa Barat.</p>
-                    <div class="footer-social-info">
-                        <a href="https://www.facebook.com/pemdes.waringin.3" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                        {{--<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>--}}
-                        <a href="https://instagram.com/pemdeswaringin?utm_source=ig_profile_share&igshid=4qlrw8xa1r8g" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="https://twitter.com/pemdes_waringin" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
-                        {{--<a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>--}}
-                    </div>
-                </div>
-            </div>
 
-            <!-- Footer Widget Area -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="footer-widget">
-                    <h6 class="widget-title">Link Terkait</h6>
-                    <nav class="footer-widget-nav">
-                        <ul>
-                            @if($category_berita->count() > 0)
-                                @foreach($category_berita as $category)
-                                    <li><a href="" onclick="categoryBerita('{{ $category->nama }}')"><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{  $category->nama }}</a></li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <div class="col-lg-1"></div>
 
-            <!-- Footer Widget Area -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="footer-widget">
-                    <h6 class="widget-title">Lembaga Masyarakat</h6>
+            <div class="col-md-4 col-lg-6 mb-30">
+                <div class="card h-100">
+                    <div class="dplay-tbl">
+                        <div class="dplay-tbl-cell">
 
-                     @foreach($info_pemerintahan as $lembaga)
-                        @if($lembaga->kategori_id == 3)
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post style-2 d-flex">
-                            <div class="post-thumbnail">
-                                <a href="" onclick="detilInfo('{{ $lembaga->slug }}')">
-                                    <img style="width: 700px; height: 70px; object-fit: cover;" src="{{ $lembaga->image }}" alt="">
-                                </a>
-                            </div>
-                            <div class="post-content">
-                                <a href="" onclick="detilInfo('{{ $lembaga->slug }}')" class="post-title">{{ $lembaga->judul }}</a>
-                                <div class="post-meta d-flex justify-content-between">
-                                    <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> {{ Carbon\Carbon::parse($lembaga->created_at)->format('d M Y') }}</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                    @endforeach
+                            <a href="#"><img src="{{ asset('quitelight/images/logo_teknonlogis_white.png') }}" style="width: 220px; height: 50px;"></a>
+                            <p class="color-ash mt-25">
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
 
-                </div>
-            </div>
+                        </div><!-- dplay-tbl-cell -->
+                    </div><!-- dplay-tbl -->
+                </div><!-- card -->
+            </div><!-- col-lg-4 col-md-6 -->
 
-            <!-- Footer Widget Area -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="footer-widget">
-                    <h6 class="widget-title">Pemerintahan</h6>
-                    <ul class="footer-tags">
-                        @if($category_pemerintahan->count() > 0)
-                            @foreach($category_pemerintahan as $category)
-                                <li><a href="#">{{ $category->nama }}</a></li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="col-md-4 col-lg-2 mb-30">
+                <div class="card h-100">
+                    <div class="dplay-tbl">
+                        <div class="dplay-tbl-cell">
 
-    <!-- Copywrite Area -->
-    <div class="copywrite-area">
-        <div class="container">
-            <div class="row">
-                <!-- Copywrite Text -->
-                <div class="col-12 col-sm-6">
-                    <p class="copywrite-text">
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.
-                {{--<div class="col-12 col-sm-6">--}}
-                    {{--<nav class="footer-nav">--}}
-                        {{--<ul>--}}
-                            {{--<li><a href="#">Home</a></li>--}}
-                            {{--<li><a href="#">Privacy</a></li>--}}
-                            {{--<li><a href="#">Advertisement</a></li>--}}
-                            {{--<li><a href="#">Contact Us</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</nav>--}}
-                {{--</div>--}}
-            </div>
-        </div>
-    </div>
+                            <ul class="list-a-plr-10">
+                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+                            </ul>
+
+                        </div><!-- dplay-tbl-cell -->
+                    </div><!-- dplay-tbl -->
+                </div><!-- card -->
+            </div><!-- col-lg-4 col-md-6 -->
+
+            <div class="col-md-4 col-lg-2 mb-30 text-left">
+                <div class="card h-100">
+                    <div class="dplay-tbl">
+                        <div class="dplay-tbl-cell">
+                            <form class="form-block form-brdr-b mx-w-400x m-auto">
+
+                                <input class="color-white ptb-15 center-sm-text" type="text" placeholder=" Your Email">
+                                <button class="mt-30 btn-brdr-grey color-ash w-100 text-center" type="submit">SUBSCRIBE</button>
+
+                            </form>
+                        </div><!-- dplay-tbl-cell -->
+                    </div><!-- dplay-tbl -->
+                </div><!-- card -->
+            </div><!-- col-lg-4 col-md-6 -->
+
+        </div><!-- row -->
+    </div><!-- container -->
 </footer>
-<!-- ##### Footer Area End ##### -->

@@ -9,13 +9,117 @@ class ClientController extends Controller
     public function index()
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
-        $slide_articles = \DB::table('beritas as a')
+        $hot_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name'
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->take(5)->get();
+
+        $fast_news_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 5)->take(3)->get();
+
+        $popular_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 1)->take(1)->get();
+
+        $popular_articles2 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 1)->skip(1)->take(1)->get();
+
+        $popular_articles3 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 1)->skip(2)->take(3)->get();
+
+        $high_tech_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 2)->first();
+
+        $high_tech_articles2 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 2)->skip(1)->take(5)->get();
+
+        $future_tech_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 3)->take(1)->get();
+
+        $future_tech_articles2 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 3)->skip(2)->take(1)->get();
+
+        $future_tech_articles3 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 3)->skip(3)->take(1)->get();
+
+        $future_tech_articles4 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 3)->skip(1)->take(1)->get();
+
+        $future_tech_articles5 = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 3)->skip(4)->take(3)->get();
+
+        $cretive_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 4)->take(4)->get();
+
+        $uniq_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 5)->take(4)->get();
 
         $all_articles = \DB::table('beritas as a')
         ->select(
@@ -33,7 +137,24 @@ class ClientController extends Controller
         return view('welcome',
         [
             'category_berita' => $kategori_berita,
-            'slide_articles' => $slide_articles,
+            'hot_articles' => $hot_articles,
+            'fast_news_articles' => $fast_news_articles,
+
+            'popular_articles' => $popular_articles,
+            'popular_articles2' => $popular_articles2,
+            'popular_articles3' => $popular_articles3,
+
+            'high_tech_articles' => $high_tech_articles,
+            'high_tech_articles2' => $high_tech_articles2,
+
+            'future_tech_articles' => $future_tech_articles,
+            'future_tech_articles2' => $future_tech_articles2,
+            'future_tech_articles3' => $future_tech_articles3,
+            'future_tech_articles4' => $future_tech_articles4,
+            'future_tech_articles5' => $future_tech_articles5,
+
+            'cretive_articles' => $cretive_articles,
+            'uniq_articles' => $uniq_articles,
             'all_articles' => $all_articles,
             'category_pemerintahan' => $kategori_pemerintahan,
             'info_pemerintahan' => $info_pemerintahan,

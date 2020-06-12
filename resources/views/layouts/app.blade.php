@@ -6,17 +6,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Desa Waringin - Website Desa Waringin</title>
+        <title>Teknonlogis | Info Teknologi Keren & Logis/Gak?</title>
 
         <!-- Favicon  -->
-        <link rel="icon" href="{{ asset('mapp/img/logo.png') }}">
+        <link rel="shortcut icon" href="{{ asset('quitelight/images/teknonlogis_favicon.ico') }}" />
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="{{ asset('mapp/style.css') }}">
+        <link href="{{ asset('quitelight/plugin-frameworks/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('quitelight/plugin-frameworks/swiper.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('quitelight/fonts/ionicons.css') }}" rel="stylesheet">
+
+
+        <link href="{{ asset('quitelight/common/styles.css') }}" rel="stylesheet">
 
     </head>
     <body>
 
+        <!-- Preloader Start -->
+        <div id="preloader">
+            <div class="preload-content">
+                <div id="world-load"></div>
+            </div>
+        </div>
+        <!-- Preloader End -->
         <!-- ***** Header Area Start ***** -->
         @include('client.parts.header')
         <!-- ***** Header Area End ***** -->
@@ -32,16 +45,13 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
         <script src="{{ asset('summernote/summernote.js') }}"></script>
         <!-- ##### All Javascript Script ##### -->
-        <!-- jQuery-2.2.4 js -->
-        <script src="{{ asset('mapp/js/jquery/jquery-2.2.4.min.js') }}"></script>
-        <!-- Popper js -->
-        <script src="{{ asset('mapp/js/bootstrap/popper.min.js') }}"></script>
-        <!-- Bootstrap js -->
-        <script src="{{ asset('mapp/js/bootstrap/bootstrap.min.js') }}"></script>
-        <!-- All Plugins js -->
-        <script src="{{ asset('mapp/js/plugins/plugins.js') }}"></script>
-        <!-- Active js -->
-        <script src="{{ asset('mapp/js/active.js') }}"></script>
+        <script src="{{ asset('quitelight/plugin-frameworks/jquery-3.2.1.min.js') }}"></script>
+
+        <script src="{{ asset('quitelight/plugin-frameworks/bootstrap.min.js') }}"></script>
+
+        <script src="{{ asset('quitelight/plugin-frameworks/swiper.js') }}"></script>
+
+        <script src="{{ asset('quitelight/common/scripts.js') }}"></script>
 
         <!--Additional Page includes-->
         <script>

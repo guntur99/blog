@@ -1,4 +1,4 @@
-<!-- ##### Header Area Start ##### -->
+{{-- <!-- ##### Header Area Start ##### -->
 <header class="header-area">
 
     <!-- Navbar Area -->
@@ -28,14 +28,11 @@
                         <div class="classynav">
                             <ul>
                                 <li class=""><a href="{{ route('client') }}">Home</a></li>
-                                {{-- <li class="{{ Request::is('/') ? 'active' : null }}"><a href="{{ url('/') }}">Home</a></li> --}}
                                 <li><a href="#">Berita Desa</a>
-                                    {{-- <ul class="dropdown {{ Request::is('berita-desa/*') ? 'active' : null }}"> --}}
                                     <ul class="dropdown">
                                         @if($category_berita->count() > 0)
                                             @foreach($category_berita as $category)
                                                 <li><a href="#" onclick="categoryBerita('{{ $category->nama }}')">{{  $category->nama }}</a></li>
-                                                {{-- <li><a href="{{ route('clients.kajian-harian.sub-kajian-harian', ['id' => $category->id]) }}">{!! $category->name  !!}</a></li> --}}
                                             @endforeach
                                         @endif
                                     </ul>
@@ -52,7 +49,6 @@
                                             @foreach($info_pemerintahan as $info)
                                                 @if($info->kategori_id == $category->id)
                                                 <li><a href="#" onclick="detilInfo('{{ $info->slug }}')">{{ $info->judul }}</a></li>
-                                                {{-- <li><a href="{{ route('clients.artikel-ci', ['slug' => $post->slug]) }}">{{ $post->title }}</a></li> --}}
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -62,13 +58,11 @@
                                 </li>
                                 <li><a href="#">Inovasi Desa</a>
                                     <ul class="dropdown ">
-                                    {{-- <ul class="dropdown {{ Request::is('inovasi-desa/*') ? 'active' : null }}"> --}}
                                         <li>
                                             <a class="" href="{{ route('client.cek.kependudukan') }}">Cek Kependudukan</a>
                                         </li>
                                         <li>
                                             <a class="" href="https://demov2.suratdigital.id/" target="__blank">Surat Digital</a>
-                                            {{-- <a class="{{ Request::is('berita-desa/surat-digital') ? 'active' : null }}" href="{{ route('surat-digital.create') }}">Surat Digital</a> --}}
                                         </li>
                                     </ul>
                                 </li>
@@ -92,4 +86,36 @@
         </div>
     </div>
 </header>
-<!-- ##### Header Area End ##### -->
+<!-- ##### Header Area End ##### --> --}}
+
+<header>
+    <a class="logo" href="{{ url('/') }}"><img src="{{ asset('quitelight/images/logo_teknonlogis_white.png') }}" class="ml-15 mt-10" style="width: 220px; height: 50px;" alt="Logo"></a>
+
+    <div class="right-area">
+        <form class="src-form">
+            <button type="submit"><i class="ion-search"></i></button>
+            <input type="text" placeholder="Search here">
+        </form><!-- src-form -->
+    </div><!-- right-area -->
+
+    <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
+    {{--{{ asset('quitelight/') }}--}}
+    <ul class="main-menu" id="main-menu">
+        <li><a href="{{ url('/') }}">Home</a></li>
+        <li><a href="{{ route('clients.populer') }}">Populer</a></li>
+        {{--<li class="drop-down"><a href="#">Populer<i class="ion-arrow-down-b"></i></a>--}}
+            {{--<ul class="drop-down-menu drop-down-inner">--}}
+                {{--<li><a href="#">PAGE 1</a></li>--}}
+                {{--<li><a href="#">PAGE 2</a></li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+        <li><a href="{{ route('clients.canggih') }}">Canggih</a></li>
+        <li><a href="{{ route('clients.masaDepan') }}">Masa Depan</a></li>
+        <li><a href="{{ route('clients.kreatif') }}">Kreatif</a></li>
+        <li><a href="{{ route('clients.unik') }}">Unik</a></li>
+        {{--<li><a href="#">Fashion</a></li>--}}
+        <li><a href="{{ route('clients.kontak') }}">Kontak</a></li>
+    </ul>
+
+    <div class="clearfix"></div>
+</header>

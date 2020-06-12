@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
+Route::get('/s', 'ClientController@index')->name('clients.populer');
+Route::get('/d', 'ClientController@index')->name('clients.canggih');
+Route::get('/f', 'ClientController@index')->name('clients.masaDepan');
+Route::get('/g', 'ClientController@index')->name('clients.kreatif');
+Route::get('/h', 'ClientController@index')->name('clients.unik');
+Route::get('/e', 'ClientController@index')->name('clients.kontak');
 
 Route::get('/search-articles/{id}', 'ClientController@searchArticles')->name('client.articles');
 
