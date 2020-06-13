@@ -24,13 +24,13 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Tag Berita</strong></h2>
+                                <h2><strong>List Tag News</strong></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
                         <button id="buat_tag_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
-                                class="mdi mdi-playlist-plus"></i> Buat Tag Berita
+                                class="mdi mdi-playlist-plus"></i> Create Tag
                         </button>
                     </div>
 
@@ -86,7 +86,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: '{{route("tag.berita.desa.datatable")}}',
+                url: '{{route("tag.artikel.datatable")}}',
                 // dataSrc: '',
                 // draw: 'original.draw'
             },

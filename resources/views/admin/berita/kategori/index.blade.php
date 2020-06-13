@@ -24,13 +24,13 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Kategori Berita</strong></h2>
+                                <h2><strong>List Categories News</strong></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
                         <button id="buat_kategori_baru" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
-                                class="mdi mdi-playlist-plus"></i> Buat Kategori Berita
+                                class="mdi mdi-playlist-plus"></i> Create Category
                         </button>
                     </div>
 
@@ -86,7 +86,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: '{{route("kategori.desa.datatable")}}',
+                url: '{{route("kategori.artikel.datatable")}}',
                 // dataSrc: '',
                 // draw: 'original.draw'
             },
@@ -160,7 +160,7 @@
                 formData.append('id', $('#id_hide').val());
                 formData.append('nama', u_nama_kategori.val());
 
-                axios.post('{{route("update.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("update.kategori.artikel")}}', formData).then((res) => {
 
                     $('#u_nama_kategori').prop("disabled", true);
                     $('#btn_perbarui_hapus_kategori').removeClass('d-none');
@@ -199,7 +199,7 @@
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("delete.kategori.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("delete.kategori.artikel")}}', formData).then((res) => {
 
                     $('#updateKategoriModalViewer').modal('hide');
                     Swal.fire({
@@ -242,7 +242,7 @@
             var formData = new FormData()
             formData.append('nama', nama_kategori.val());
 
-            axios.post('{{route("store.kategori.berita.desa")}}', formData).then((res) => {
+            axios.post('{{route("store.kategori.artikel")}}', formData).then((res) => {
 
                 $('#createKategoriModalViewer').modal('hide');
 

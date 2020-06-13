@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
 
@@ -33,51 +29,35 @@ Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetailNews'
 //---------------- BAGIAN ADMIN --------------------------
 Route::get('/home', 'HomeController@index')->name('home');
 
-//---------------- BAGIAN KEPENDUDUKAN --------------------------
-Route::get('/kependudukan', 'KependudukanController@index')->name('penduduk.desa.index')->middleware('auth');
-
-Route::get('/kependudukan-datatable', 'KependudukanController@datatable')->name('penduduk.desa.datatable')->middleware('auth');
-
-Route::get('/create-kependudukan', 'KependudukanController@create')->name('penduduk.desa.create')->middleware('auth');
-
-Route::post('/update-kependudukan', 'KependudukanController@update')->name('penduduk.desa.update')->middleware('auth');
-
-Route::post('/store-kependudukan', 'KependudukanController@store')->name('penduduk.desa.store')->middleware('auth');
-
-Route::post('/import-excel-kependudukan', 'KependudukanController@importExcelFile')->name('import.excel.file')->middleware('auth');
-
-Route::post('/delete-kependudukan', 'KependudukanController@delete')->name('penduduk.desa.delete')->middleware('auth');
-
-
 //---------------- BAGIAN BERITA --------------------------
-Route::get('/berita-desa', 'BeritaController@index')->name('berita.desa.index')->middleware('auth');
+Route::get('/artikel', 'BeritaController@index')->name('artikel.index')->middleware('auth');
 
-Route::get('/berita-datatable', 'BeritaController@datatable')->name('berita.desa.datatable')->middleware('auth');
+Route::get('/artikel-datatable', 'BeritaController@datatable')->name('artikel.datatable')->middleware('auth');
 
-Route::get('/create-berita', 'BeritaController@create')->name('berita.desa.create')->middleware('auth');
+Route::get('/create-artikel', 'BeritaController@create')->name('artikel.create')->middleware('auth');
 
-Route::get('/edit-berita/{id}', 'BeritaController@edit')->name('berita.desa.edit')->middleware('auth');
+Route::get('/edit-artikel/{id}', 'BeritaController@edit')->name('artikel.edit')->middleware('auth');
 
-Route::post('/update-berita', 'BeritaController@update')->name('berita.desa.update')->middleware('auth');
+Route::post('/update-artikel', 'BeritaController@update')->name('artikel.update')->middleware('auth');
 
-Route::post('/store-berita', 'BeritaController@store')->name('berita.desa.store')->middleware('auth');
+Route::post('/store-artikel', 'BeritaController@store')->name('artikel.store')->middleware('auth');
 
-Route::post('/delete-berita', 'BeritaController@delete')->name('berita.desa.delete')->middleware('auth');
+Route::post('/delete-artikel', 'BeritaController@delete')->name('artikel.delete')->middleware('auth');
 
-Route::post('/detail-berita', 'BeritaController@detailBerita')->name('berita.desa.detail')->middleware('auth');
+Route::post('/detail-artikel', 'BeritaController@detailBerita')->name('artikel.detail')->middleware('auth');
 
 
 
 // -------------- KATEGORI BERITA --------------------------------
-Route::get('/kategori-berita', 'BeritaController@indexKategori')->name('kategori.berita.desa')->middleware('auth');
+Route::get('/kategori-artikel', 'BeritaController@indexKategori')->name('kategori.artikel')->middleware('auth');
 
-Route::post('/store-kategori-berita', 'BeritaController@storeKategori')->name('store.kategori.berita.desa')->middleware('auth');
+Route::post('/store-kategori-artikel', 'BeritaController@storeKategori')->name('store.kategori.artikel')->middleware('auth');
 
-Route::post('/update-kategori-berita', 'BeritaController@updateKategori')->name('update.kategori.berita.desa')->middleware('auth');
+Route::post('/update-kategori-artikel', 'BeritaController@updateKategori')->name('update.kategori.artikel')->middleware('auth');
 
-Route::post('/delete-kategori-berita', 'BeritaController@deleteKategori')->name('delete.kategori.berita.desa')->middleware('auth');
+Route::post('/delete-kategori-artikel', 'BeritaController@deleteKategori')->name('delete.kategori.artikel')->middleware('auth');
 
-Route::get('/kategori-datatable', 'BeritaController@kategoriDatatable')->name('kategori.desa.datatable')->middleware('auth');
+Route::get('/kategori-datatable', 'BeritaController@kategoriDatatable')->name('kategori.artikel.datatable')->middleware('auth');
 
 
 
@@ -92,39 +72,8 @@ Route::post('/update-tag-berita', 'BeritaController@updateTag')->name('update.ta
 
 Route::post('/delete-tag-berita', 'BeritaController@deleteTag')->name('delete.tag.berita.desa')->middleware('auth');
 
-Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.berita.desa.datatable')->middleware('auth');
+Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.artikel.datatable')->middleware('auth');
 
 Route::get('/buat-tag-berita', 'BeritaController@createTag')->name('buat.tag.berita.desa')->middleware('auth');
-
-
-
-//---------------- BAGIAN PEMERINTAHAN --------------------------
-Route::get('/pemerintahan-desa', 'PemerintahanController@index')->name('pemerintahan.desa.index')->middleware('auth');
-
-Route::get('/pemerintahan-datatable', 'PemerintahanController@datatable')->name('pemerintahan.desa.datatable')->middleware('auth');
-
-Route::get('/create-info-pemerintahan', 'PemerintahanController@create')->name('pemerintahan.desa.create')->middleware('auth');
-
-Route::get('/edit-info-pemerintahan/{id}', 'PemerintahanController@edit')->name('pemerintahan.desa.edit')->middleware('auth');
-
-Route::post('/update-info-pemerintahan', 'PemerintahanController@update')->name('pemerintahan.desa.update')->middleware('auth');
-
-Route::post('/store-info-pemerintahan', 'PemerintahanController@store')->name('pemerintahan.desa.store')->middleware('auth');
-
-Route::post('/delete-info-pemerintahan', 'PemerintahanController@delete')->name('pemerintahan.desa.delete')->middleware('auth');
-
-
-
-// -------------- KATEGORI PEMERINTAHAN --------------------------------
-Route::get('/kategori-pemerintahan', 'PemerintahanController@indexKategori')->name('kategori.pemerintahan.desa')->middleware('auth');
-
-Route::post('/store-kategori-pemerintahan', 'PemerintahanController@storeKategori')->name('store.kategori.pemerintahan.desa')->middleware('auth');
-
-Route::post('/update-kategori-pemerintahan', 'PemerintahanController@updateKategori')->name('update.kategori.pemerintahan.desa')->middleware('auth');
-
-Route::post('/delete-kategori-pemerintahan', 'PemerintahanController@deleteKategori')->name('delete.kategori.pemerintahan.desa')->middleware('auth');
-
-Route::get('/kategori-pemerintahan-datatable', 'PemerintahanController@kategoriDatatable')->name('kategori.pemerintahan.desa.datatable')->middleware('auth');
-
 
 Auth::routes();

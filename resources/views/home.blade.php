@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col my-auto">
-                                <div class="h6 text-muted ">Total Berita yang telah dibuat</div>
+                                <div class="h6 text-muted ">Total Artikel yang telah dibuat</div>
                             </div>
 
                             <div class="col-auto my-auto">
@@ -48,7 +48,7 @@
                         </div>
                         <h1 class="display-4 fw-600">{{ $total_berita }}</h1>
                         <div class="h6">
-                            <span class="text-primary"> <i class="mdi mdi-buffer"></i> Total dalam semua kategori berita </span>
+                            <span class="text-primary"> <i class="mdi mdi-buffer"></i> Total dalam semua kategori artikel </span>
                             {{-- Less activity than usual. --}}
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col my-auto">
-                                <div class="h6 text-muted ">Total Penduduk terinput </div>
+                                <div class="h6 text-muted ">Total Kategori Artikel terinput </div>
                             </div>
 
                             <div class="col-auto my-auto">
@@ -74,9 +74,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="display-4 fw-600">{{ $total_penduduk }}</h1>
+                        <h1 class="display-4 fw-600">{{ $total_kategori }}</h1>
                         <div class="h6">
-                            <span class="text-dark"> <i class="mdi mdi-account-group"></i> Total penduduk yang bisa cek statusnya </span>
+                            <span class="text-dark"> <i class="mdi mdi-account-group"></i> Total kategori disemua artikel </span>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col my-auto">
-                                <div class="h6 text-muted ">Total Informasi tentang desa</div>
+                                <div class="h6 text-muted ">Total Tag Artikel terinput</div>
                             </div>
 
                             <div class="col-auto my-auto">
@@ -102,10 +102,10 @@
                                 </div>
                             </div>
                         </div>
-                        <h1 class="display-4 fw-600">{{ $total_informasi }}</h1>
+                        <h1 class="display-4 fw-600">{{ $total_tag }}</h1>
                         <div class="h6">
                             <span class="text-success"> <i class="mdi mdi-office-building"></i> </span>
-                            Informasi tentang Pemerintahan Desa
+                            Total tag disemua artikel
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>Judul Berita Desa Terbaru</th>
+                                <th>Judul Artikel Terbaru</th>
                                 <th>Kategori</th>
                                 <th>Dibuat Oleh</th>
                                 <th>Dibuat Tanggal</th>

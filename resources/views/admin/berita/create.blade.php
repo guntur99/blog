@@ -16,7 +16,7 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Buat Berita Baru</strong></h2>
+                                <h2><strong>Create New Article</strong></h2>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             <hr>
                             <img src="" id="output">
                             <div class="form-group">
-                                <button type="submit" id="btn_buat_berita" class="btn btn-primary ml-3 text-right float-right">Buat Berita</button>
+                                <button type="submit" id="btn_buat_berita" class="btn btn-primary ml-3 text-right float-right">Create Article</button>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
             // tokenSeparators: ['+1'],
             // dropdownParent: $('#addWishlistsViewer'),
             ajax: {
-                url: '{{route("tag.berita.desa.datatable")}}',
+                url: '{{route("tag.artikel.datatable")}}',
                 dataType: 'json',
                 data: function(params) {
                     return {
@@ -313,7 +313,7 @@
             formData.append('image_prefix', img_prefix);
             formData.append('slug', string_to_slug(judul.val()));
 
-            axios.post('{{route("berita.desa.store")}}', formData).then((res) => {
+            axios.post('{{route("artikel.store")}}', formData).then((res) => {
 
                 Swal.fire({
                     title: 'Success',
@@ -330,7 +330,7 @@
                         popup: 'swal-popup-custom'
                     }
                 }).then((result) => {
-                    window.location.href = "{{route('berita.desa.index')}}";
+                    window.location.href = "{{route('artikel.index')}}";
                 });
 
             }).catch((err) => {

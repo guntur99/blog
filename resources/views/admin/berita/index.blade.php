@@ -24,13 +24,13 @@
                     <div class="col-md-6 text-white p-b-30">
                         <div class="media">
                             <div class="media-body m-auto">
-                                <h2><strong>Daftar Berita Desa</strong></h2>
+                                <h2><strong>List News Articles</strong></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 p-r-40">
-                        <a href="{{ route('berita.desa.create') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
-                                class="mdi mdi-playlist-plus"></i> Buat Berita
+                        <a href="{{ route('artikel.create') }}" type="button" class="btn  m-b-30 ml-2 mr-2 btn-primary text-white float-right"><i
+                                class="mdi mdi-playlist-plus"></i> Create Article
                         </a>
                     </div>
 
@@ -87,7 +87,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: '{{route("berita.desa.datatable")}}',
+                url: '{{route("artikel.datatable")}}',
                 // dataSrc: '',
                 // draw: 'original.draw'
             },
@@ -124,7 +124,7 @@
             placeholder: 'Pilih Tag Berita',
             width: '100%',
             ajax: {
-                url: '{{route("tag.berita.desa.datatable")}}',
+                url: '{{route("tag.artikel.datatable")}}',
                 dataType: 'json',
                 data: function(params) {
                     return {
@@ -227,8 +227,8 @@
             $('#btn_perbarui_berita').click(()=>{
 
                 $('#beritaModalViewer').modal('hide');
-                axios.get('{{url("edit-berita")}}/'+data.id).then((res) => {
-                    window.location.href = '{{url("edit-berita")}}/'+data.id;
+                axios.get('{{url("edit-artikel")}}/'+data.id).then((res) => {
+                    window.location.href = '{{url("edit-artikel")}}/'+data.id;
                 });
 
             });
@@ -241,7 +241,7 @@
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("berita.desa.delete")}}', formData).then((res) => {
+                axios.post('{{route("artikel.delete")}}', formData).then((res) => {
 
                     Swal.fire({
                         title: 'Success',

@@ -31,8 +31,9 @@ class HomeController extends Controller
         ->where('id', $id)
         ->first();
 
-        $total_penduduk = \DB::table('kependudukans')
-        ->get();
+        $total_kategori = \DB::table('kategori_beritas')->get();
+
+        $total_tag = \DB::table('tag_beritas')->get();
 
         $total_berita = \DB::table('beritas as a')
         ->select(
@@ -45,15 +46,12 @@ class HomeController extends Controller
         ->orderByDesc('created_at')
         ->get();
 
-        $total_informasi = \DB::table('pemerintahans')
-        ->get();
-
         // dd($total_berita);
         return view('home', [
             'user_name' => $data->name,
-            'total_penduduk' => count($total_penduduk),
             'total_berita' => count($total_berita),
-            'total_informasi' => count($total_informasi),
+            'total_kategori' => count($total_kategori),
+            'total_tag' => count($total_tag),
             'berita' => $total_berita
         ]);
     }
