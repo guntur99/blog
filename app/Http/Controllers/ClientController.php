@@ -308,8 +308,8 @@ class ClientController extends Controller
 
     public function searchArticles($id)
     {
-
-        $articles = \DB::table('beritas as a')
+        // dd($id);
+        $all_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name',
@@ -319,23 +319,19 @@ class ClientController extends Controller
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
         ->where('judul', 'LIKE', '%' . $id . '%')->get();
 
-        // dd($articles);
-        if (empty($articles)) {
+        // dd($all_articles);
+        if (empty($all_articles)) {
             return response()->json('not found');
         }
 
         // return response()->json($articles, 200);
 
         $kategori_berita = \DB::table('kategori_beritas')->get();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
 
         return view('client.search.articles',[
             'category_berita' => $kategori_berita,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
             'query' => $id,
-            'articles' => $articles,
+            'all_articles' => $all_articles,
             ]
         );
 

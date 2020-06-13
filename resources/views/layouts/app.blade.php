@@ -67,15 +67,19 @@
                 });
             }
 
-            $('#search_articles').click((e) => {
-                data = $('#topSearch').val();
-                axios.get('{{url("search-articles")}}/'+data).then((res) => {
-                    // console.log(res);
-                    // return false;
+            var input = document.getElementById("topSearch");
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    data = $('#topSearch').val();
+                    axios.get('{{url("search-articles")}}/'+data).then((res) => {
+                        // console.log(res);
+                        // return false;
 
-                    window.location.href = '{{url("search-articles")}}/'+data;
-                });
-            })
+                        window.location.href = '{{url("search-articles")}}/'+data;
+                    });
+                }
+            });
         </script>
         @yield('custom_script')
 

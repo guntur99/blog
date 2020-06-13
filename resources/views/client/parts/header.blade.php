@@ -3,10 +3,10 @@
     <a class="logo" href="{{ url('/') }}"><img src="{{ asset('quitelight/images/logo_teknonlogis_white.png') }}" class="ml-15 mt-10" style="width: 220px; height: 50px;" alt="Logo"></a>
 
     <div class="right-area">
-        <form class="src-form">
-            <button type="submit"><i class="ion-search"></i></button>
-            <input type="text" placeholder="Search here">
-        </form><!-- src-form -->
+        <div class="src-form">
+            <button type="button"><i class="ion-search"></i></button>
+            <input type="text" id="topSearch" placeholder="Search here">
+        </div><!-- src-form -->
     </div><!-- right-area -->
 
     <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>

@@ -1,78 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url('{{ asset('mapp/img/bg_1.jpg') }}');">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2>Mencari: {{ $query }}</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="mag-breadcrumb py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Berita Desa</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Semua Arikel yang ditemukan</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="slider-main h-500x h-sm-auto pos-relative pt-95 pb-25">
+    <div class="img-bg bg-layer-4"
+         style="background: url('{{ asset('quitelight/images/slider_7_1900x600.jpg') }}')
+             no-repeat center; background-size: cover;"></div>
+    <div class="container-fluid h-100 mt-xs-50">
+        <div class="dplay-tbl">
+            <div class="dplay-tbl-cell color-white text-center">
 
-    <!-- ##### Video Submit Area Start ##### -->
-    <div class="">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-12">
-                    <!-- Video Submit Content -->
-                    <div class=" mb-50 p-30 bg-white box-shadow">
-                        <section class="wedding_megazin d-flex mt-30 flex-wrap">
-                            @foreach($articles as $article)
-                                {{-- <div class="col-lg-3 col-md-6 mb-4">
-                                    <a href="">
-                                        <img src="{{ $post->image }}" style="height: 180px; object-fit: cover;" alt="">
-                                    </a>
-                                    <div class="post-content mt-1">
-                                        <a href="" class="post-title">{{ $post->judul }}</a>
-                                    </div>
-                                </div> --}}
-                            <div class="single-blog-post style-4 col-lg-3 col-md-6 mb-4">
-                                <div class="post-thumbnail">
-                                    <a href="#" onclick="detilBerita('{{ $article->slug }}')">
-                                        <img src="{{ $article->image }}" style="height: 180px; object-fit: cover;" alt="">
-                                    </a>
-                                    {{--<a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>--}}
-                                    {{--<span class="video-duration">09:27</span>--}}
-                                </div>
-                                <div class="post-content">
-                                    <a href="#" onclick="detilBerita('{{ $article->slug }}')" class="post-title">{{ $article->judul }}</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>{{ Carbon\Carbon::parse($article->created_at)->format('d M Y') }} </a>
-                                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ $article->created_by }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <h1 class="ptb-50">Mencari: <b style="color: rgb(255, 174, 0)">{{ $query }}</b></h1>
+
+            </div><!-- dplay-tbl-cell -->
+        </div><!-- dplay-tbl -->
+    </div><!-- container -->
+</div><!-- slider-main -->
+
+<section class="bg-1-white ptb-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-md-12 col-lg-10 pt-30 pb-50 pr-30 pr-md-15">
+
+                <div class="row">
+
+                    @foreach($all_articles as $articles)
+                    <div class=" col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
+                        <div class="card h-100 min-h-350x">
+                            <div class="bg-white h-100">
+
+                                <!-- SETTING IMAGE WITH bg-10 -->
+                                <div class="h-50 bg-la"
+                                    style="background: url('{{ $articles->image }}')
+                                        no-repeat center; background-size: cover;"></div>
+
+                                <div class="plr-25 ptb-15 h-50">
+                                    <div class="dplay-tbl">
+                                        <div class="dplay-tbl-cell">
+
+                                            <h5 class="color-ash"><b>{{ $articles->category_name }}</b></h5>
+                                            <h4 class="mtb-10">
+                                                <a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
+                                            <ul class="list-li-mr-10 color-lt-black">
+                                                {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
+                                                <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}
+                                            </ul>
+
+                                        </div><!-- dplay-tbl-cell -->
+                                    </div><!-- dplay-tbl -->
+                                </div><!-- plr-25 ptb-15 -->
+                            </div><!-- hot-news -->
+                        </div><!-- card -->
+                    </div><!-- col-lg-4 col-md-6 -->
+                    @endforeach
+
+                    <!-- END OF SECOND PARA -->
+                </div><!-- row -->
+
+                {{-- <h6 class="text-center mt-20"><a class="btn-brdr-grey color-ash plr-30" href="#"><b>LOAD MORE</b></a></h6> --}}
 
 
+            </div><!-- col-sm-9 -->
 
+            {{-- @include('client.home.side-menu') --}}
+
+        </div><!-- row -->
+    </div><!-- container -->
+</section>
 @endsection
