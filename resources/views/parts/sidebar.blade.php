@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('tag.berita.desa') }}" class=" menu-link">
+                        <a href="{{ route('tag.artikel') }}" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name" style="font-size:14px">Tag News</span>
                             </span>

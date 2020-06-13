@@ -147,7 +147,7 @@
                 formData.append('id', $('#id_hide').val());
                 formData.append('nama', u_nama_tag.val());
 
-                axios.post('{{route("update.tag.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("update.tag.artikel")}}', formData).then((res) => {
 
                     $('#u_nama_tag').prop("disabled", true);
                     $('#btn_perbarui_hapus').removeClass('d-none');
@@ -187,7 +187,7 @@
                 var formData = new FormData()
                 formData.append('id', $('#id_hide').val());
 
-                axios.post('{{route("delete.tag.berita.desa")}}', formData).then((res) => {
+                axios.post('{{route("delete.tag.artikel")}}', formData).then((res) => {
 
                     Swal.fire({
                         title: 'Success',
@@ -246,7 +246,7 @@
             var formData = new FormData()
             formData.append('nama', nama_tag.val());
 
-            axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+            axios.post('{{route("store.tag.artikel")}}', formData).then((res) => {
 
                 $('#createTagModalViewer').modal('hide');
 

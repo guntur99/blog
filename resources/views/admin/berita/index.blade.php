@@ -188,7 +188,7 @@
 
             var formData = new FormData()
             formData.append('tag_id', data.tag_id);
-            axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+            axios.post('{{route("tag.artikel.get")}}', formData).then((res) => {
                 // console.log(res.data);
                 var tag_array = res.data;
                 var tag_list = '';

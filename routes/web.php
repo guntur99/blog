@@ -62,18 +62,18 @@ Route::get('/kategori-datatable', 'BeritaController@kategoriDatatable')->name('k
 
 
 // --------------- TAG BERITA ------------------------------
-Route::post('/tag-berita', 'BeritaController@tagBerita')->name('tag.berita.desa.get')->middleware('auth');
+Route::post('/tag-artikel', 'BeritaController@tagBerita')->name('tag.artikel.get')->middleware('auth');
 
-Route::get('/tag-berita-list', 'BeritaController@indexTag')->name('tag.berita.desa')->middleware('auth');
+Route::get('/tag-artikel-list', 'BeritaController@indexTag')->name('tag.artikel')->middleware('auth');
 
-Route::post('/store-tag-berita', 'BeritaController@storeTag')->name('store.tag.berita.desa')->middleware('auth');
+Route::post('/store-tag-artikel', 'BeritaController@storeTag')->name('store.tag.artikel')->middleware('auth');
 
-Route::post('/update-tag-berita', 'BeritaController@updateTag')->name('update.tag.berita.desa')->middleware('auth');
+Route::post('/update-tag-artikel', 'BeritaController@updateTag')->name('update.tag.artikel')->middleware('auth');
 
-Route::post('/delete-tag-berita', 'BeritaController@deleteTag')->name('delete.tag.berita.desa')->middleware('auth');
+Route::post('/delete-tag-artikel', 'BeritaController@deleteTag')->name('delete.tag.artikel')->middleware('auth');
 
-Route::get('/tag-berita-datatable', 'BeritaController@tagDatatable')->name('tag.artikel.datatable')->middleware('auth');
+Route::get('/tag-artikel-datatable', 'BeritaController@tagDatatable')->name('tag.artikel.datatable')->middleware('auth');
 
-Route::get('/buat-tag-berita', 'BeritaController@createTag')->name('buat.tag.berita.desa')->middleware('auth');
+Route::get('/buat-tag-artikel', 'BeritaController@createTag')->name('buat.tag.artikel')->middleware('auth');
 
 Auth::routes();

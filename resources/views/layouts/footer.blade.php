@@ -84,7 +84,7 @@
         var formData = new FormData()
         formData.append('nama', nama_tag.val());
 
-        axios.post('{{route("store.tag.berita.desa")}}', formData).then((res) => {
+        axios.post('{{route("store.tag.artikel")}}', formData).then((res) => {
 
             $('#createTagModalViewer').modal('hide');
 
@@ -107,7 +107,7 @@
                     $('#buat_data_tag').removeClass('d-none');
                     $('#buat_data_tag_global').addClass('d-none');
                     ((nama_tag.val() == "") ? nama_tag.addClass('is-valid') : nama_tag.removeClass('is-invalid'), nama_tag.removeClass('is-valid'));
-                    window.location.href = "{{route('tag.berita.desa')}}";
+                    window.location.href = "{{route('tag.artikel')}}";
                 }
             });
 
@@ -167,7 +167,7 @@
                     formData.append('old_name', $('#update_id_hide').val());
                     formData.append('nama', $('#u_nama_tag').val());
 
-                    axios.post('{{route("update.tag.berita.desa")}}', formData).then((res) => {
+                    axios.post('{{route("update.tag.artikel")}}', formData).then((res) => {
 
                         $('#updateTagModalViewer').modal('hide');
 
@@ -187,7 +187,7 @@
                             }
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "{{route('tag.berita.desa')}}";
+                                window.location.href = "{{route('tag.artikel')}}";
                                 // $('#updateKependudukanModalViewer').modal('hide');
                                 // location.reload();
                             }
@@ -270,7 +270,7 @@
                     formData.append('old_name', $('#update_id_hide').val());
                     formData.append('nama', $('#u_nama_tag').val());
 
-                    axios.post('{{route("delete.tag.berita.desa")}}', formData).then((res) => {
+                    axios.post('{{route("delete.tag.artikel")}}', formData).then((res) => {
 
                         $('#updateTagModalViewer').modal('hide');
 
@@ -290,7 +290,7 @@
                             }
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "{{route('tag.berita.desa')}}";
+                                window.location.href = "{{route('tag.artikel')}}";
                                 // $('#updateKependudukanModalViewer').modal('hide');
                                 // location.reload();
                             }
@@ -729,7 +729,7 @@
 
                     var formData = new FormData()
                     formData.append('tag_id', arrayBeritaRes[i].tag_id);
-                    axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+                    axios.post('{{route("tag.artikel.get")}}', formData).then((res) => {
                         // console.log(res.data);
                         var tag_array = res.data;
                         var tag_list = '';
@@ -880,7 +880,7 @@
 
                     var formData = new FormData()
                     formData.append('tag_id', arrayBeritaRes[i].tag_id);
-                    axios.post('{{route("tag.berita.desa.get")}}', formData).then((res) => {
+                    axios.post('{{route("tag.artikel.get")}}', formData).then((res) => {
                         // console.log(res.data);
                         var tag_array = res.data;
                         var tag_list = '';
