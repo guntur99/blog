@@ -20,9 +20,9 @@ Route::get('/kontak', 'ClientController@contact')->name('client.kontak');
 
 Route::get('/search-articles/{id}', 'ClientController@searchArticles');
 
-Route::get('/daftar-berita/{id}', 'ClientController@showNews');
+Route::get('/daftar-artikel/{id}', 'ClientController@showNews');
 
-Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetailNews');
+Route::get('/daftar-artikel/detil-artikel/{id}', 'ClientController@showDetailNews');
 
 
 

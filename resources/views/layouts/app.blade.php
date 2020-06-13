@@ -56,14 +56,14 @@
         <!--Additional Page includes-->
         <script>
             function categoryNews(data){
-                axios.get('{{url("daftar-berita")}}/'+data).then((res) => {
-                    window.location.href = '{{url("daftar-berita")}}/'+data;
+                axios.get('{{url("daftar-artikel")}}/'+data).then((res) => {
+                    window.location.href = '{{url("daftar-artikel")}}/'+data;
                 });
             }
 
             function detailNews(data){
-                axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
-                    window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
+                axios.get('{{url("daftar-artikel/detil-artikel")}}/'+data).then((res) => {
+                    window.location.href = '{{url("daftar-artikel/detil-artikel")}}/'+data;
                 });
             }
 
