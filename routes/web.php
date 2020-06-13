@@ -19,26 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
-Route::get('/s', 'ClientController@index')->name('clients.populer');
-Route::get('/d', 'ClientController@index')->name('clients.canggih');
-Route::get('/f', 'ClientController@index')->name('clients.masaDepan');
-Route::get('/g', 'ClientController@index')->name('clients.kreatif');
-Route::get('/h', 'ClientController@index')->name('clients.unik');
-Route::get('/e', 'ClientController@index')->name('clients.kontak');
 
-Route::get('/search-articles/{id}', 'ClientController@searchArticles')->name('client.articles');
+Route::get('/kontak', 'ClientController@contact')->name('client.kontak');
 
-Route::get('/contact', 'ClientController@contact')->name('client.contact');
+Route::get('/search-articles/{id}', 'ClientController@searchArticles');
 
-Route::get('/inovasi/cek-kependudukan', 'ClientController@cekKependudukan')->name('client.cek.kependudukan');
+Route::get('/daftar-berita/{id}', 'ClientController@showNews');
 
-Route::get('/inovasi/cek-status-kependudukan/{id}', 'ClientController@cekStatusKependudukan');
-
-Route::get('/daftar-berita/{id}', 'ClientController@showBerita')->name('client.show.berita');
-
-Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetilBerita')->name('client.show.detil.berita');
-
-Route::get('/pemerintahan/detil-informasi/{id}', 'ClientController@showDetilInfo')->name('client.show.detil.info');
+Route::get('/daftar-berita/detil-berita/{id}', 'ClientController@showDetailNews');
 
 
 

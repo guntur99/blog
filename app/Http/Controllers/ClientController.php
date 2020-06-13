@@ -15,7 +15,7 @@ class ClientController extends Controller
             'b.nama as category_name'
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->take(5)->get();
+        ->skip(1)->take(5)->get();
 
         $fast_news_articles = \DB::table('beritas as a')
         ->select(
@@ -31,7 +31,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 1)->take(1)->get();
+        ->where('kategori_id', 1)->first();
 
         $popular_articles2 = \DB::table('beritas as a')
         ->select(
@@ -105,7 +105,7 @@ class ClientController extends Controller
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->where('kategori_id', 3)->skip(4)->take(3)->get();
 
-        $cretive_articles = \DB::table('beritas as a')
+        $creative_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name'
@@ -153,7 +153,7 @@ class ClientController extends Controller
             'future_tech_articles4' => $future_tech_articles4,
             'future_tech_articles5' => $future_tech_articles5,
 
-            'cretive_articles' => $cretive_articles,
+            'creative_articles' => $creative_articles,
             'uniq_articles' => $uniq_articles,
             'all_articles' => $all_articles,
             'category_pemerintahan' => $kategori_pemerintahan,
@@ -164,67 +164,90 @@ class ClientController extends Controller
     public function contact()
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
 
-        return view('client.contact.contact',
-        [
+        return view('client.contact.index',[
             'category_berita' => $kategori_berita,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
         ]);
     }
 
-    public function showBerita($id)
+    public function showNews($id)
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
-        $kategori_berita_now = \DB::table('kategori_beritas')
+
+        $categories_news = \DB::table('kategori_beritas')
         ->where('nama', $id)->first();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
-        // dd($id);
-        // dd($kategori_berita_now);
-        $berita = \DB::table('beritas as a')
+
+        $all_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name',
             'c.name as created_by'
-            )
+        )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('kategori_id', $kategori_berita_now->id)->take(5)->get();
+        ->where('kategori_id', $categories_news->id)->get();
 
-        // dd($berita);
-        return view('client.berita.list-berita-desa',
+        $creative_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 4)->take(4)->get();
+
+        $uniq_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 5)->take(4)->get();
+
+
+        // dd($all_articles);
+        return view('client.categories.list-news',
         [
             'category_berita' => $kategori_berita,
-            'category_berita_now' => $kategori_berita_now,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
-            'berita' => $berita,
+            'category_name' => $id,
+            'all_articles' => $all_articles,
+            'creative_articles' => $creative_articles,
+            'uniq_articles' => $uniq_articles,
         ]);
     }
 
-    public function showDetilBerita($id)
+    public function showDetailNews($id)
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
-        // $kategori_berita_now = \DB::table('kategori_beritas')
-        // ->where('nama', $id)->first();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
-        // dd($id);
-        // dd($kategori_berita_now);
-        $detil_berita = \DB::table('beritas as a')
+
+        $creative_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 4)->take(4)->get();
+
+        $uniq_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->where('kategori_id', 5)->take(4)->get();
+
+        $all_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name',
-            'c.name as created_by'
+            'c.name as created_by',
+            'd.nama as tag_name'
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->leftJoin('tag_beritas as d', 'a.tag_id', '=', 'd.id')
         ->where('slug', $id)->first();
 
-        $berita_lain = \DB::table('beritas as a')
+        $other_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
             'b.nama as category_name',
@@ -234,84 +257,53 @@ class ClientController extends Controller
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
         ->where('slug', '!=', $id)->take(3)->get();
 
-        // dd($berita_lain);
-        return view('client.berita.detil-berita',
-        [
-            'category_berita' => $kategori_berita,
-            // 'category_berita_now' => $kategori_berita_now,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
-            'detil_berita' => $detil_berita,
-            'berita_lain' => $berita_lain,
-        ]);
-    }
-
-    public function showDetilInfo($id)
-    {
-        $kategori_berita = \DB::table('kategori_beritas')->get();
-        // $kategori_berita_now = \DB::table('kategori_beritas')
-        // ->where('nama', $id)->first();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
-        // dd($id);
-        // dd($kategori_berita_now);
-        $detil_info = \DB::table('pemerintahans as a')
-        ->select(
-            'a.*',
-            'b.nama as category_name',
-            'c.name as created_by'
+        $tag = \DB::table('tag_beritas')
+            ->select(
+                '*',
             )
-        ->leftJoin('kategori_pemerintahans as b', 'a.kategori_id', '=', 'b.id')
-        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('slug', $id)->first();
+            ->get();
 
-        $info_lain = \DB::table('pemerintahans as a')
-        ->select(
-            'a.*',
-            'b.nama as category_name',
-            'c.name as created_by'
-        )
-        ->leftJoin('kategori_pemerintahans as b', 'a.kategori_id', '=', 'b.id')
-        ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('slug', '!=', $id)->take(3)->get();
+        $tag_selected = [];
+        $tag_s = [];
+        $tag_all = [];
+        $tags = \explode(",", $all_articles->tag_id);
 
-        // dd($info_lain);
-        return view('client.pemerintahan.detil-info',
-        [
-            'category_berita' => $kategori_berita,
-            // 'category_berita_now' => $kategori_berita_now,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
-            'detil_info' => $detil_info,
-            'info_lain' => $info_lain,
-        ]);
-    }
+        for ($i=0; $i < count($tags); $i++) {
+            $datas = \DB::table('tag_beritas as a')
+            ->select(
+                'a.*',
+            )
+            ->where('a.id', $tags[$i])
+            ->first();
 
-    public function cekKependudukan()
-    {
-
-        $kategori_berita = \DB::table('kategori_beritas')->get();
-        $info_pemerintahan = \DB::table('pemerintahans')->get();
-        $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
-
-        return view('client.inovasi.cek-kependudukan',[
-            'category_berita' => $kategori_berita,
-            'category_pemerintahan' => $kategori_pemerintahan,
-            'info_pemerintahan' => $info_pemerintahan,
-            ]
-        );
-    }
-
-    public function cekStatusKependudukan($id)
-    {
-        $cek_status = \DB::table('kependudukans')
-        ->where('nik', $id)->first();
-
-        if (empty($cek_status)) {
-            return response()->json('not found');
+            array_push($tag_s, $datas->id);
         }
 
-        return response()->json($cek_status, 200);
+        for ($i=0; $i < count($tags); $i++) {
+            $datas = \DB::table('tag_beritas as a')
+            ->select(
+                'a.*',
+            )
+            ->where('a.id', $tags[$i])
+            ->first();
+
+            array_push($tag_selected, $datas);
+        }
+
+        foreach ($tag as $key => $value) {
+            array_push($tag_all, $value->id);
+        }
+
+        // dd($tag_selected);
+        return view('client.news.index',
+        [
+            'category_berita' => $kategori_berita,
+            'creative_articles' => $creative_articles,
+            'uniq_articles' => $uniq_articles,
+            'all_articles' => $all_articles,
+            'other_articles' => $other_articles,
+            'tag_selected' => $tag_selected,
+        ]);
     }
 
     public function searchArticles($id)

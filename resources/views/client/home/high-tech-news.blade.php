@@ -5,7 +5,7 @@
 
         <!-- SETTING IMAGE WITH bg-6 -->
         <div class="bg-6 p-40 bg-layer-4 pos-relative z-1 oflow-hidden pr-0 color-white"
-             style="background: url('{{ asset('quitelight/images/slider_2_1900x1200.jpg') }}')
+             style="background: url('{{ $high_tech_articles->image }}')
                  no-repeat center; background-size: cover;">
             <div class="mx-w-200x">
                 <h5 class="color-grey"><b>{{ $high_tech_articles->category_name }}</b></h5>

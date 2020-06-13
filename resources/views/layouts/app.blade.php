@@ -55,19 +55,13 @@
 
         <!--Additional Page includes-->
         <script>
-            function categoryBerita(data){
+            function categoryNews(data){
                 axios.get('{{url("daftar-berita")}}/'+data).then((res) => {
                     window.location.href = '{{url("daftar-berita")}}/'+data;
                 });
             }
 
-            function detilInfo(data){
-                axios.get('{{url("pemerintahan/detil-informasi")}}/'+data).then((res) => {
-                    window.location.href = '{{url("pemerintahan/detil-informasi")}}/'+data;
-                });
-            }
-
-            function detilBerita(data){
+            function detailNews(data){
                 axios.get('{{url("daftar-berita/detil-berita")}}/'+data).then((res) => {
                     window.location.href = '{{url("daftar-berita/detil-berita")}}/'+data;
                 });
@@ -76,7 +70,7 @@
             $('#search_articles').click((e) => {
                 data = $('#topSearch').val();
                 axios.get('{{url("search-articles")}}/'+data).then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     // return false;
 
                     window.location.href = '{{url("search-articles")}}/'+data;
