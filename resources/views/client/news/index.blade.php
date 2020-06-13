@@ -56,7 +56,7 @@
 						</div><!-- col-md-6-->
 					</div><!-- row-->
 
-					<p>{!! $all_articles->desc !!}</p>
+					<p class="mt-40 mt-sm-10">{!! $all_articles->desc !!}</p>
 
 					<ul class="tag mtb-50">
 

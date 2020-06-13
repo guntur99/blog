@@ -14,7 +14,7 @@
 							<div class="mx-w-400x">
 								<h5><b>{{ $popular_articles->category_name }}</b></h5>
 								<h1 class="mt-20 mb-30"><b>{{ $popular_articles->judul }}</b></h1>
-								<h6><a class="plr-20 btn-brdr-grey color-white" href="#"><b>Continue Reading</b></a></h6>
+								<h6><a class="plr-20 btn-brdr-grey color-white" href="" onclick="detailNews('{{ $popular_articles->slug }}')"><b>Lihat Detil Artikel</b></a></h6>
 							</div><!-- mx-w-200x -->
 						</div><!-- dplay-tbl-cell -->
 					</div><!-- dplay-tbl -->
@@ -47,7 +47,7 @@
 												<div class="plr-25 ptb-15">
 													<h5 class="color-ash"><b>{{ $articles->category_name }}</b></h5>
 													<h4 class="mtb-10">
-														<a href="#"><b>{{ $articles->judul }}</b></a></h4>
+														<a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
 													<ul class="list-li-mr-10 color-lt-black">
 														{{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
 														<li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}

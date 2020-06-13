@@ -9,7 +9,7 @@
                 <div class="dplay-tbl">
                     <div class="dplay-tbl-cell">
                         <h5 class="color-ash"><b>{{ $articles->category_name }}</b></h5>
-                        <h2 class="mtb-10"><a href="#"><b>{{ $articles->judul }}</b></a></h2>
+                        <h2 class="mtb-10"><a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h2>
                         <ul class="list-li-mr-10 color-ash">
                             {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
                             <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}
@@ -31,7 +31,7 @@
                         <div class="dplay-tbl-cell">
 
                             <h5 class="color-ash"><b>{{ $articles->category_name }}</b></h5>
-                            <h4 class="mtb-10"><a href="#"><b>{{ $articles->judul }}</b></a></h4>
+                            <h4 class="mtb-10"><a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
                             <ul class="list-li-mr-10 color-ash">
                                 {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
                                 <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}
@@ -53,7 +53,7 @@
                         <div class="dplay-tbl-cell">
 
                             <h5 class="color-grey"><b>{{ $articles->category_name }}</b></h5>
-                            <h4 class="mtb-10"><a href="#"><b>{{ $articles->judul }}</b></a></h4>
+                            <h4 class="mtb-10"><a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
                             <ul class="list-li-mr-10 color-grey">
                                 {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
                                 <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}
@@ -80,7 +80,7 @@
                     <div class="dplay-tbl-cell">
 
                         <h5 class="color-grey"><b>{{ $articles->category_name }}</b></h5>
-                        <h2 class="mtb-10"><a href="#">
+                        <h2 class="mtb-10"><a href="" onclick="detailNews('{{ $articles->slug }}')">
                                 <b>{{ $articles->judul }}</b></a></h2>
                         <ul class="list-li-mr-10 color-grey">
                             {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
@@ -111,7 +111,7 @@
 
                             <h5 class="color-ash"><b>{{ $articles->category_name }}</b></h5>
                             <h4 class="mtb-10">
-                                <a href="#"><b>{{ $articles->judul }}</b></a></h4>
+                                <a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
                             <ul class="list-li-mr-10 color-lt-black">
                                 {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
                                 <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}

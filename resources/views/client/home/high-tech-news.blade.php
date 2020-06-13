@@ -9,7 +9,7 @@
                  no-repeat center; background-size: cover;">
             <div class="mx-w-200x">
                 <h5 class="color-grey"><b>{{ $high_tech_articles->category_name }}</b></h5>
-                <h2 class="mtb-10"><a href="#">
+                <h2 class="mtb-10"><a href="" onclick="detailNews('{{ $high_tech_articles->slug }}')">
                         <b>{{ $high_tech_articles->judul }}</b></a></h2>
             </div><!-- mx-w-200x -->
 
@@ -28,7 +28,7 @@
                         @foreach($high_tech_articles2 as $articles)
                         <div class="swiper-slide">
                             <div class="pos-relative">
-                                <a class="abs-center circle-50 bg-tp-5 text-center" href="#">
+                                <a class="abs-center circle-50 bg-tp-5 text-center" href="" onclick="detailNews('{{ $articles->slug }}')">
                                     <i class="lh-50 font-12 ion-play"></i></a>
                                 <img src="{{ $articles->image }}" style="object-fit: cover; height: 150px;" alt="">
                             </div><!-- pos-relative -->
