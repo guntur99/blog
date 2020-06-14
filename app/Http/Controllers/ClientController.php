@@ -218,6 +218,9 @@ class ClientController extends Controller
     public function showDetailNews($id)
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
+        $berita_now = \DB::table('beritas')
+        ->where('slug', $id)->first();
+        // dd($berita_now->kategori_id);
 
         $creative_articles = \DB::table('beritas as a')
         ->select(
@@ -255,7 +258,9 @@ class ClientController extends Controller
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
+        ->where('kategori_id', '=', $berita_now->kategori_id)
         ->where('slug', '!=', $id)->take(3)->get();
+        // dd($other_articles);
 
         $tag = \DB::table('tag_beritas')
             ->select(
