@@ -203,7 +203,12 @@
         })
         }, false);
 
-        $('.desc_berita').trumbowyg();
+        // $('.desc_berita').trumbowyg();
+        $('#desc').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 100
+        });
 
         $('.select2').select2();
 

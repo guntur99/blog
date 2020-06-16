@@ -28,6 +28,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('atmos/getting started/light/assets/css/atmos.css') }}">
     <link rel="stylesheet" href="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/ui/trumbowyg.min.css') }}">
 
+    <!-- include libraries(jQuery, bootstrap) -->
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     <style>
         .swal-title-custom{

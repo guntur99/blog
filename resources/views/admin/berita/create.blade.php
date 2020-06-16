@@ -101,6 +101,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="desc">Isi Berita </label>
+                                    {{-- <textarea id="desc" name="desc" required></textarea> --}}
                                     <textarea id="desc" class="form-control desc_berita" rows="5" name="desc" id="desc" required></textarea>
                                     <div class="valid-feedback">
                                         Terisi, silahkan cek kembali!
@@ -128,10 +129,10 @@
 @endsection
 @section('custom_script')
 
-    <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/trumbowyg.min.js') }}"></script>
+    {{-- <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/trumbowyg.min.js') }}"></script>
     <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js') }}"></script>
     <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js') }}"></script>
-    <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script>
+    <script src="{{ asset('atmos/getting started/light/assets/vendor/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script> --}}
     <script src="https://compressjs.herokuapp.com/compress.js"></script>
     <script src="{{ asset('js/compress.js') }}"></script>
     <script>
@@ -172,7 +173,14 @@
         })
         }, false);
 
-        $('.desc_berita').trumbowyg();
+        // $('.desc_berita').trumbowyg();
+        // $(document).ready(function() {
+        $('#desc').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 100
+        });
+        // });
 
         $('.select2').select2();
 
