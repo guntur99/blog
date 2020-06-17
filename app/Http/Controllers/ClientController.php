@@ -55,7 +55,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 2)->first();
+        ->where('kategori_id', 2)->orderBy('a.id', 'desc')->first();
 
         $high_tech_articles2 = \DB::table('beritas as a')
         ->select(
@@ -63,7 +63,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 2)->skip(1)->take(5)->get();
+        ->where('kategori_id', 2)->orderBy('a.id', 'desc')->skip(1)->take(5)->get();
 
         $future_tech_articles = \DB::table('beritas as a')
         ->select(
