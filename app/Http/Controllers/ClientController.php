@@ -15,7 +15,7 @@ class ClientController extends Controller
             'b.nama as category_name'
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->skip(1)->take(5)->get();
+        ->orderBy('a.id', 'desc')->skip(1)->take(5)->get();
 
         $fast_news_articles = \DB::table('beritas as a')
         ->select(
@@ -23,7 +23,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 5)->take(3)->get();
+        ->where('kategori_id', 5)->orderBy('a.id', 'desc')->take(3)->get();
 
         $popular_articles = \DB::table('beritas as a')
         ->select(
@@ -31,7 +31,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 1)->first();
+        ->where('kategori_id', 1)->orderBy('a.id', 'desc')->first();
 
         $popular_articles2 = \DB::table('beritas as a')
         ->select(
@@ -39,7 +39,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 1)->skip(1)->take(1)->get();
+        ->where('kategori_id', 1)->orderBy('a.id', 'desc')->skip(1)->take(1)->get();
 
         $popular_articles3 = \DB::table('beritas as a')
         ->select(
@@ -47,7 +47,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 1)->skip(2)->take(3)->get();
+        ->where('kategori_id', 1)->orderBy('a.id', 'desc')->skip(2)->take(3)->get();
 
         $high_tech_articles = \DB::table('beritas as a')
         ->select(
@@ -71,7 +71,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 3)->take(1)->get();
+        ->where('kategori_id', 3)->orderBy('a.id', 'desc')->take(1)->get();
 
         $future_tech_articles2 = \DB::table('beritas as a')
         ->select(
@@ -79,7 +79,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 3)->skip(2)->take(1)->get();
+        ->where('kategori_id', 3)->orderBy('a.id', 'desc')->skip(2)->take(1)->get();
 
         $future_tech_articles3 = \DB::table('beritas as a')
         ->select(
@@ -87,7 +87,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 3)->skip(3)->take(1)->get();
+        ->where('kategori_id', 3)->orderBy('a.id', 'desc')->skip(3)->take(1)->get();
 
         $future_tech_articles4 = \DB::table('beritas as a')
         ->select(
@@ -95,7 +95,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 3)->skip(1)->take(1)->get();
+        ->where('kategori_id', 3)->orderBy('a.id', 'desc')->skip(1)->take(1)->get();
 
         $future_tech_articles5 = \DB::table('beritas as a')
         ->select(
@@ -103,7 +103,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 3)->skip(4)->take(3)->get();
+        ->where('kategori_id', 3)->orderBy('a.id', 'desc')->skip(4)->take(3)->get();
 
         $creative_articles = \DB::table('beritas as a')
         ->select(
@@ -111,7 +111,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 4)->take(4)->get();
+        ->where('kategori_id', 4)->orderBy('a.id', 'desc')->take(4)->get();
 
         $uniq_articles = \DB::table('beritas as a')
         ->select(
@@ -119,7 +119,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 5)->take(4)->get();
+        ->where('kategori_id', 5)->orderBy('a.id', 'desc')->take(4)->get();
 
         $all_articles = \DB::table('beritas as a')
         ->select(
@@ -129,7 +129,7 @@ class ClientController extends Controller
             )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->get();
+        ->orderBy('a.id', 'desc')->get();
 
         $kategori_pemerintahan = \DB::table('kategori_pemerintahans')->get();
         $info_pemerintahan = \DB::table('pemerintahans')->get();
@@ -185,7 +185,7 @@ class ClientController extends Controller
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('kategori_id', $categories_news->id)->get();
+        ->where('kategori_id', $categories_news->id)->orderBy('a.id', 'desc')->get();
 
         $creative_articles = \DB::table('beritas as a')
         ->select(
@@ -193,7 +193,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 4)->take(4)->get();
+        ->where('kategori_id', 4)->orderBy('a.id', 'desc')->take(4)->get();
 
         $uniq_articles = \DB::table('beritas as a')
         ->select(
@@ -201,7 +201,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 5)->take(4)->get();
+        ->where('kategori_id', 5)->orderBy('a.id', 'desc')->take(4)->get();
 
 
         // dd($all_articles);
@@ -228,7 +228,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 4)->take(4)->get();
+        ->where('kategori_id', 4)->orderBy('a.id', 'desc')->take(4)->get();
 
         $uniq_articles = \DB::table('beritas as a')
         ->select(
@@ -236,7 +236,7 @@ class ClientController extends Controller
             'b.nama as category_name'
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
-        ->where('kategori_id', 5)->take(4)->get();
+        ->where('kategori_id', 5)->orderBy('a.id', 'desc')->take(4)->get();
 
         $all_articles = \DB::table('beritas as a')
         ->select(
@@ -259,7 +259,7 @@ class ClientController extends Controller
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
         ->where('kategori_id', '=', $berita_now->kategori_id)
-        ->where('slug', '!=', $id)->take(3)->get();
+        ->where('slug', '!=', $id)->orderBy('a.id', 'desc')->take(3)->get();
         // dd($other_articles);
 
         $tag = \DB::table('tag_beritas')
@@ -322,7 +322,7 @@ class ClientController extends Controller
         )
         ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
         ->leftJoin('users as c', 'a.created_by', '=', 'c.id')
-        ->where('judul', 'LIKE', '%' . $id . '%')->get();
+        ->where('judul', 'LIKE', '%' . $id . '%')->orderBy('a.id', 'desc')->get();
 
         // dd($all_articles);
         if (empty($all_articles)) {
