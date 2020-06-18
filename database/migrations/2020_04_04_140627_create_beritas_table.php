@@ -19,6 +19,7 @@ class CreateBeritasTable extends Migration
             $table->string('slug');
             $table->longText('desc_singkat');
             $table->longText('desc');
+            $table->longText('desc_video');
             $table->integer('kategori_id');
             $table->text('tag_id');
             $table->integer('created_by');

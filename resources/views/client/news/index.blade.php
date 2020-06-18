@@ -56,7 +56,9 @@
 						</div><!-- col-md-6-->
 					</div><!-- row-->
 
-					<p class="mt-40 mt-sm-10">{!! $all_articles->desc !!}</p>
+                    <p class="mt-40 mt-sm-10">{!! $all_articles->desc !!}</p>
+
+                    {!! $all_articles->desc_video !!}
 
 					<ul class="tag mtb-50">
 

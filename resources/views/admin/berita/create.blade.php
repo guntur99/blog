@@ -70,8 +70,8 @@
                                         </div>
                                         <br>
                                         <div>
-                                            <label for="desc">Deskripsi Singkat </label>
-                                            <textarea id="desc_singkat" class="form-control" rows="10" name="desc" id="desc" required></textarea>
+                                            <label for="desc_singkat">Deskripsi Singkat </label>
+                                            <textarea id="desc_singkat" class="form-control" rows="10" name="desc_singkat" required></textarea>
                                         </div>
 
                                     </div>
@@ -96,10 +96,16 @@
                                         <div class="p-b-10 text-center">
                                             <img class="rounded" id="cover_berita" src="{{ asset('img/dummy-image-landscape-1-1024x800.jpg') }}" alt="">
                                         </div>
+                                        <hr>
+                                        <div>
+                                            <label for="desc_video">Video Deskripsi </label>
+                                            <textarea id="desc_video" class="form-control" rows="5" name="desc_video" required></textarea>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-md-12">
+                                    <hr>
                                     <label for="desc">Isi Berita </label>
                                     {{-- <textarea id="desc" name="desc" required></textarea> --}}
                                     <textarea id="desc" class="form-control desc_berita" rows="5" name="desc" id="desc" required></textarea>
@@ -247,6 +253,7 @@
         var judul = $('#judul');
         var kategori_id = $('#kategori_id');
         var desc_singkat = $('#desc_singkat');
+        var desc_video = $('#desc_video');
         var desc = $('#desc');
         var image = $('#file_gambar_lain');
 
@@ -289,6 +296,19 @@
 
         })
 
+        desc_video.on('input', (e)=> {
+            var value = e.target.value
+
+            if (value.length === 0) {
+                desc_video.addClass('is-invalid');
+                desc_video.removeClass('is-valid');
+            }else{
+                desc_video.addClass('is-valid');
+                desc_video.removeClass('is-invalid');
+            }
+
+        })
+
         desc.on('input', (e)=> {
             var value = e.target.value
 
@@ -309,6 +329,7 @@
             ((judul.val() == "") ? judul.addClass('is-invalid') : judul.addClass('is-valid'));
             ((kategori_id.val() == "") ? kategori_id.addClass('is-invalid') : kategori_id.addClass('is-valid'));
             ((desc_singkat.val() == "") ? desc_singkat.addClass('is-invalid') : desc_singkat.addClass('is-valid'));
+            ((desc_video.val() == "") ? desc_video.addClass('is-invalid') : desc_video.addClass('is-valid'));
             ((desc.val() == "") ? desc.addClass('is-invalid') : desc.addClass('is-valid'));
 
             var formData = new FormData()
@@ -316,6 +337,7 @@
             formData.append('kategori_id', kategori_id.val());
             formData.append('tag_id', tagsId.val());
             formData.append('desc_singkat', desc_singkat.val());
+            formData.append('desc_video', desc_video.val());
             formData.append('desc', desc.val());
             formData.append('image', image.val());
             formData.append('image_prefix', img_prefix);
