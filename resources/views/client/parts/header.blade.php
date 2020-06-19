@@ -14,7 +14,12 @@
     <ul class="main-menu" id="main-menu">
         <li><a href="{{ url('/') }}">Home</a></li>
         @foreach($category_berita as $category)
+            @if($category->nama == "Evolusi")
+
+            <li><a href="#">{{ $category->nama }}</a><span class="badge badge-warning" style="margin-left: -10px;">Soon</span></li>
+            @else
             <li><a href="#" onclick="categoryNews('{{ $category->nama }}')">{{ $category->nama }}</a></li>
+            @endif
         @endforeach
         <li><a href="{{ route('client.kontak') }}">Kontak</a></li>
     </ul>

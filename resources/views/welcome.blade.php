@@ -18,7 +18,8 @@
 
                     @include('client.home.high-tech-news')
 
-                    @include('client.home.future-tech-news')
+                    <!-- Comming Soon -->
+                    {{-- @include('client.home.future-tech-news') --}}
 
                 </div><!-- col-sm-9 -->
 
