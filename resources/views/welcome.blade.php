@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- ********** New Area Start ********** -->
-    {{-- @include('client.home.hot-news') --}}
+    @include('client.home.hot-news')
     <!-- ********** New Area End ********** -->
 
     <section class="bg-1-white ptb-0">
