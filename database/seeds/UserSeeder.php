@@ -9,15 +9,15 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * pass: saitamaheroforfun+*@99#
      * @return void
      */
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'King',
+            'name' => 'One King',
             'email' => 'king@gmail.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('saitamaheroforfun+*@99#'),
         ]);
 
     }
