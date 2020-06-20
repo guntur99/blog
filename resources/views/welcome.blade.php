@@ -50,7 +50,7 @@
     <!--Additional Page includes-->
     <script>
 
-        function detilBerita(data){
+        function detailNews(data){
             axios.get('{{url("daftar-artikel/detil-artikel")}}/'+data).then((res) => {
                 window.location.href = '{{url("daftar-artikel/detil-artikel")}}/'+data;
             });

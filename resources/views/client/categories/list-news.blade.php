@@ -69,3 +69,16 @@
     </div><!-- container -->
 </section>
 @endsection
+@section('custom_script')
+
+    <!--Additional Page includes-->
+    <script>
+
+        function detailNews(data){
+            axios.get('{{url("daftar-artikel/detil-artikel")}}/'+data).then((res) => {
+                window.location.href = '{{url("daftar-artikel/detil-artikel")}}/'+data;
+            });
+        }
+
+    </script>
+@endsection
