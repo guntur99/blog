@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- ********** New Area Start ********** -->
-    @include('client.home.hot-news')
+    {{-- @include('client.home.hot-news') --}}
     <!-- ********** New Area End ********** -->
 
     <section class="bg-1-white ptb-0">
@@ -12,9 +12,9 @@
                 <div class="col-lg-1"></div>
                 <div class="col-md-12 col-lg-8 pt-50 pb-50 pr-30 pr-md-15">
 
-                    @include('client.home.fast-news')
+                    {{-- @include('client.home.fast-news') --}}
 
-                    @include('client.home.popular-news')
+                    {{-- @include('client.home.popular-news') --}}
 
                     @include('client.home.high-tech-news')
 
@@ -23,7 +23,7 @@
 
                 </div><!-- col-sm-9 -->
 
-                @include('client.home.side-menu')
+                {{-- @include('client.home.side-menu') --}}
 
             </div><!-- row -->
         </div><!-- container -->
