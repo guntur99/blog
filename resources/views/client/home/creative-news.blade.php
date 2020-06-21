@@ -7,7 +7,7 @@
             <img src="{{ $articles->image }}" style="height: 80px; object-fit: cover;" alt="">
         </div><!-- s-left -->
         <div class="s-right">
-            <h5 class="pt-5"><a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h5>
+            <h5 class="pt-5"><a href="#!" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h5>
         </div><!-- s-left -->
     </div><!-- sided-80x -->
     @endforeach

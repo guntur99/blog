@@ -8,7 +8,7 @@
                 style="background: url('{{ $articles->image }}') no-repeat center; background-size: cover;">
                 <div class="plr-25 ptb-15">
                     <h5 class="color-grey"><b>{{ $articles->category_name }}</b></h5>
-                    <h4 class="mtb-10"><a href="" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
+                    <h4 class="mtb-10"><a href="#!" onclick="detailNews('{{ $articles->slug }}')"><b>{{ $articles->judul }}</b></a></h4>
                     <ul class="list-li-mr-10 color-grey">
                         {{-- <li><i class="mr-5 font-12 ion-android-favorite-outline"></i>15</li>
                         <li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i>105</li> --}}

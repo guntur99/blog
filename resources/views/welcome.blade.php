@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('custom_css')
+<style>
+    .text-focus:hover {
+        color: orange;
+    }
+</style>
+@endsection
+
 @section('content')
 
     <!-- ********** New Area Start ********** -->
