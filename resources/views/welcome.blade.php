@@ -12,7 +12,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-md-12 col-lg-8 pt-50 pb-50 pr-30 pr-md-15">
 
-                    {{-- @include('client.home.fast-news') --}}
+                    @include('client.home.fast-news')
 
                     @include('client.home.popular-news')
 
