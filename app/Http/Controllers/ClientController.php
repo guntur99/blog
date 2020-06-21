@@ -9,6 +9,15 @@ class ClientController extends Controller
     public function index()
     {
         $kategori_berita = \DB::table('kategori_beritas')->get();
+
+        $fresh_articles = \DB::table('beritas as a')
+        ->select(
+            'a.*',
+            'b.nama as category_name'
+        )
+        ->leftJoin('kategori_beritas as b', 'a.kategori_id', '=', 'b.id')
+        ->orderBy('a.id', 'desc')->first();
+
         $hot_articles = \DB::table('beritas as a')
         ->select(
             'a.*',
@@ -137,6 +146,7 @@ class ClientController extends Controller
         return view('welcome',
         [
             'category_berita' => $kategori_berita,
+            'fresh_articles' => $fresh_articles,
             'hot_articles' => $hot_articles,
             'fast_news_articles' => $fast_news_articles,
 

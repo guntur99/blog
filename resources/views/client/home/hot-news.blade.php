@@ -2,7 +2,7 @@
 
 <div class="slider-main h-800x h-sm-auto pos-relative pt-95 pb-25">
     {{-- @foreach($popular_articles as $articles) --}}
-		<div class="img-bg bg-layer-4" style="background: url('{{ $popular_articles->image }}')
+		<div class="img-bg bg-layer-4" style="background: url('{{ $fresh_articles->image }}')
                         no-repeat center; background-size: cover;"></div>
 		<div class="container-fluid h-100 mt-xs-50">
 
@@ -12,9 +12,9 @@
 					<div class="dplay-tbl">
 						<div class="dplay-tbl-cell color-white mtb-30">
 							<div class="mx-w-400x">
-								<h5><b>{{ $popular_articles->category_name }}</b></h5>
-								<h1 class="mt-20 mb-30"><b>{{ $popular_articles->judul }}</b></h1>
-								<h6><a class="plr-20 btn-brdr-grey color-white" href="" onclick="detailNews('{{ $popular_articles->slug }}')"><b>Lihat Detil Artikel</b></a></h6>
+								<h5><b>{{ $fresh_articles->category_name }}</b></h5>
+								<h1 class="mt-20 mb-30"><b>{{ $fresh_articles->judul }}</b></h1>
+								<h6><a class="plr-20 btn-brdr-grey color-white" href="" onclick="detailNews('{{ $fresh_articles->slug }}')"><b>Lihat Detil Artikel</b></a></h6>
 							</div><!-- mx-w-200x -->
 						</div><!-- dplay-tbl-cell -->
 					</div><!-- dplay-tbl -->
