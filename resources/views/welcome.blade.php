@@ -14,7 +14,7 @@
 
                     {{-- @include('client.home.fast-news') --}}
 
-                    {{-- @include('client.home.popular-news') --}}
+                    @include('client.home.popular-news')
 
                     @include('client.home.high-tech-news')
 
