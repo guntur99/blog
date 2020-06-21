@@ -23,7 +23,7 @@
 
                 </div><!-- col-sm-9 -->
 
-                {{-- @include('client.home.side-menu') --}}
+                @include('client.home.side-menu')
 
             </div><!-- row -->
         </div><!-- container -->
