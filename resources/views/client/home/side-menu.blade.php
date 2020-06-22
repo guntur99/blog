@@ -1,6 +1,6 @@
 <div class="col-md-12 col-lg-3 bg-2-white ptb-50 pl-30 pl-md-15">
     <div class="row">
-        <div class="col-md-12 col-lg-8">
+        <div class="col-md-12 col-lg-10">
             <div class="mx-w-md-400x mlr-md-auto">
 
                 @include('client.home.creative-news')
