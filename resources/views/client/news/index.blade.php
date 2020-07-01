@@ -68,7 +68,7 @@
 						</div><!-- col-md-6-->
 					</div><!-- row-->
 
-                    <p class="mt-40 mt-sm-10 unselectable">{!! $all_articles->desc !!}</p>
+                    <p class="mt-40 mt-sm-10 unselectable" oncopy="return false" oncut="return false" onpaste="return false">{!! $all_articles->desc !!}</p>
 
                     {!! $all_articles->desc_video !!}
 
