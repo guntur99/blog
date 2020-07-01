@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('custom_css')
+<style>
+    .unselectable {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
+</style>
+@endsection
+
 @section('content')
 
 <div class="slider-main h-800x h-sm-auto pos-relative pt-95 pb-25">
@@ -56,7 +68,7 @@
 						</div><!-- col-md-6-->
 					</div><!-- row-->
 
-                    <p class="mt-40 mt-sm-10">{!! $all_articles->desc !!}</p>
+                    <p class="mt-40 mt-sm-10 unselectable">{!! $all_articles->desc !!}</p>
 
                     {!! $all_articles->desc_video !!}
 
