@@ -58,14 +58,14 @@
 							</div><!-- sided-80x-->
 						</div><!-- col-md-6-->
 
-						<div class="col-sm-12 col-md-6">
+						{{-- <div class="col-sm-12 col-md-6">
 							<ul class="color-ash lh-70 text-right text-sm-left list-a-plr-10 font-13">
 								<li><b>SHARE</b></li>
 								<li><a href="#"><i class="color-facebook ion-social-facebook"></i></a></li>
 								<li><a href="#"><i class="color-twitter ion-social-twitter"></i></a></li>
 								<li><a href="#"><i class="color-google ion-social-google"></i></a></li>
 							</ul>
-						</div><!-- col-md-6-->
+						</div><!-- col-md-6--> --}}
 					</div><!-- row-->
 
                     <p class="mt-40 mt-sm-10 unselectable" oncopy="return false" oncut="return false" onpaste="return false">{!! $all_articles->desc !!}</p>
@@ -75,7 +75,7 @@
 					<ul class="tag mtb-50">
 
                         @foreach($tag_selected as $tags)
-                            <li><a href="#!"><b>{{ $tags->nama }}</b></a></li>
+                            <li class="m-1"><a href="#!"><b>{{ $tags->nama }}</b></a></li>
                         @endforeach
 					</ul>
 
@@ -93,14 +93,14 @@
 							</div><!-- sided-80x-->
 						</div><!-- col-md-6-->
 
-						<div class="col-sm-12 col-md-6">
+						{{-- <div class="col-sm-12 col-md-6">
 							<ul class="color-ash lh-70 text-right text-sm-left list-a-plr-10 font-13">
 								<li><b>SHARE</b></li>
 								<li><a href="#"><i class="color-facebook ion-social-facebook"></i></a></li>
 								<li><a href="#"><i class="color-twitter ion-social-twitter"></i></a></li>
 								<li><a href="#"><i class="color-google ion-social-google"></i></a></li>
 							</ul>
-						</div><!-- col-md-6-->
+						</div><!-- col-md-6--> --}}
                     </div><!-- row-->
 
 					<div class="brdr-grey-1 mt-50 mt-sm-20"></div>
