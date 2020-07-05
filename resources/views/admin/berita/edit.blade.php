@@ -67,37 +67,8 @@
                                         </div>
                                         <br>
                                         <div>
-                                            <div class="card m-b-30">
-                                                <div class="card-header">
-                                                    <h5 class="m-b-0">
-                                                        Daftar Tag
-                                                    </h5>
-                                                    <p class="m-b-0 text-muted">
-                                                        Klik Tag untuk memilih!
-                                                    </p>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div>
-                                                        <div class="">
-
-                                                                @foreach ($tag_selected as $ts)
-                                                                    <div class="tag-input">
-                                                                        <input checked id="yay{{ $ts->id }}" value="{{ $ts->id }}" name="tag[]" type="checkbox">
-                                                                        <label for="yay{{ $ts->id }}">{{ $ts->nama }}</label>
-                                                                    </div>
-                                                                @endforeach
-
-                                                                @foreach ($tag_n_selected as $tns)
-                                                                    <div class="tag-input">
-                                                                        <input id="non{{ $tns->id }}" value="{{ $tns->id }}" name="tag[]" type="checkbox">
-                                                                        <label for="non{{ $tns->id }}">{{ $tns->nama }}</label>
-                                                                    </div>
-                                                                @endforeach
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <label for="desc_video">Video Deskripsi </label>
+                                            <textarea id="desc_video" class="form-control" rows="5" name="desc_video" required>{!! $data->desc_video !!}</textarea>
                                         </div>
                                         <br>
                                         <div>
@@ -128,9 +99,39 @@
                                             <img class="rounded" id="cover_berita" src="{{ $data->image }}" alt="">
                                         </div>
                                         <hr>
-                                        <div>
-                                            <label for="desc_video">Video Deskripsi </label>
-                                            <textarea id="desc_video" class="form-control" rows="5" name="desc_video" required>{!! $data->desc_video !!}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-header">
+                                            <h5 class="m-b-0">
+                                                Daftar Tag
+                                            </h5>
+                                            <p class="m-b-0 text-muted">
+                                                Klik Tag untuk memilih!
+                                            </p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div>
+                                                <div class="">
+
+                                                        @foreach ($tag_selected as $ts)
+                                                            <div class="tag-input">
+                                                                <input checked id="yay{{ $ts->id }}" value="{{ $ts->id }}" name="tag[]" type="checkbox">
+                                                                <label for="yay{{ $ts->id }}">{{ $ts->nama }}</label>
+                                                            </div>
+                                                        @endforeach
+
+                                                        @foreach ($tag_n_selected as $tns)
+                                                            <div class="tag-input">
+                                                                <input id="non{{ $tns->id }}" value="{{ $tns->id }}" name="tag[]" type="checkbox">
+                                                                <label for="non{{ $tns->id }}">{{ $tns->nama }}</label>
+                                                            </div>
+                                                        @endforeach
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
