@@ -8,7 +8,7 @@
         <div class="dplay-tbl">
             <div class="dplay-tbl-cell color-white text-center">
 
-                <h1 class="ptb-50"><b>Terms of Use</b></h1>
+                <h1 class="ptb-50"><b>Untuk Para Pengunjuk</b></h1>
 
             </div><!-- dplay-tbl-cell -->
         </div><!-- dplay-tbl -->
@@ -20,16 +20,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bg-white p-50">
-                    <p>At that event and the ones that followed, plenty of senior citizens — among them librarians, property developers, teachers, doctors — proudly
-                        and happily recounted their acid trips. It was both charming and disconcerting to hear someone my father’s age telling me how they’d tripped their
-                        balls off on the beach in 1968. It shouldn’t have been a surprise, I suppose. Research shows that something like 20 million Americans have used LSD,
-                        many of those back in its 1960s heyday. Still, it was fascinating to hear how their experiences with psychedelics shaped and transformed.</p>
+                    <p>Teknonlogis adalah website yang dibuat khusus untuk menampung beragam teknologi yang menarik untuk dibagikan kepada semua orang
+                        yang memang tertarik tentang dunia teknologi. Sengaja dikelompokan dari Populer, Canggih, Kreatif dan Unik agar sedikit memudahkan
+                        dalam User Experience dan akan ditingkatkan lagi termasuk penulisan, untuk Evolusi masih dalam tahap rancangan untuk saat ini.
+                        Selamat Membaca 😊
+                    </p>
 
-                    <h3 class="mtb-50 mtb-sm-30"><b>“I don’t think I would have attempted such a complicated, multifaceted work had I not been microdosing with LSD.”</b></h3>
-
-                    <p>Though I was eager to share the results of the experiment with others who suffer from depression or other mood issues, my previous book,
-                        Love and Treasure, was a novel set against the backdrop of the Holocaust in Hungary.
-                        In support of that novel, I traveled around the country from Jewish community center to synagogue to Jewish book club.</p>
+                    <h3 class="mtb-50 mtb-sm-30"><b>“Jika terlanjur jadi orang biasa maka jadilah berbeda, setidaknya orang melihat anda spesial.”</b></h3>
 
                 </div><!-- col-sm-3 -->
             </div><!-- col-sm-3 -->
