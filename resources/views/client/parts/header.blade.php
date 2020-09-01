@@ -1,5 +1,5 @@
 
-<header>
+<header style="position: fixed;background-color:#21212191;">
     <a class="logo" href="{{ url('/') }}"><img src="{{ asset('quitelight/images/logo_teknonlogis_white.png') }}" class="ml-15 mt-10" style="width: 220px; height: 50px;" alt="Logo"></a>
 
     <div class="right-area">
