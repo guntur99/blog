@@ -27,9 +27,10 @@
                         <div class="dplay-tbl-cell">
 
                             <ul class="list-a-plr-10">
-                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+                                <li><a href="#!"><i class="ion-social-instagram"></i></a></li>
+                                <li><a href="#!"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#!"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#!"><i class="ion-social-youtube"></i></a></li>
                             </ul>
 
                         </div><!-- dplay-tbl-cell -->
@@ -41,12 +42,12 @@
                 <div class="card h-100">
                     <div class="dplay-tbl">
                         <div class="dplay-tbl-cell">
-                            <form class="form-block form-brdr-b mx-w-400x m-auto">
+                            {{-- <form class="form-block form-brdr-b mx-w-400x m-auto">
 
                                 <input class="color-white ptb-15 center-sm-text" type="text" placeholder=" Your Email">
                                 <button class="mt-30 btn-brdr-grey color-ash w-100 text-center" type="submit">SUBSCRIBE</button>
 
-                            </form>
+                            </form> --}}
                         </div><!-- dplay-tbl-cell -->
                     </div><!-- dplay-tbl -->
                 </div><!-- card -->
