@@ -8,7 +8,7 @@
         <div class="dplay-tbl">
             <div class="dplay-tbl-cell color-white text-center">
 
-                <h1 class="ptb-50"><b>Untuk Para Pengunjuk</b></h1>
+                <h1 class="ptb-50"><b>Untuk Para Pengunjung</b></h1>
 
             </div><!-- dplay-tbl-cell -->
         </div><!-- dplay-tbl -->
