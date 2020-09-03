@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/testredis', function () {
-    // $filename = storage_path('sets.txt');
-    \Cache::store('redis')->put('Laradock', 'Awesome', 100);
-    // \Cache::store('redis')->put($filename, 100);
-    return 'hahaha';
-});
+// Route::get('/testredis', function () {
+//     // $filename = storage_path('sets.txt');
+//     \Cache::store('redis')->put('Laradock', 'Awesome', 100);
+//     // \Cache::store('redis')->put($filename, 100);
+//     return 'hahaha';
+// });
 
 //---------------- BAGIAN CLIENT --------------------------
 Route::get('/', 'ClientController@index')->name('client');
