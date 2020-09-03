@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Redis;
 use File;
 
 class BeritaController extends Controller
@@ -14,11 +15,15 @@ class BeritaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->tags = ['news'];
     }
 
     public function index()
     {
         // $this->detailBerita();
+        // \Cache::store('redis')->put('name', 'Lily James');
+        // \Cache::flush();
+
         return view('admin.berita.index');
     }
 
@@ -44,18 +49,22 @@ class BeritaController extends Controller
 
     public function datatable()
     {
-        $data = \DB::table('beritas as a')
-        ->select(
-            'a.*',
-            'b.name as user_created_by',
-            'c.nama as category_name'
-        )
-        ->leftJoin('users as b', 'a.created_by', '=', 'b.id')
-        ->leftJoin('kategori_beritas as c', 'a.kategori_id', '=', 'c.id')
-        // ->leftJoin('tag_beritas as d', 'a.created_by', '=', 'b.id')
-        ->get();
-            // dd($data);
-        return \DataTables::of($data)->make();
+        $news = \Cache::tags($this->tags)->rememberForever("DatatableNews", function ()  {
+            $data = \DB::table('beritas as a')
+            ->select(
+                'a.*',
+                'b.name as user_created_by',
+                'c.nama as category_name'
+            )
+            ->leftJoin('users as b', 'a.created_by', '=', 'b.id')
+            ->leftJoin('kategori_beritas as c', 'a.kategori_id', '=', 'c.id')
+            // ->leftJoin('tag_beritas as d', 'a.created_by', '=', 'b.id')
+            ->get();
+                // dd($data);
+            return \DataTables::of($data)->make();
+        });
+
+        return $news;
     }
 
     public function tagBerita(Request $req)
