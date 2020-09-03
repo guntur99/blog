@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/testredis03', function () {
+Route::get('/testredis', function () {
     // $filename = storage_path('sets.txt');
     \Cache::store('redis')->put('Laradock', 'Awesome', 100);
     // \Cache::store('redis')->put($filename, 100);
